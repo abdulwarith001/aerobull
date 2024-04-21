@@ -41,7 +41,7 @@ const Wrapper = styled.section`
     display: flex;
     justify-content: flex-end;
     margin: 1.5em auto 0;
-    width: 95%;
+    width: 80%;
     .herotxt {
       font-size: 64px;
       text-transform: uppercase;

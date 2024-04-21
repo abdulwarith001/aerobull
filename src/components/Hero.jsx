@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Wrapper from '../assets/wrappers/Hero'
+import Modal from './Modal';
 const Hero = () => {
+  const [isOpen, setIsOpen] = useState(false)
   return (
     <Wrapper>
+      {isOpen && <Modal isOpen={isOpen} setIsOpen={setIsOpen}/>}
       <div className="header">
         <h2>$ARB</h2>
         <button>Presale</button>
@@ -13,8 +16,8 @@ const Hero = () => {
              <i>“ </i>
           <div>
             HI THERE, I’M <span>AERO</span>,<br />
-            Taking Charge for <br />
-            Humanitarian Efforts
+            The generous &<br />
+            Ambitious bull.
           </div>
          </div>
           <div className='secondcomma'>”</div>
