@@ -21,7 +21,7 @@ const Faq = () => {
         {memoizedFaqData.map((faq, index) => (
           <div className="faq" key={index}>
             <div className="question" onClick={() => handleToggle(index)}>
-              <p>{faq.question}</p>
+              <p dangerouslySetInnerHTML={{ __html: faq.question }}></p>
               {openIndex === index ? (
                 <img src={arrow_up} />
               ) : (
@@ -42,32 +42,32 @@ const Faq = () => {
 
 const faqData = [
   {
-    question: "WHO IS AEROBULL?",
+    question: "WHO IS <span>AEROBULL</span>?",
     answer:
       "Lorem ipsum is good and ak shw jji kwu jsoakjkwai iiwye iei apodb eye jeiux iedb owyrb oqhs",
   },
   {
-    question: "WHAT CHAIN IS AEROBULL BUILT ON?",
+    question: "WHAT CHAIN IS <span>AEROBULL</span> BUILT ON?",
     answer:
       "Lorem ipsum is good and ak shw jji kwu jsoakjkwai iiwye iei apodb eye jeiux iedb owyrb oqhs",
   },
   {
-    question: "WHERE IS AERO LISTED?",
+    question: "WHERE IS <span>AERO</span> LISTED?",
     answer:
       "Lorem ipsum is good and ak shw jji kwu jsoakjkwai iiwye iei apodb eye jeiux iedb owyrb oqhs",
   },
   {
-    question: "HOW TO BUY AERO?",
+    question: "HOW TO BUY <span>AERO</span>?",
     answer:
       "Lorem ipsum is good and ak shw jji kwu jsoakjkwai iiwye iei apodb eye jeiux iedb owyrb oqhs",
   },
   {
-    question: "WHAT IS AERO TOTAL SUPPLY?",
+    question: "WHAT IS <span>AERO</span> TOTAL SUPPLY?",
     answer:
       "Lorem ipsum is good and ak shw jji kwu jsoakjkwai iiwye iei apodb eye jeiux iedb owyrb oqhs",
   },
   {
-    question: "IS AERO ON SOCIAL MEDIA?",
+    question: "IS <span>AERO</span> ON SOCIAL MEDIA?",
     answer:
       "Lorem ipsum is good and ak shw jji kwu jsoakjkwai iiwye iei apodb eye jeiux iedb owyrb oqhs",
   },
