@@ -40,7 +40,7 @@ const WinnerErrorWrapper = styled.section`
     z-index: 9999;
     }
   .model-content {
-    background: url(${BgImage}), white;
+    background-color: white;
     border: 2px solid black;
     border-radius: 24px;
     width: 812px;
