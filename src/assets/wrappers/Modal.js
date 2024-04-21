@@ -120,5 +120,6 @@ const WinnerErrorWrapper = styled.section`
        }
     }
   }
+  }
 `;
 export default WinnerErrorWrapper;
