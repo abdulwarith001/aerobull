@@ -1,0 +1,32 @@
+/* index.css */
+
+/* Import MilkyNice font */
+
+
+/* Apply global styles */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+* button {
+  cursor: pointer;
+}
+
+body {
+  background: url('./assets/images/body_pattern.svg');
+  height: 100vh;
+}
+
+@font-face {
+  font-family: "MilkyNice";
+  src: url('./assets/fonts/MilkyNice.ttf') format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Sora";
+  src: url('./assets/fonts/Sora-Bold.ttf') format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
