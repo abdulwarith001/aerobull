@@ -45,6 +45,7 @@ const WinnerErrorWrapper = styled.section`
     border: 2px solid black;
     border-radius: 24px;
     width: 812px;
+    height: fit-content;
     /* position: relative; */
 
     .img_wrapper {
