@@ -8,7 +8,7 @@ const Hero = () => {
       {isOpen && <Modal isOpen={isOpen} setIsOpen={setIsOpen}/>}
       <div className="header">
         <h2>$ARB</h2>
-        <button>Presale</button>
+        <button onClick={()=> setIsOpen(true)}>Presale</button>
       </div>
       <div className="header-txt">
         <div className='herotxt'>
