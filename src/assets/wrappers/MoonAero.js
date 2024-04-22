@@ -39,11 +39,11 @@ const Wrapper = styled.section`
       display: block;
     }
 
-    h1{
-        font-size: 19.65px;
-        line-height: 23.52px;
-    text-shadow: -2px 2px black;
-
+    h1 {
+      font-size: 19.65px;
+      line-height: 23.52px;
+      text-shadow: -2px 2px black;
+      -webkit-text-stroke: 1px black;
     }
   }
 `;
