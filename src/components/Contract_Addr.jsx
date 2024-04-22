@@ -25,12 +25,12 @@ const Contract_Addr = () => {
         <input
           id="contractAddress"
           type="text"
-          value="0X33QENIV0NQVRJ1924590557895"
+          value="0x0c57edaFfe03aa49cE4305a69344Cc1252d8715F"
           readOnly
         />
         <button onClick={copyToClipboard}>
-          <img src={CopyIcon} alt="Copy Icon" className='desktop'/>
-          <img src={mobile_copy} alt="Copy Icon" className='mobile'/>
+          <img src={CopyIcon} alt="Copy Icon" className="desktop" />
+          <img src={mobile_copy} alt="Copy Icon" className="mobile" />
           {copied ? "Copied" : "Copy"}
         </button>
       </div>
