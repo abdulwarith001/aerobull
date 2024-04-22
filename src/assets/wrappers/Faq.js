@@ -73,7 +73,7 @@ const Wrapper = styled.section`
 
   @media (max-width: 992px) {
     /* display: none; */
-    padding: 2em 0  4em 1em;
+    padding: 2em 0  4em 0.5em;
 
     .desktop{
       display: none;
