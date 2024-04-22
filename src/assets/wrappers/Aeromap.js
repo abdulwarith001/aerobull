@@ -73,11 +73,11 @@ const Wrapper = styled.section`
         text-shadow: 4px 4px black;
       }
 
-      .lastText{
-        color: #F7B94F;
+      .lastText {
+        color: #f7b94f;
       }
 
-      img {
+      .desktop_map {
         margin-top: -10em;
         position: absolute;
         top: 20px;
@@ -136,6 +136,124 @@ const Wrapper = styled.section`
       font-weight: 600px;
       line-height: 20.16px;
       font-family: "Sora", sans-serif;
+    }
+  }
+
+  .mobile_map {
+    display: none;
+  }
+  .desktop_map {
+    display: block;
+  }
+  .mobile_net {
+    display: none;
+  }
+  .desktop_net {
+    display: block;
+  }
+
+  @media (max-width: 992px) {
+    /* display: none; */
+
+    .img,
+    .img2,
+    .img3 {
+      display: none;
+    }
+
+    h1 {
+      line-height: 35.28px;
+      font-size: 29.47px;
+      text-shadow: 2px 2px black;
+    }
+
+    .desktop_map {
+      display: none;
+    }
+    .mobile_map {
+      display: block;
+    }
+
+    .maps {
+      margin-top: 4em;
+      width: 309px;
+
+      .mapArr {
+        align-items: flex-start;
+        position: relative;
+      }
+      .mapArr3 {
+        margin-top: 4em;
+      }
+      .mapArr2 {
+        margin-top: 4em;
+      }
+      .map-head {
+        display: flex;
+        position: relative;
+        h4 {
+          font-size: 18.31px;
+          line-height: 21.92px;
+          text-shadow: 0.92px 0.92px black;
+        }
+
+        .mobile_map {
+          margin-top: -5em;
+          position: absolute;
+          top: 20px;
+          left: 230.26px;
+        }
+      }
+      .map {
+        width: 287.48px;
+        height: 104.95px;
+        background-color: white;
+        border-radius: 24px;
+        padding: 14.65px;
+        border: 4px solid black;
+        box-shadow: -3px 3px black;
+      }
+    }
+
+    .content {
+      margin-top: 1.5em;
+      height: 47.65px;
+      display: flex;
+      gap: 5px;
+      flex-direction: column;
+
+      div {
+        display: flex;
+        gap: 5px;
+      }
+
+      .extra_content {
+        display: flex;
+        align-items: center;
+        margin-top: 0.2em;
+        gap: 1px;
+        .span {
+          font-size: 7.32px;
+          line-height: 9.23px;
+        }
+      }
+      i {
+        font-size: 9.16px;
+        line-height: 10.96px;
+        text-shadow: 1px 1px black;
+      }
+
+      span {
+        font-size: 7.32px;
+        line-height: 9.23px;
+      }
+    }
+
+    .desktop_net {
+      display: none;
+    }
+    .mobile_net {
+      display: block;
     }
   }
 `;

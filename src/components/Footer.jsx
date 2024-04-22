@@ -3,6 +3,7 @@ import Wrapper from '../assets/wrappers/Footer'
 import discord from '../assets/images/discord.png'
 import twitter from '../assets/images/twitter.png'
 import coin from '../assets/images/coin.png'
+import mobile_coin from '../assets/images/mobile_coin.png'
 const Footer = () => {
   return (
     <Wrapper>
@@ -16,15 +17,15 @@ const Footer = () => {
           <img src={twitter} />
         </div>
       </div>
-      <div className='buy_btn'>
+      <div className="buy_btn">
         <p>Buy Aero</p>
-          <img src={coin} />
-
+        <img src={coin} className='desktop'/>
+        <img src={mobile_coin} className='mobile'/>
       </div>
 
-<div className='web_link'>
-      <h4>www.aerobull.com</h4>
-</div>
+      <div className="web_link">
+        <h4>www.aerobull.com</h4>
+      </div>
     </Wrapper>
   );
 }

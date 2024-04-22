@@ -20,6 +20,13 @@ const Wrapper = styled.footer`
     font-family: "MilkyNice", sans-serif;
   }
 
+  .desktop {
+    display: block;
+  }
+  .mobile {
+    display: none;
+  }
+
   h3 {
     font-size: 48px;
     font-family: "MilkyNice", sans-serif;
@@ -89,6 +96,69 @@ const Wrapper = styled.footer`
       text-shadow: -2px 2px black;
       font-family: "MilkyNice", sans-serif;
       margin: 8em 0;
+    }
+  }
+
+  @media (max-width: 992px) {
+    /* display: none; */
+    padding-left: 2em;
+    padding-top: 2em;
+    h1 {
+      font-size: 39.4px;
+      line-height: 47.16px;
+      text-shadow: -2px 2px black;
+    }
+
+    h3 {
+      font-size: 14.78px;
+      line-height: 17.69px;
+      margin-top: 1em;
+      text-shadow: -2px 2px black;
+      -webkit-text-stroke: 1px black; /* For WebKit browsers like Chrome and Safari */
+    }
+
+    .icons {
+      gap: 7.39px;
+      margin-top: 2em;
+
+      .icon {
+        padding: 7.25px;
+        border: 0.96px solid black;
+        border-radius: 4.84px;
+        box-shadow: -1.9px 1.9px black;
+      }
+    }
+
+    .buy_btn {
+      padding: 0 4.93px;
+      border-radius: 17.25px;
+      border: 1.5px solid black;
+      gap: 7.39px;
+      width: 105.79px;
+      height: 32.01px;
+      margin-top: 3em;
+
+      p {
+        line-height: 15.51px;
+        font-size: 12.31px;
+      }
+    }
+    .mobile {
+      display: block;
+    }
+    .desktop {
+      display: none;
+    }
+
+    .web_link {
+      height: 7em;
+      width: fit-content;
+      h4 {
+        font-size: 11.08px;
+        line-height: 13.26px;
+        text-shadow: -0.5px 0.5px black;
+        margin: 4em 0;
+      }
     }
   }
 `;

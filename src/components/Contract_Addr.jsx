@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Wrapper from "../assets/wrappers/Contract_Addr";
 import CopyIcon from "../assets/images/copy.png";
+import mobile_copy from "../assets/images/mobile_copy.png";
 
 const Contract_Addr = () => {
   const [copied, setCopied] = useState(false);
@@ -28,7 +29,8 @@ const Contract_Addr = () => {
           readOnly
         />
         <button onClick={copyToClipboard}>
-          <img src={CopyIcon} alt="Copy Icon" />
+          <img src={CopyIcon} alt="Copy Icon" className='desktop'/>
+          <img src={mobile_copy} alt="Copy Icon" className='mobile'/>
           {copied ? "Copied" : "Copy"}
         </button>
       </div>

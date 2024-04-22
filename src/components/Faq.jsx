@@ -2,6 +2,8 @@ import React, { useState, useMemo, useCallback } from "react";
 import Wrapper from "../assets/wrappers/Faq";
 import arrow_down from "../assets/images/arrow_down.png";
 import arrow_up from "../assets/images/arrow_up.png";
+import mobile_arr_up from "../assets/images/mobile_arr_up.png";
+import mobile_arr_down from "../assets/images/mobile_arr_down.png";
 
 const Faq = () => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -23,9 +25,15 @@ const Faq = () => {
             <div className="question" onClick={() => handleToggle(index)}>
               <p dangerouslySetInnerHTML={{ __html: faq.question }}></p>
               {openIndex === index ? (
-                <img src={arrow_up} />
+                <>
+                  <img src={arrow_up} className="desktop" />
+                  <img src={mobile_arr_up} className="mobile" />
+                </>
               ) : (
-                <img src={arrow_down} />
+                   <>
+                  <img src={arrow_down} className="desktop" />
+                  <img src={mobile_arr_down} className="mobile" />
+                </>
               )}
             </div>
             {openIndex === index && (

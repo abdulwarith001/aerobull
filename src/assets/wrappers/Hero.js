@@ -53,7 +53,7 @@ const Wrapper = styled.section`
     .firstcomma {
       display: flex;
       gap: 0.3em;
-      line-height: 76.61px;
+      /* line-height: 76.61px; */
       div {
         text-shadow: 1.5px 1.5px black;
       }
@@ -62,11 +62,40 @@ const Wrapper = styled.section`
       }
     }
 
+  }
+  .secondcomma {
+    text-align: right;
+    margin-top: -25px;
+    font-size: 64px;   
+   }
+
+  @media (max-width: 992px) {
+    height: 50vh;
+    padding: 3em 1em 1em;
+    .header {
+      h2 {
+        font-size: 20.8px;
+      }
+
+      button {
+        padding: 8px 40px 12px;
+        font-size: 14.02px;
+      }
+    }
+    .firstcomma {
+      font-size: 23.61px;
+      line-height: 28.26px;
+      margin-top: 2em;
+      /* text-transform: uppercase;
+      color: white;
+      text-align: justify;
+      font-family: "MilkyNice", sans-serif; */
+    }
     .secondcomma {
-      text-align: right;
-      margin-top: -25px;
+      font-size: 23.61px;
     }
   }
+
 `;
 
 export default Wrapper;

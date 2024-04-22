@@ -1,6 +1,11 @@
 import React from "react";
 import Wrapper from "../assets/wrappers/Aeromap";
 import map1 from "../assets/images/map1.png";
+import map1_mobile from "../assets/images/map1_mobile.png";
+import map3_mobile from "../assets/images/map_mobile3.png";
+import map2_mobile from "../assets/images/mobile_map2.png";
+import map4_mobile from "../assets/images/mobile_map4.png";
+import map5_mobile from "../assets/images/mobile_map5.png";
 import map2 from "../assets/images/map2.png";
 import map3 from "../assets/images/map3.png";
 import map4 from "../assets/images/map4.png";
@@ -9,6 +14,7 @@ import arrow1 from "../assets/images/arrow1.png";
 import arrow2 from "../assets/images/arrow2.png";
 import arrow3 from "../assets/images/arrow3.png";
 import net_base from "../assets/images/net_base.png";
+import mobile_net from "../assets/images/mobile_base.png";
 
 const Aeromap = () => {
   return (
@@ -19,7 +25,8 @@ const Aeromap = () => {
           <div className="map">
             <div className="map-head">
               <h4>Initial developments</h4>
-              <img src={map1} />
+              <img src={map1} className="desktop_map" />
+              <img src={map1_mobile} className="mobile_map" />
             </div>
             <div className="content">
               <div>
@@ -47,7 +54,8 @@ const Aeromap = () => {
           <div className="map">
             <div className="map-head">
               <h4>Network</h4>
-              <img src={map2} className="img" />
+              <img src={map2} className="img desktop_map" />
+              <img src={map2_mobile} className=" img mobile_map" />
             </div>
             <div className="content">
               <div>
@@ -62,7 +70,8 @@ const Aeromap = () => {
                 </span>
               </div>
               <div className="extra_content">
-                <img src={net_base} />
+                <img src={net_base} className="desktop_net" />
+                <img src={mobile_net} className="mobile_net" />
                 <span>
                   Built on <span className="span">Base network</span>
                 </span>
@@ -75,7 +84,8 @@ const Aeromap = () => {
           <div className="map">
             <div className="map-head">
               <h4>Social media</h4>
-              <img src={map3} />
+              <img src={map3} className="img desktop_map" />
+              <img src={map3_mobile} className=" img mobile_map" />
             </div>
             <div className="content">
               <div>
@@ -111,7 +121,8 @@ const Aeromap = () => {
           <div className="map">
             <div className="map-head">
               <h4>Liquidity pool</h4>
-              <img src={map4} className="img" />
+              <img src={map4} className="img desktop_map" />
+              <img src={map4_mobile} className=" img mobile_map" />
             </div>
             <div className="content">
               <div>
@@ -136,7 +147,8 @@ const Aeromap = () => {
           <div className="map">
             <div className="map-head">
               <h4>Project Phillipines</h4>
-              <img src={map5} />
+               <img src={map5} className="img desktop_map" />
+              <img src={map5_mobile} className=" img mobile_map" />
             </div>
             <div className="content">
               <div>

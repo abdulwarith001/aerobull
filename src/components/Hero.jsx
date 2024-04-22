@@ -14,7 +14,7 @@ const Hero = () => {
         <div className='herotxt'>
          <div className='firstcomma'>
              <i>“ </i>
-          <div>
+          <div className='herodiv'>
             HI THERE, I’M <span>AERO</span>,<br />
             The generous &<br />
             Ambitious bull.

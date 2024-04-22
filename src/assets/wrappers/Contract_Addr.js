@@ -64,8 +64,67 @@ const Wrapper = styled.section`
       border: none;
     }
 
+    .desktop {
+      display: block;
+    }
+    .mobile {
+      display: none;
+    }
+
     button:hover {
       box-shadow: -8px 8px black;
+    }
+  }
+
+  @media (max-width: 992px) {
+    /* display: none; */
+    padding: 1.5em 0 3em;
+    gap: 0.5em;
+    h1 {
+      font-size: 17.86px;
+      text-shadow: 2px 2px black;
+      line-height: 21.37px;
+    }
+
+    .inputWrapper {
+      background: white;
+      border: 0.92px solid black;
+      height: 31.7px;
+      border-radius: 17.25px;
+      gap: 7.39px;
+      margin-top: 1em;
+      box-shadow: -2px 2px black;
+      width: 278.25px;
+      padding: 4.93px;
+
+      input {
+        font-size: 9.85px;
+        line-height: 12.41px;
+        width: 193px;
+        height: 12px;
+      }
+
+      .mobile {
+        display: block;
+      }
+      .desktop {
+        display: none;
+      }
+
+      button {
+        width: 60.32px;
+        height: 21.85px;
+        background: #222222;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 16px 32px;
+        border-radius: 17.25px;
+        gap: 3.02px;
+        font-size: 9.85px;
+        line-height: 12.41px;
+      }
     }
   }
 `;
