@@ -146,8 +146,8 @@ const Aeromap = () => {
         <div className="mapArr3">
           <div className="map">
             <div className="map-head">
-              <h4>Project Phillipines</h4>
-               <img src={map5} className="img desktop_map" />
+              <h4>Project Philippines</h4>
+              <img src={map5} className="img desktop_map" />
               <img src={map5_mobile} className=" img mobile_map" />
             </div>
             <div className="content">
