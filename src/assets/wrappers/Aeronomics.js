@@ -107,7 +107,7 @@ const Wrapper = styled.section`
       margin-top: 1em;
 
       .content {
-        width: 293.2px;
+        width: 270.2px;
         height: 120.98px;
 
         .item_wrapper {
