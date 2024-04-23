@@ -103,7 +103,7 @@ const Wrapper = styled.section`
       border: 0.92px solid black;
       box-shadow: -1px 1px black;
       border-radius: 9.82px;
-      width: 330.32px;
+      width: 300.32px;
       margin-top: 1em;
 
       .content {
