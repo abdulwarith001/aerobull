@@ -52,32 +52,27 @@ const faqData = [
   {
     question: "WHO IS <span>AEROBULL</span>?",
     answer:
-      "Lorem ipsum is good and ak shw jji kwu jsoakjkwai iiwye iei apodb eye jeiux iedb owyrb oqhs",
+      "Aerobull is a community driven project that is aiming the gap between third-world countries and Defi through humanitarian efforts",
   },
   {
     question: "WHAT CHAIN IS <span>AEROBULL</span> BUILT ON?",
-    answer:
-      "Lorem ipsum is good and ak shw jji kwu jsoakjkwai iiwye iei apodb eye jeiux iedb owyrb oqhs",
+    answer: "Aerobull is built on Base",
   },
   {
     question: "WHERE IS <span>AERO</span> LISTED?",
-    answer:
-      "Lorem ipsum is good and ak shw jji kwu jsoakjkwai iiwye iei apodb eye jeiux iedb owyrb oqhs",
+    answer: "Coming soon….",
   },
   {
     question: "HOW TO BUY <span>AERO</span>?",
-    answer:
-      "Lorem ipsum is good and ak shw jji kwu jsoakjkwai iiwye iei apodb eye jeiux iedb owyrb oqhs",
+    answer: "Coming soon….",
   },
   {
-    question: "WHAT IS <span>AERO</span> TOTAL SUPPLY?",
-    answer:
-      "Lorem ipsum is good and ak shw jji kwu jsoakjkwai iiwye iei apodb eye jeiux iedb owyrb oqhs",
+    question: "WHAT IS <span>AERO</span> MAX SUPPLY?",
+    answer: "Aerobull Max Supply is 1 Billion Tokens, ever.",
   },
   {
     question: "IS <span>AERO</span> ON SOCIAL MEDIA?",
-    answer:
-      "Lorem ipsum is good and ak shw jji kwu jsoakjkwai iiwye iei apodb eye jeiux iedb owyrb oqhs",
+    answer: "Aerobull is currently on Discord & Twitter",
   },
 ];
 
