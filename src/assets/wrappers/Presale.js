@@ -9,13 +9,13 @@ const Wrapper = styled.section`
 
     button {
       background: #f7b94f;
-      border-radius: 41px;
-      padding: 8px 40px 12px 40px;
-      border: 2px solid black;
-      box-shadow: -3px 3px black;
+      border-radius: 5vw; /* Responsive border radius */
+      padding: 2vw 10vw; /* Responsive padding */
+      border: 0.4vw solid black; /* Responsive border */
+      box-shadow: -0.3vw 0.3vw black; /* Responsive box shadow */
       font-family: "MilkyNice", sans-serif;
-      font-size: 32px;
-      line-height: 38.3px;
+      font-size: 3vw; /* Responsive font size */
+      line-height: 3.83vw; /* Responsive line height */
       font-weight: 400;
     }
   }
@@ -28,46 +28,45 @@ const Wrapper = styled.section`
     flex-direction: column;
     h1 {
       color: #0699f9;
-      font-size: 64px;
-      line-height: 6.61px;
+      font-size: 8vw; /* Responsive font size */
+      line-height: 6.61vw; /* Responsive line height */
       font-family: "MilkyNice", sans-serif;
-      -webkit-text-stroke: 1px black;
-      text-shadow: -4px 4px black;
+      -webkit-text-stroke: 0.1vw black; /* Responsive text stroke */
+      text-shadow: -0.4vw 0.4vw black; /* Responsive text shadow */
     }
 
     .form-container {
-      /* background: red; */
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
       gap: 1.3em;
       margin-top: 4em;
-      height: 633px;
+      height: 50vh; /* Responsive height */
 
       .form2 {
-        /* width: 537px; */
-        padding: 88px 72px;
-        /* background-image: url(${BgImage}); */
+        width: 50vw; /* Responsive width */
+        padding: 12vw 10vw; /* Responsive padding */
         background-color: white;
-        border: 3px solid black;
-        box-shadow: -4px 4px black;
-        border-radius: 24px;
+        border: 0.4vw solid black; /* Responsive border */
+        box-shadow: -0.4vw 0.4vw black; /* Responsive box shadow */
+        border-radius: 3vw; /* Responsive border radius */
         display: flex;
         flex-direction: column;
-        gap: 48px;
+        gap: 4.8vw; /* Responsive gap */
 
         .item {
           display: flex;
           justify-content: space-between;
-          width: 393px;
-          height: 35px;
-          gap: 16px;
-          border-bottom: 2px solid black;
+          width: 70%; /* Responsive width */
+          height: 3.5vw; /* Responsive height */
+          gap: 1.6vw; /* Responsive gap */
+          border-bottom: 0.2vw solid black; /* Responsive border */
           span {
-            font-size: 16px;
+            font-size: 1.6vw; /* Responsive font size */
             font-weight: 400;
-            line-height: 19.15px;
-            letter-spacing: 3px;
+            line-height: 1.9vw; /* Responsive line height */
+            letter-spacing: 0.3vw; /* Responsive letter spacing */
             color: #747474;
             font-family: "MilkyNice", sans-serif;
             text-transform: uppercase;
@@ -79,74 +78,56 @@ const Wrapper = styled.section`
         }
       }
       .form {
-        /* width: 537px; */
-        padding: 88px 72px;
-        /* background-image: url(${BgImage}); */
+        padding: 12vw 8vw; /* Responsive padding */
         background-color: white;
-        border: 3px solid black;
-        box-shadow: -4px 4px black;
-        border-radius: 24px;
+        border: 0.4vw solid black; /* Responsive border */
+        box-shadow: -0.4vw 0.4vw black; /* Responsive box shadow */
+        border-radius: 3vw; /* Responsive border radius */
         display: flex;
-        gap: 1.8em;
+        gap: 1.8vw; /* Responsive gap */
         flex-direction: column;
 
         button {
           background: #ffda88;
-          padding: 16px 32px;
-          border-radius: 16px;
-          border: 3px solid black;
-          font-size: 24px;
-          line-height: 28.73px;
-          letter-spacing: 3px;
+          padding: 1.6vw 3.2vw; /* Responsive padding */
+          border-radius: 3vw; /* Responsive border radius */
+          border: 0.4vw solid black; /* Responsive border */
+          font-size: 2vw; /* Responsive font size */
+          line-height: 2.43vw; /* Responsive line height */
+          letter-spacing: 0.3vw; /* Responsive letter spacing */
           font-family: "MilkyNice", sans-serif;
           font-weight: 400;
-          box-shadow: -4px 4px black;
+          box-shadow: -0.4vw 0.4vw black; /* Responsive box shadow */
         }
 
         .form-item {
-          padding: 32px;
-          display: flex;
-          flex-direction: column;
-          gap: 32px;
-          border: 3px solid black;
-          border-radius: 24px;
+          padding: 1.6vw; /* Responsive padding */
+          gap: 2.1vw; /* Responsive gap */
+          border: 0.4vw solid black; /* Responsive border */
+          border-radius: 3vw; /* Responsive border radius */
           label {
-            text-transform: uppercase;
-            font-size: 16px;
-            line-height: 19.15px;
-            font-weight: 400;
-            font-family: "MilkyNice", sans-serif;
-            letter-spacing: 3px;
+            font-size: 1.6vw; /* Responsive font size */
+            line-height: 1.9vw; /* Responsive line height */
+            letter-spacing: 0.3vw; /* Responsive letter spacing */
           }
 
           .input-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 329px;
-            height: 51px;
+            height: 3.6vw; /* Responsive height */
             input {
-              font-size: 16px;
-              font-family: "MilkyNice", sans-serif;
-              font-weight: 400;
-              letter-spacing: 3px;
-              line-height: 19.15px;
-              border: none;
-              outline: none;
-              background: transparent;
+              font-size: 1.6vw; /* Responsive font size */
+              letter-spacing: 0.3vw; /* Responsive letter spacing */
+              line-height: 1.9vw; /* Responsive line height */
               height: 100%;
               width: 70%;
             }
 
             .input-txt {
-              padding: 16px;
-              border: 3px solid black;
-              background: white;
-              border-radius: 8px;
-              font-size: 16px;
-              line-height: 19.15px;
-              letter-spacing: 3px;
-              font-family: "MilkyNice", sans-serif;
+              padding: 1.6vw; /* Responsive padding */
+              border: 0.4vw solid black; /* Responsive border */
+              border-radius: 1.3vw; /* Responsive border radius */
+              font-size: 1.6vw; /* Responsive font size */
+              line-height: 1.9vw; /* Responsive line height */
+              letter-spacing: 0.3vw; /* Responsive letter spacing */
             }
           }
         }
@@ -158,19 +139,19 @@ const Wrapper = styled.section`
     padding: 1em;
     .header-container {
       button {
-        padding: 3.5px 17.52px 5.26px 17.52px;
-        border: 1.31px solid black;
-        border-radius: 17.96px;
-        font-size: 12px;
-        line-height: 14.36px;
-        box-shadow: -1px 1px black;
+        padding: 0.35em 1.752em; /* Responsive padding */
+        border: 0.131em solid black; /* Responsive border */
+        border-radius: 1.796em; /* Responsive border radius */
+        font-size: 1.2em; /* Responsive font size */
+        line-height: 1.436em; /* Responsive line height */
+        box-shadow: -0.1em 0.1em black; /* Responsive box shadow */
       }
     }
 
     .buy_form {
       h1 {
-        font-size: 24px;
-        text-shadow: -0.96px 0.96px black;
+        font-size: 2.4em; /* Responsive font size */
+        text-shadow: -0.096em 0.096em black; /* Responsive text shadow */
       }
 
       .form-container {
@@ -178,79 +159,70 @@ const Wrapper = styled.section`
         gap: 1.3em;
         margin-top: 6em;
         margin-bottom: 3em;
-        /* height: 323.15px; */
 
         .form2 {
-          width: 347.29px;
-          padding: 24px;
-          /* background-image: url(${BgImage}); */
-          border: 2.01px solid black;
-          box-shadow: -2px 2px black;
-          border-radius: 16.07px;
-          gap: 24px;
+          width: 34.729vw; /* Responsive width */
+          padding: 2.4em; /* Responsive padding */
+          border: 0.201vw solid black; /* Responsive border */
+          box-shadow: -0.2vw 0.2vw black; /* Responsive box shadow */
+          border-radius: 1.607em; /* Responsive border radius */
+          gap: 2.4vw; /* Responsive gap */
 
           .item {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            height: 35px;
-            gap: 16px;
-            border-bottom: 2px solid black;
+            width: 100%; /* Responsive width */
+            height: 3.5vw; /* Responsive height */
+            gap: 1.6vw; /* Responsive gap */
+            border-bottom: 0.2vw solid black; /* Responsive border */
             span {
-              font-size: 10.71px;
-              line-height: 12.82px;
-              letter-spacing: 1.5px;
+              font-size: 1.071vw; /* Responsive font size */
+              line-height: 1.282vw; /* Responsive line height */
+              letter-spacing: 0.15vw; /* Responsive letter spacing */
             }
           }
         }
         .form {
-          /* width: 537px; */
-          padding: 24px 16px;
-          /* background-image: url(${BgImage}); */
-          border: 2.01px solid black;
-          box-shadow: -2px 2px black;
-          border-radius: 16.07px;
-          /* gap: 21.43em; */
+          padding: 2.4em 1.6em; /* Responsive padding */
+          border: 0.201vw solid black; /* Responsive border */
+          box-shadow: -0.2vw 0.2vw black; /* Responsive box shadow */
+          border-radius: 1.607em; /* Responsive border radius */
 
           button {
-            background: #ffda88;
-            padding: 10.71px 21.43px;
-            border-radius: 16px;
-            border: 2.01px solid black;
-            font-size: 16.07px;
-            line-height: 19.25px;
-            letter-spacing: 1.5px;
-            box-shadow: -2px 2px black;
+            padding: 1.071vw 2.143vw; /* Responsive padding */
+            border-radius: 1.607em; /* Responsive border radius */
+            border: 0.201vw solid black; /* Responsive border */
+            font-size: 1.607vw; /* Responsive font size */
+            line-height: 1.925vw; /* Responsive line height */
+            letter-spacing: 0.15vw; /* Responsive letter spacing */
           }
 
           .form-item {
-            padding: 16px;
-            gap: 21.43px;
-            border: 2.01px solid black;
-            border-radius: 16.07px;
+            padding: 1.6em; /* Responsive padding */
+            gap: 2.143vw; /* Responsive gap */
+            border: 0.201vw solid black; /* Responsive border */
+            border-radius: 1.607em; /* Responsive border radius */
             label {
-              font-size: 10.71px;
-              line-height: 12.82px;
-              letter-spacing: 1.5px;
+              font-size: 1.071vw; /* Responsive font size */
+              line-height: 1.282vw; /* Responsive line height */
+              letter-spacing: 0.15vw; /* Responsive letter spacing */
             }
 
             .input-wrapper {
-              height: 34.43px;
+              height: 3.443vw; /* Responsive height */
               input {
-                font-size: 10.71px;
-                letter-spacing: 1.5px;
-                line-height: 12.82px;
+                font-size: 1.071vw; /* Responsive font size */
+                letter-spacing: 0.15vw; /* Responsive letter spacing */
+                line-height: 1.282vw; /* Responsive line height */
                 height: 100%;
                 width: 70%;
               }
 
               .input-txt {
-                padding: 10.71px;
-                border: 2.01px solid black;
-                border-radius: 5.36px;
-                font-size: 10.71px;
-                line-height: 12.82px;
-                letter-spacing: 1.5px;
+                padding: 1.071vw; /* Responsive padding */
+                border: 0.201vw solid black; /* Responsive border */
+                border-radius: 0.536vw; /* Responsive border radius */
+                font-size: 1.071vw; /* Responsive font size */
+                line-height: 1.282vw; /* Responsive line height */
+                letter-spacing: 0.15vw; /* Responsive letter spacing */
               }
             }
           }
