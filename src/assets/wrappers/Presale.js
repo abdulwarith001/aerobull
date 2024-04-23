@@ -176,6 +176,7 @@ const Wrapper = styled.section`
         flex-direction: column;
         gap: 1.3em;
         margin-top: 6em;
+        margin-bottom: 3em;
         /* height: 323.15px; */
 
         .form2 {
