@@ -5,6 +5,7 @@ import twitter from '../assets/images/twitter.png'
 import coin from '../assets/images/coin.png'
 import mobile_coin from '../assets/images/mobile_coin.png'
 import footer_bg2 from '../assets/images/footer_bg2.png'
+import aerobull_mobile_footer from '../assets/images/aerobull_mobile_footer.png'
 import { useNavigate, Link } from "react-router-dom";
 const Footer = () => {
   return (
@@ -31,6 +32,7 @@ const Footer = () => {
         </div>
       </div>
       <img src={footer_bg2} className='image' />
+      <img src={aerobull_mobile_footer} className='image2' />
     </Wrapper>
   );
 }

@@ -7,9 +7,14 @@ const Wrapper = styled.footer`
   justify-content: space-between;
 
   .image{
+    display: block;
     width: 40%;
     height: 40%;
     object-fit: contain;
+  }
+
+  .image2{
+    display: none;
   }
 
   h1 {
@@ -165,10 +170,14 @@ const Wrapper = styled.footer`
         margin: 4em 0;
       }
     }
-     .image{
-    width: 60%;
+     .image2{
+      display: block;
+    width: 100%;
     height: 100%;
     object-fit: contain;
+  }
+     .image{
+    display: none;
   }
   }
 `;
