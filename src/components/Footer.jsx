@@ -12,19 +12,17 @@ const Footer = () => {
       <h1>$ARB</h1>
       <h3>Join our $ARB Community</h3>
       <div className="icons">
-        <div
-          className="icon"
-          onClick={() => navigate("https://discord.gg/eT3ZfUZc")}
-        >
-          <Link to=''>
-          <img src={discord} />
+        <div className="icon">
+          <Link to="https://discord.gg/eT3ZfUZc">
+            <img src={discord} />
           </Link>
         </div>
         <div
           className="icon"
-          onClick={() => navigate("https://x.com/basedaerobull?s=11")}
         >
-          <img src={twitter} />
+          <Link to="https://x.com/basedaerobull?s=11">
+            <img src={twitter} />
+          </Link>
         </div>
       </div>
       <div className="buy_btn">
@@ -32,8 +30,6 @@ const Footer = () => {
         <img src={coin} className="desktop" />
         <img src={mobile_coin} className="mobile" />
       </div>
-
-      
     </Wrapper>
   );
 }
