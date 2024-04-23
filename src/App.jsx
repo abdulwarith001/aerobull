@@ -2,7 +2,8 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import {
   HomeLayout,
   LandingPage,
-  Error
+  Error,
+  Presale
 } from "./pages";
 
 const router = createBrowserRouter([
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <LandingPage />,
+      },
+      {
+        path: 'presale',
+        element: <Presale />,
       }
     ],
   },

@@ -4,7 +4,7 @@ import cancle from "../assets/images/cancle.png";
 
 export default function WinnerErrorModal({ isOpen, setIsOpen }) {
   const calculateTimeLeft = () => {
-    const difference = +new Date("2024-04-29") - +new Date();
+    const difference = +new Date("2024-04-28") - +new Date();
     let timeLeft = {
       days: 0,
       hours: 0,
