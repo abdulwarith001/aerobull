@@ -89,7 +89,7 @@ const Wrapper = styled.section`
     }
 
     .faq_wrapper {
-      width: 343.72px;
+      width: 330.72px;
       gap: 8.62px;
       margin-top: 1em;
 
