@@ -172,7 +172,7 @@ const Wrapper = styled.footer`
     }
      .image2{
       display: block;
-    width: 40%;
+    width: 70%;
     height: 100%;
     object-fit: contain;
   }
