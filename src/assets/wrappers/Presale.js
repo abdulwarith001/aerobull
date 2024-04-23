@@ -47,12 +47,8 @@ const Wrapper = styled.section`
       .form2 {
         /* width: 537px; */
         padding: 88px 72px;
-        background-image: url(${BgImage});
+        /* background-image: url(${BgImage}); */
         background-color: white;
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        object-fit: cover;
         border: 3px solid black;
         box-shadow: -4px 4px black;
         border-radius: 24px;
@@ -85,12 +81,8 @@ const Wrapper = styled.section`
       .form {
         /* width: 537px; */
         padding: 88px 72px;
-        background-image: url(${BgImage});
+        /* background-image: url(${BgImage}); */
         background-color: white;
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        object-fit: cover;
         border: 3px solid black;
         box-shadow: -4px 4px black;
         border-radius: 24px;
