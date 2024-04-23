@@ -5,6 +5,7 @@ const Wrapper = styled.footer`
   padding-top: 4em;
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
 
   .image{
     display: block;
