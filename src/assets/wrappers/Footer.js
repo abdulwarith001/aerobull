@@ -165,6 +165,11 @@ const Wrapper = styled.footer`
         margin: 4em 0;
       }
     }
+     .image{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
   }
 `;
 
