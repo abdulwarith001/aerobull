@@ -16,7 +16,9 @@ const Footer = () => {
           className="icon"
           onClick={() => navigate("https://discord.gg/eT3ZfUZc")}
         >
+          <Link to=''>
           <img src={discord} />
+          </Link>
         </div>
         <div
           className="icon"
