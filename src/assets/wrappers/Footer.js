@@ -166,7 +166,7 @@ const Wrapper = styled.footer`
       }
     }
      .image{
-    width: 100%;
+    width: 60%;
     height: 100%;
     object-fit: contain;
   }
