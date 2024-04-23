@@ -75,7 +75,6 @@ const Wrapper = styled.footer`
     width: 344px;
     height: 104px;
     margin-top: 3em;
-    background: red;
     transition: box-shadow 100ms ease-out;
     cursor: pointer;
 
