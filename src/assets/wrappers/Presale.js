@@ -139,6 +139,10 @@ const Wrapper = styled.section`
             }
 
             .input-txt {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 8px;
               padding: 16px;
               border: 3px solid black;
               background: white;

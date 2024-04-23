@@ -1,5 +1,7 @@
 import React from 'react'
 import Wrapper from '../assets/wrappers/Presale'
+import eth_tickers from '../assets/images/eth_tickers.png'
+import arb_tickers from '../assets/images/arb_tickers.png'
 
 const Presale = () => {
   return (
@@ -17,14 +19,20 @@ const Presale = () => {
                 <label>From</label>
                 <div className="input-wrapper">
                   <input type="text" placeholder="ENTER ETH" required />
-                  <div className="input-txt">ETH</div>
+                  <div className="input-txt">
+                    <img src={eth_tickers} />
+                    ETH
+                  </div>
                 </div>
               </div>
               <div className="form-item">
                 <label>To</label>
                 <div className="input-wrapper">
                   <input type="text" placeholder="ENTER ARB" required />
-                  <div className="input-txt">ARB</div>
+                  <div className="input-txt">
+                    <img src={arb_tickers} />
+                    ARB
+                  </div>
                 </div>
               </div>
               <button>BUY</button>
