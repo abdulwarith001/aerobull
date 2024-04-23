@@ -1,15 +1,16 @@
 import styled from "styled-components";
 import BgImage from "../images/footer.png";
 const Wrapper = styled.footer`
-  background: url(${BgImage});
-  /* background-position: center; */
-  background-size: cover;
-  background-repeat: no-repeat;
-  object-fit: cover;
   padding-left: 5em;
   padding-top: 4em;
-  /* height: 1429px; */
-  /* width: 1429px; */
+  display: flex;
+  justify-content: space-between;
+
+  .image{
+    width: 40%;
+    height: 40%;
+    object-fit: contain;
+  }
 
   h1 {
     font-size: 110px;
@@ -33,7 +34,7 @@ const Wrapper = styled.footer`
     font-weight: 400;
     line-height: 57.46px;
     color: white;
-    margin-top: 1.5em;
+    margin-top: 1em;
     text-shadow: -2px 2px black;
     -webkit-text-stroke: 1px black; /* For WebKit browsers like Chrome and Safari */
   }
@@ -58,6 +59,10 @@ const Wrapper = styled.footer`
     }
   }
 
+  .contents{
+    padding-bottom: 4em;
+  }
+
   .buy_btn {
     background: #0699f9;
     padding: 0 16px;
@@ -69,7 +74,8 @@ const Wrapper = styled.footer`
     gap: 24px;
     width: 344px;
     height: 104px;
-    margin-top: 5em;
+    margin-top: 3em;
+    background: red;
     transition: box-shadow 100ms ease-out;
     cursor: pointer;
 
@@ -95,7 +101,7 @@ const Wrapper = styled.footer`
       line-height: 43.09px;
       text-shadow: -2px 2px black;
       font-family: "MilkyNice", sans-serif;
-      margin: 8em 0;
+      margin: 4em 0;
     }
   }
 
