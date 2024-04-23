@@ -82,7 +82,7 @@ const Wrapper = styled.section`
 
   @media (max-width: 992px) {
     /* display: none; */
-    padding: 2em;
+    padding: 2em 0;
 
     h1 {
       color: #f7b94f;
