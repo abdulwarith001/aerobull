@@ -155,6 +155,7 @@ const Wrapper = styled.section`
   }
 
   @media (max-width: 992px) {
+    padding: 1em;
     .header-container {
       button {
         padding: 3.5px 17.52px 5.26px 17.52px;
