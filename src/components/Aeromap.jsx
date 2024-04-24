@@ -6,6 +6,8 @@ import map3_mobile from "../assets/images/map_mobile3.png";
 import map2_mobile from "../assets/images/mobile_map2.png";
 import map4_mobile from "../assets/images/mobile_map4.png";
 import map5_mobile from "../assets/images/mobile_map5.png";
+import map6_mobile from "../assets/images/mobile_map6.png";
+import map7_mobile from "../assets/images/mobile_map7.png";
 import map2 from "../assets/images/map2.png";
 import map3 from "../assets/images/map3.png";
 import map4 from "../assets/images/map4.png";
@@ -22,6 +24,9 @@ import mobile_net from "../assets/images/mobile_base.png";
 import phillipines from "../assets/images/phillipines.png";
 import nigeria from "../assets/images/nigeria.png";
 import el_salvador from "../assets/images/el_salvador.png";
+import el_salvador_mobile from "../assets/images/el_salvador_mobile.png";
+import nigeria_mobile from "../assets/images/nigeria_mobile.png";
+import phillipines_mobile from "../assets/images/philippines_mobile.png";
 
 const Aeromap = () => {
   return (
@@ -156,7 +161,8 @@ const Aeromap = () => {
               <div className="head-txt">
                 Project{" "}
                 <span className="phillipines">
-                  Phillipines <img src={phillipines} />
+                  Phillipines <img src={phillipines} className="desktop_flag" />
+                  <img src={phillipines_mobile} className="mobile_flag" />
                 </span>
               </div>
               <img src={map5} className="img desktop_map" />
@@ -218,11 +224,12 @@ const Aeromap = () => {
               <div className="head-txt">
                 Project{" "}
                 <span className="nigeria">
-                  Nigeria <img src={nigeria} />
+                  Nigeria <img src={nigeria} className="desktop_flag" />
+                  <img src={nigeria_mobile} className="mobile_flag" />
                 </span>
               </div>
               <img src={map6} className="img desktop_map" />
-              <img src={map5_mobile} className=" img mobile_map" />
+              <img src={map6_mobile} className=" img mobile_map" />
             </div>
             <div className="content">
               <div>
@@ -275,11 +282,12 @@ const Aeromap = () => {
               <div className="head-txt">
                 Project{" "}
                 <span className="el_salvador">
-                  El Salvador <img src={el_salvador} />
+                  El Salvador <img src={el_salvador} className="desktop_flag" />
+                  <img src={el_salvador_mobile} className="mobile_flag" />
                 </span>
               </div>
               <img src={map8} className="img desktop_map" />
-              <img src={map5_mobile} className=" img mobile_map" />
+              <img src={map7_mobile} className=" img mobile_map" />
             </div>
             <div className="content">
               <div>

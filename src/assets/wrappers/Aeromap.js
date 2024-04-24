@@ -165,6 +165,13 @@ const Wrapper = styled.section`
   .desktop_net {
     display: block;
   }
+
+  .desktop_flag{
+    display: block;
+  }
+  .mobile_flag{
+    display: none;
+  }
   .head-txt {
     font-size: 40px;
     font-weight: 400;
@@ -226,6 +233,12 @@ const Wrapper = styled.section`
     .extra-map2 {
       margin-left: 0;
     }
+      .desktop_flag{
+    display: none;
+  }
+  .mobile_flag{
+    display: block;
+  }
 
     h1 {
       line-height: 35.28px;
@@ -236,9 +249,9 @@ const Wrapper = styled.section`
       font-size: 18.31px;
       line-height: 21.92px;
       text-shadow: 0.92px 0.92px black;
-      img {
+      /* img {
         display: none;
-      }
+      } */
     }
 
     .desktop_map {
