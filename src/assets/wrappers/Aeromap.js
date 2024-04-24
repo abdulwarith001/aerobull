@@ -217,7 +217,7 @@ const Wrapper = styled.section`
 
     .img,
     .img2,
-    .img3 {
+    .img3, .img5, .img6 {
       display: none;
     }
     .extra-map {
