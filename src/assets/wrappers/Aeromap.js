@@ -28,7 +28,7 @@ const Wrapper = styled.section`
       position: relative;
 
       .img {
-        margin-top: 4em;
+        margin-top: 2em;
         position: absolute;
         top: 120px;
         left: 705px;
@@ -46,6 +46,18 @@ const Wrapper = styled.section`
         top: 100px;
         left: 705px;
       }
+      .img5 {
+        margin-top: 15em;
+        position: absolute;
+        top: 100px;
+        left: 705px;
+      }
+      .img6 {
+        margin-top: 3em;
+        position: absolute;
+        top: 100px;
+        left: 718px;
+      }
     }
     .mapArr2 {
       display: flex;
@@ -55,7 +67,7 @@ const Wrapper = styled.section`
       margin-top: 4em;
 
       .img2 {
-        margin-top: 6em;
+        margin-top: 5em;
         position: absolute;
         top: 15px;
         left: 200.5px;
@@ -71,6 +83,7 @@ const Wrapper = styled.section`
         color: #0699f9;
         font-family: "MilkyNice", sans-serif;
         text-shadow: 4px 4px black;
+        -webkit-text-stroke: 1px black; /* For WebKit browsers like Chrome and Safari */
       }
 
       .lastText {
@@ -86,7 +99,7 @@ const Wrapper = styled.section`
     }
     .map {
       width: 628px;
-      height: 232px;
+      /* height: 232px; */
       background-color: white;
       border-radius: 24px;
       padding: 32px;
@@ -97,10 +110,11 @@ const Wrapper = styled.section`
 
   .content {
     margin-top: 2em;
-    height: 88px;
+    height: fit-content;
     display: flex;
     gap: 10px;
     flex-direction: column;
+    padding-bottom: 32px;
 
     div {
       display: flex;
@@ -151,6 +165,52 @@ const Wrapper = styled.section`
   .desktop_net {
     display: block;
   }
+  .head-txt {
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 47.88px;
+    color: #0699f9;
+    font-family: "MilkyNice", sans-serif;
+    text-shadow: 4px 4px black;
+    display: flex;
+    gap: 0.5em;
+    justify-content: center;
+    align-items: center;
+    -webkit-text-stroke: 1px black; /* For WebKit browsers like Chrome and Safari */
+    color: white;
+    .phillipines {
+      color: #ce1126;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.8em;
+      flex-direction: row;
+    }
+
+    .nigeria {
+      color: #008753;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.8em;
+      flex-direction: row;
+    }
+    .el_salvador {
+      color: #0699f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.8em;
+      flex-direction: row;
+    }
+  }
+
+  .extra-map {
+    margin-left: 5em;
+  }
+  .extra-map2 {
+    margin-left: 6em;
+  }
 
   @media (max-width: 992px) {
     /* display: none; */
@@ -160,11 +220,25 @@ const Wrapper = styled.section`
     .img3 {
       display: none;
     }
+    .extra-map {
+      margin-left: 0;
+    }
+    .extra-map2 {
+      margin-left: 0;
+    }
 
     h1 {
       line-height: 35.28px;
       font-size: 29.47px;
       text-shadow: 2px 2px black;
+    }
+    .head-txt {
+      font-size: 18.31px;
+      line-height: 21.92px;
+      text-shadow: 0.92px 0.92px black;
+      img {
+        display: none;
+      }
     }
 
     .desktop_map {
@@ -206,8 +280,8 @@ const Wrapper = styled.section`
       }
       .map {
         width: 287.48px;
-        height: 104.95px;
-        background-color: white;
+        height: fit-content;
+        /* background-color: red; */
         border-radius: 24px;
         padding: 14.65px;
         border: 4px solid black;
@@ -217,7 +291,7 @@ const Wrapper = styled.section`
 
     .content {
       margin-top: 1.5em;
-      height: 47.65px;
+      /* height: 47.65px; */
       display: flex;
       gap: 5px;
       flex-direction: column;

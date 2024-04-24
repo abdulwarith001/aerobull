@@ -10,11 +10,18 @@ import map2 from "../assets/images/map2.png";
 import map3 from "../assets/images/map3.png";
 import map4 from "../assets/images/map4.png";
 import map5 from "../assets/images/map5.png";
+import map6 from "../assets/images/map6.png";
+import map8 from "../assets/images/map8.png";
 import arrow1 from "../assets/images/arrow1.png";
 import arrow2 from "../assets/images/arrow2.png";
 import arrow3 from "../assets/images/arrow3.png";
+import arrow6 from "../assets/images/arrow6.png";
+import arrow5 from "../assets/images/arrow5.png";
 import net_base from "../assets/images/net_base.png";
 import mobile_net from "../assets/images/mobile_base.png";
+import phillipines from "../assets/images/phillipines.png";
+import nigeria from "../assets/images/nigeria.png";
+import el_salvador from "../assets/images/el_salvador.png";
 
 const Aeromap = () => {
   return (
@@ -146,27 +153,179 @@ const Aeromap = () => {
         <div className="mapArr3">
           <div className="map">
             <div className="map-head">
-              <h4>Project Philippines</h4>
+              <div className="head-txt">
+                Project{" "}
+                <span className="phillipines">
+                  Phillipines <img src={phillipines} />
+                </span>
+              </div>
               <img src={map5} className="img desktop_map" />
               <img src={map5_mobile} className=" img mobile_map" />
             </div>
             <div className="content">
               <div>
                 <i>1. </i>
-                <span>Conduct needs assessment upon planning</span>
+                <span>
+                  Disaster Preparedness: Enhance disaster resilience through
+                  early warning systems, infrastructure upgrades, and community
+                  preparedness initiatives to mitigate the impact of natural
+                  disasters. Sustainable
+                </span>
               </div>
               <div>
                 <i>2. </i>
-                <span>Utilize project funding & community fundraiser</span>
+                <span>
+                  Tourism: Promote sustainable tourism practices to preserve
+                  natural resources, protect cultural heritage, and generate
+                  economic opportunities while minimizing environmental
+                  degradation.
+                </span>
               </div>
               <div>
-                <i>3. </i> <span>Distribute & Build relief supplies</span>
+                <i>3. </i>{" "}
+                <span>
+                  Rural Development: Invest in agricultural modernisation, rural
+                  infrastructure, and livelihood programs to reduce poverty,
+                  create employment, and alleviate urban migration pressures.
+                </span>
               </div>
               <div>
-                <i>4. </i> <span>Implement sustainable projects</span>
+                <i>4. </i>{" "}
+                <span>
+                  Education Reform: Implement comprehensive education reforms to
+                  improve quality, accessibility, and relevance of education,
+                  focusing on STEM (Science, Technology, Engineering, and
+                  Mathematics) subjects and vocational training.
+                </span>
               </div>
               <div>
-                <i>5. </i> <span>Conducted follow-up assessments</span>
+                <i>5. </i>{" "}
+                <span>
+                  Anti-Corruption Measures: Strengthen anti-corruption
+                  mechanisms, enhance transparency, and uphold the rule of law
+                  to foster investor confidence, ensure equitable development,
+                  and eradicate graft and corruption.
+                </span>
+              </div>
+            </div>
+          </div>
+          <img src={arrow5} className="img5" />
+        </div>
+
+        <div className="mapArr3 extra-map">
+          <div className="map">
+            <div className="map-head">
+              <div className="head-txt">
+                Project{" "}
+                <span className="nigeria">
+                  Nigeria <img src={nigeria} />
+                </span>
+              </div>
+              <img src={map6} className="img desktop_map" />
+              <img src={map5_mobile} className=" img mobile_map" />
+            </div>
+            <div className="content">
+              <div>
+                <i>1. </i>
+                <span>
+                  Infrastructure Development: Prioritize investment in
+                  transportation, energy, and digital infrastructure to support
+                  economic growth and improve quality of life.
+                </span>
+              </div>
+              <div>
+                <i>2. </i>
+                <span>
+                  Economic Diversification: Foster a diverse economy by
+                  promoting sectors beyond oil and gas, such as technology,
+                  agriculture, and manufacturing.
+                </span>
+              </div>
+              <div>
+                <i>3. </i>{" "}
+                <span>
+                  Sustainable Urbanization: Implement sustainable urban planning
+                  to manage population growth, alleviate congestion, and
+                  preserve green spaces.
+                </span>
+              </div>
+              <div>
+                <i>4. </i>{" "}
+                <span>
+                  Education and Skills Development: Enhance education and
+                  vocational training programs to equip citizens with the skills
+                  needed for modern industries.
+                </span>
+              </div>
+              <div>
+                <i>5. </i>{" "}
+                <span>
+                  Governance and Accountability: Strengthen governance
+                  structures and promote transparency to build trust and attract
+                  investment for long-term development.
+                </span>
+              </div>
+            </div>
+          </div>
+          <img src={arrow6} className="img6" />
+        </div>
+        <div className="mapArr3 extra-map2">
+          <div className="map">
+            <div className="map-head">
+              <div className="head-txt">
+                Project{" "}
+                <span className="el_salvador">
+                  El Salvador <img src={el_salvador} />
+                </span>
+              </div>
+              <img src={map8} className="img desktop_map" />
+              <img src={map5_mobile} className=" img mobile_map" />
+            </div>
+            <div className="content">
+              <div>
+                <i>1. </i>
+                <span>
+                  Crime Prevention and Public Safety: Implement comprehensive
+                  crime prevention strategies, including community policing,
+                  youth engagement programs, and judicial reforms to reduce
+                  violence and enhance public safety.
+                </span>
+              </div>
+              <div>
+                <i>2. </i>
+                <span>
+                  Economic Diversification: Promote economic diversification by
+                  investing in sectors such as renewable energy, tourism, and
+                  technology to reduce dependency on remittances and create
+                  sustainable employment opportunities.
+                </span>
+              </div>
+              <div>
+                <i>3. </i>{" "}
+                <span>
+                  Education and Skills Development: Improve access to quality
+                  education and vocational training programs to equip youth with
+                  the skills needed for the modern job market and foster
+                  innovation and entrepreneurship.
+                </span>
+              </div>
+              <div>
+                <i>4. </i>{" "}
+                <span>
+                  Infrastructure Investment: Prioritize infrastructure
+                  development, including transportation, energy, and
+                  telecommunications, to enhance connectivity, attract
+                  investment, and spur economic growth.
+                </span>
+              </div>
+              <div>
+                <i>5. </i>{" "}
+                <span>
+                  Social Inclusion and Poverty Reduction: Implement social
+                  programs aimed at reducing inequality, improving access to
+                  healthcare and social services, and addressing the root causes
+                  of poverty to ensure inclusive and sustainable development.
+                </span>
               </div>
             </div>
           </div>
