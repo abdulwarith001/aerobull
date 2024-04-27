@@ -3,43 +3,38 @@ import Wrapper from "../assets/wrappers/Modal";
 import cancle from "../assets/images/cancle.png";
 
 export default function WinnerErrorModal({ isOpen, setIsOpen }) {
-  const [days, setDays] = useState(7);
-  const [hours, setHours] = useState(12);
-  const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(0);
+  const calculateTimeLeft = (targetDateTime) => {
+    const difference = new Date(targetDateTime) - new Date();
+    let timeLeft = {
+      days: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+    };
+
+    if (difference > 0) {
+      timeLeft = {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / (1000 * 60)) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
+      };
+    }
+
+    return timeLeft;
+  };
+
+  const targetDateTime = "2024-05-05T11:00:00"; // Example target date and time
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(targetDateTime));
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      // Decrease seconds
-      if (seconds > 0) {
-        setSeconds(seconds - 1);
-      } else {
-        // Decrease minutes
-        if (minutes > 0) {
-          setMinutes(minutes - 1);
-          setSeconds(59);
-        } else {
-          // Decrease hours
-          if (hours > 0) {
-            setHours(hours - 1);
-            setMinutes(59);
-            setSeconds(59);
-          } else {
-            // Decrease days
-            if (days > 0) {
-              setDays(days - 1);
-              setHours(23);
-              setMinutes(59);
-              setSeconds(59);
-            }
-          }
-        }
-      }
+    const timer = setTimeout(() => {
+      setTimeLeft(calculateTimeLeft(targetDateTime));
     }, 1000);
 
-    // Clear interval on component unmount
-    return () => clearInterval(timer);
-  }, [days, hours, minutes, seconds]);
+    return () => clearTimeout(timer);
+  });
 
   const formatTime = (value) => {
     return value < 10 ? `0${value}` : value;
@@ -61,28 +56,28 @@ export default function WinnerErrorModal({ isOpen, setIsOpen }) {
 
             <div className="timer_container">
               <div className="timer">
-                <h2>{formatTime(days)}</h2>
+                <h2>{formatTime(timeLeft.days)}</h2>
                 <p>Days</p>
               </div>
 
               <h3>:</h3>
 
               <div className="timer">
-                <h2>{formatTime(hours)}</h2>
+                <h2>{formatTime(timeLeft.hours)}</h2>
                 <p>Hours</p>
               </div>
 
               <h3>:</h3>
 
               <div className="timer">
-                <h2>{formatTime(minutes)}</h2>
+                <h2>{formatTime(timeLeft.minutes)}</h2>
                 <p>Minutes</p>
               </div>
 
               <h3>:</h3>
 
               <div className="timer">
-                <h2>{formatTime(seconds)}</h2>
+                <h2>{formatTime(timeLeft.seconds)}</h2>
                 <p>Seconds</p>
               </div>
             </div>
