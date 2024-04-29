@@ -3,7 +3,8 @@ import {
   HomeLayout,
   LandingPage,
   Error,
-  Presale
+  Presale,
+  AfterPresale
 } from "./pages";
 
 const router = createBrowserRouter([
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: 'presale',
         element: <Presale />,
+      },
+      {
+        path: 'after-presale',
+        element: <AfterPresale />,
       }
     ],
   },

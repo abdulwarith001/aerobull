@@ -1,13 +1,20 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Wrapper from '../assets/wrappers/Presale'
 import eth_tickers from '../assets/images/eth_tickers.png'
 import arb_tickers from '../assets/images/arb_tickers.png'
+import presale from '../assets/images/presale.png'
 
 const Presale = () => {
+  //this state is to be toggled when users wallet is connected
+  const [isWalletConnected, setIsWalletConnected] = useState(false);
   return (
     <Wrapper>
       <div className="header-container">
-        <button>Connect Wallet</button>
+        {isWalletConnected ? (
+          <button>0x02E91GH93AB...</button>
+        ) : (
+          <button>Connect Wallet</button>
+        )}
       </div>
 
       <div className="buy_form">
@@ -66,6 +73,10 @@ const Presale = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="footer-img">
+        <img src={presale} />
       </div>
     </Wrapper>
   );

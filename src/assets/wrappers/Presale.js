@@ -2,10 +2,12 @@ import styled from "styled-components";
 import BgImage from "../images/body_pattern.svg";
 
 const Wrapper = styled.section`
-  padding: 3em;
+  padding-top: 3em;
 
   .header-container {
-    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 3em;
 
     button {
       background: #f7b94f;
@@ -17,7 +19,15 @@ const Wrapper = styled.section`
       font-size: 32px;
       line-height: 38.3px;
       font-weight: 400;
+      display: flex;
+      justify-content: center;
+      gap: 0.5em;
     }
+  }
+
+  .footer-img {
+    display: flex;
+    justify-content: flex-end;
   }
 
   .buy_form {
@@ -61,6 +71,55 @@ const Wrapper = styled.section`
           justify-content: space-between;
           width: 393px;
           height: 35px;
+          gap: 16px;
+          border-bottom: 2px solid black;
+          span {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 19.15px;
+            letter-spacing: 3px;
+            color: #747474;
+            font-family: "MilkyNice", sans-serif;
+            text-transform: uppercase;
+          }
+
+          span:nth-child(2) {
+            color: black;
+          }
+        }
+      }
+      .form3 {
+        padding: 88px 72px;
+        margin-top: 1em;
+        /* background-image: url(${BgImage}); */
+        background-color: white;
+        border: 3px solid black;
+        box-shadow: -4px 4px black;
+        border-radius: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+
+        .txt-container {
+          text-align: center;
+          font-weight: 400;
+          font-size: 64px;
+          letter-spacing: 2px;
+          color: #f7b94f;
+          line-height: 76.61px;
+          font-family: "MilkyNice", sans-serif;
+          -webkit-text-stroke: 1px black;
+          text-shadow: -3px 3px black; /* For WebKit browsers like Chrome and Safari */
+          span {
+            color: white;
+          }
+        }
+
+        .item {
+          display: flex;
+          justify-content: space-between;
+          /* width: 393px; */
+          /* height: 35px; */
           gap: 16px;
           border-bottom: 2px solid black;
           span {
@@ -139,10 +198,10 @@ const Wrapper = styled.section`
             }
 
             .input-txt {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 8px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 8px;
               padding: 16px;
               border: 3px solid black;
               background: white;
@@ -192,6 +251,34 @@ const Wrapper = styled.section`
           box-shadow: -2px 2px black;
           border-radius: 16.07px;
           gap: 24px;
+
+          .item {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            height: 35px;
+            gap: 16px;
+            border-bottom: 2px solid black;
+            span {
+              font-size: 10.71px;
+              line-height: 12.82px;
+              letter-spacing: 1.5px;
+            }
+          }
+        }
+        .form3 {
+          width: 347.29px;
+          padding: 24px;
+          /* background-image: url(${BgImage}); */
+          border: 2.01px solid black;
+          box-shadow: -2px 2px black;
+          border-radius: 16.07px;
+          gap: 24px;
+          .txt-container {
+            font-size: 24px;
+            text-shadow: 1px 1px black;
+
+          }
 
           .item {
             display: flex;
