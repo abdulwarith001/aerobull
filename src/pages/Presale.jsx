@@ -7,6 +7,20 @@ import presale from '../assets/images/presale.png'
 const Presale = () => {
   //this state is to be toggled when users wallet is connected
   const [isWalletConnected, setIsWalletConnected] = useState(false);
+  const [ethValue, setEthValue] = useState(0)
+  const [arbValue, setArbValue] = useState(0)
+
+  const baseValue = 1200
+  const convertEthToArb = (value) => {
+    setEthValue(value)
+    const convertedValue = value * baseValue
+    setArbValue(convertedValue)
+  }
+  const convertArbToEth = (value) => {
+    setArbValue(value)
+    const convertedValue = value / baseValue
+    setEthValue(convertedValue)
+  }
   return (
     <Wrapper>
       <div className="header-container">
@@ -25,7 +39,13 @@ const Presale = () => {
               <div className="form-item">
                 <label>From</label>
                 <div className="input-wrapper">
-                  <input type="text" placeholder="ENTER ETH" required />
+                  <input
+                    type="text"
+                    placeholder="ENTER ETH"
+                    required
+                    value={ethValue}
+                    onChange={(e) => convertEthToArb(e.target.value)}
+                  />
                   <div className="input-txt">
                     <img src={eth_tickers} />
                     ETH
@@ -35,7 +55,13 @@ const Presale = () => {
               <div className="form-item">
                 <label>To</label>
                 <div className="input-wrapper">
-                  <input type="text" placeholder="ENTER ARB" required />
+                  <input
+                    type="text"
+                    placeholder="ENTER ARB"
+                    required
+                    value={arbValue}
+                    onChange={(e) => convertArbToEth(e.target.value)}
+                  />
                   <div className="input-txt">
                     <img src={arb_tickers} />
                     ARB
