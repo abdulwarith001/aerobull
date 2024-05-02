@@ -15,8 +15,8 @@ const Presale = () => {
   const baseValue = 1200
   const convertEthToArb = (value) => {
     setEthValue(value)
-    if(value > 30){
-      setError('Maximum value exceeded. Max is $30')
+    if(value > 100){
+      setError('Maximum value exceeded. Max is $100')
       return
     }
     if(value < 10){
