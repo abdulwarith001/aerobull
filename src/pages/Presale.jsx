@@ -12,7 +12,7 @@ const Presale = () => {
   const [arbValue, setArbValue] = useState(null)
   const [error, setError] = useState(null)
 
-  const baseValue = 1200
+  const baseValue = 2100
   const convertEthToArb = (value) => {
     setEthValue(value)
     if(value > 100){
