@@ -195,6 +195,16 @@ const Wrapper = styled.section`
             font-family: "MilkyNice", sans-serif;
             letter-spacing: 3px;
           }
+          .error-txt{
+            color: red;
+            text-transform: uppercase;
+            font-size: 16px;
+            line-height: 19.15px;
+            font-weight: 400;
+            font-family: "MilkyNice", sans-serif;
+            letter-spacing: 3px;
+            text-align: center;
+          }
 
           .input-wrapper {
             display: flex;

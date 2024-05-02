@@ -10,12 +10,22 @@ const Presale = () => {
   const [isWalletConnected, setIsWalletConnected] = useState(false);
   const [ethValue, setEthValue] = useState(null)
   const [arbValue, setArbValue] = useState(null)
+  const [error, setError] = useState(null)
 
   const baseValue = 1200
   const convertEthToArb = (value) => {
     setEthValue(value)
+    if(value > 30){
+      setError('Maximum value exceeded. Max is $30')
+      return
+    }
+    if(value < 10){
+      setError('Minimum value is $10.')
+      return
+    }
     const convertedValue = value * baseValue
     setArbValue(convertedValue)
+    setError(null)
   }
   const convertArbToEth = (value) => {
     setArbValue(value)
@@ -40,6 +50,9 @@ const Presale = () => {
           <div>
             <form className="form">
               <div className="form-item">
+                {error && (
+              <p className='error-txt'>{error}</p>
+                )}
                 <label>From</label>
                 <div className="input-wrapper">
                  <div>
