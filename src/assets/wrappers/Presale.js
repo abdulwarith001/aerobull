@@ -45,6 +45,24 @@ const Wrapper = styled.section`
       text-shadow: -4px 4px black;
     }
 
+    h3{
+      margin-top: 3em;
+      display: flex;
+      align-items: center;
+      color: white;
+      font-family: "MilkyNice", sans-serif;
+      text-shadow: -3px 3px black;
+      -webkit-text-stroke: 1px black;
+      font-size: 25px;
+      line-height: 19.51px;
+      font-weight: 400;
+      gap: 10px;
+      span{
+        color: #D7A672;
+        /* margin: 0 10px; */
+      }
+    }
+
     .form-container {
       /* background: red; */
       display: flex;
@@ -195,6 +213,16 @@ const Wrapper = styled.section`
               background: transparent;
               height: 100%;
               width: 70%;
+            }
+
+            p{
+              color: #A9A9A9;
+              font-size: 12px;
+              font-weight: 400;
+              font-family: "MilkyNice", sans-serif;
+              line-height: 14.36px;
+              margin-top: 0.5em;
+              letter-spacing: 1px;
             }
 
             .input-txt {

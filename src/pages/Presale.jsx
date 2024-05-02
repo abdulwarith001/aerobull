@@ -3,12 +3,13 @@ import Wrapper from '../assets/wrappers/Presale'
 import eth_tickers from '../assets/images/eth_tickers.png'
 import arb_tickers from '../assets/images/arb_tickers.png'
 import presale from '../assets/images/presale.png'
+import info_icon from '../assets/images/info_icon.png'
 
 const Presale = () => {
   //this state is to be toggled when users wallet is connected
   const [isWalletConnected, setIsWalletConnected] = useState(false);
-  const [ethValue, setEthValue] = useState(0)
-  const [arbValue, setArbValue] = useState(0)
+  const [ethValue, setEthValue] = useState(null)
+  const [arbValue, setArbValue] = useState(null)
 
   const baseValue = 1200
   const convertEthToArb = (value) => {
@@ -33,19 +34,24 @@ const Presale = () => {
 
       <div className="buy_form">
         <h1>BUY $ARB</h1>
+        <h3>
+          <img src={info_icon}/>YOU CAN ONLY BUY IN <span>$10</span> INCREMENTS</h3>
         <div className="form-container">
           <div>
             <form className="form">
               <div className="form-item">
                 <label>From</label>
                 <div className="input-wrapper">
-                  <input
+                 <div>
+                   <input
                     type="text"
-                    placeholder="ENTER ETH"
+                    placeholder="ENTER USD"
                     required
                     value={ethValue}
                     onChange={(e) => convertEthToArb(e.target.value)}
                   />
+                  <p>Ex.$10,$20..(ETH Equivalent)</p>
+                 </div>
                   <div className="input-txt">
                     <img src={eth_tickers} />
                     ETH
