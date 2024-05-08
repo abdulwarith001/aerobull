@@ -24,7 +24,7 @@ export default function WinnerErrorModal({ isOpen, setIsOpen }) {
     return timeLeft;
   };
 
-  const targetDateTime = "2024-05-13T11:00:00"; // Example target date and time
+  const targetDateTime = "2024-05-17T11:00:00"; // Example target date and time
 
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(targetDateTime));
 
