@@ -58,7 +58,7 @@ const Presale = () => {
     <Wrapper>
       <div className="header-container">
         {isWalletConnected ? (
-          <button>{ walletAddress }</button>
+          <button>{ walletAddress.slice(0, 12) + "..." }</button>
         ) : (
           <button onClick={()=> connectWallet()}>Connect Wallet</button>
         )}
