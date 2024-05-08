@@ -11,6 +11,7 @@ const Presale = () => {
   const [ethValue, setEthValue] = useState(null)
   const [arbValue, setArbValue] = useState(null)
   const [error, setError] = useState(null)
+  const [walletAddress, setWalletAddress] = useState(null)
 
   const baseValue = 2100
   const convertEthToArb = (value) => {
@@ -32,13 +33,34 @@ const Presale = () => {
     const convertedValue = value / baseValue
     setEthValue(convertedValue)
   }
+
+  const connectWallet = async () => {
+    console.log('requesting account...')
+
+    //check if metamask exists
+    if (window.ethereum) {
+      console.log('working')
+
+      try {
+        const accounts = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        })
+        setWalletAddress(accounts[0])
+        setIsWalletConnected(true)
+      } catch (error) {
+        alert('Something went wrong while connecting, try again!')
+      }
+    } else {
+      alert('No wallet detected')
+    }
+  }
   return (
     <Wrapper>
       <div className="header-container">
         {isWalletConnected ? (
-          <button>0x02E91GH93AB...</button>
+          <button>{ walletAddress }</button>
         ) : (
-          <button>Connect Wallet</button>
+          <button onClick={()=> connectWallet()}>Connect Wallet</button>
         )}
       </div>
 
