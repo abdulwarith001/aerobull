@@ -15,7 +15,7 @@ const Footer = () => {
         <h3>Join our $ARB Community</h3>
         <div className="icons">
           <div className="icon">
-            <Link to="https://discord.gg/eT3ZfUZc">
+            <Link to="https://discord.gg/VrP7ydxj">
               <img src={discord} />
             </Link>
           </div>
