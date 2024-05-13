@@ -107,6 +107,15 @@ const Wrapper = styled.section`
       border: 4px solid black;
       box-shadow: -6px 6px black;
     }
+    .custom-map {
+      width: 957px;
+      /* height: 232px; */
+      background-color: white;
+      border-radius: 24px;
+      padding: 32px;
+      border: 4px solid black;
+      box-shadow: -6px 6px black;
+    }
   }
 
   .content {
@@ -153,6 +162,27 @@ const Wrapper = styled.section`
       font-family: "Sora", sans-serif;
     }
   }
+  .project-content {
+    margin-top: 4em;
+    height: fit-content;
+    display: flex;
+    gap: 50px;
+    flex-direction: column;
+    padding-bottom: 32px;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    p {
+      font-size: 16px;
+      font-weight: 600px;
+      line-height: 25.16px;
+      font-family: "Sora", sans-serif;
+    }
+  }
 
   .mobile_map {
     display: none;
@@ -173,35 +203,41 @@ const Wrapper = styled.section`
   .mobile_flag {
     display: none;
   }
+
   .head-txt {
-    font-size: 40px;
+    font-size: 96px;
     font-weight: 400;
     line-height: 47.88px;
-    color: #0699f9;
+    color: white;
     font-family: "MilkyNice", sans-serif;
     text-shadow: 4px 4px black;
     display: flex;
     gap: 0.5em;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
     -webkit-text-stroke: 1px black; /* For WebKit browsers like Chrome and Safari */
-    color: white;
+
+    .project {
+      display: flex;
+      /* justify-content: center; */
+      align-items: center;
+      gap: 0.2em;
+      flex-direction: row;
+      color: #0038A8;
+    }
+    .project_n {
+      display: flex;
+      /* justify-content: center; */
+      align-items: center;
+      gap: 0.2em;
+      flex-direction: row;
+      color: white;
+    }
     .phillipines {
       color: #ce1126;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0.8em;
-      flex-direction: row;
     }
 
     .nigeria {
       color: #008753;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0.8em;
-      flex-direction: row;
     }
     .el_salvador {
       color: #0699f9;

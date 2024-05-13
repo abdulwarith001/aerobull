@@ -8,17 +8,20 @@ import map4_mobile from "../assets/images/mobile_map4.png";
 import map5_mobile from "../assets/images/mobile_map5.png";
 import map6_mobile from "../assets/images/mobile_map6.png";
 import map7_mobile from "../assets/images/mobile_map7.png";
-import map2 from "../assets/images/map2.png";
-import map3 from "../assets/images/map3.png";
-import map4 from "../assets/images/map4.png";
-import map5 from "../assets/images/map5.png";
 import map6 from "../assets/images/map6.png";
 import map8 from "../assets/images/map8.png";
 import arrow1 from "../assets/images/arrow1.png";
 import arrow2 from "../assets/images/arrow2.png";
 import arrow3 from "../assets/images/arrow3.png";
-import arrow6 from "../assets/images/arrow6.png";
-import arrow5 from "../assets/images/arrow5.png";
+import phill_1 from "../assets/images/phill_1.png";
+import phill_2 from "../assets/images/phill_2.png";
+import phill_3 from "../assets/images/phill_3.png";
+import phill_4 from "../assets/images/phill_4.png";
+import phill_5 from "../assets/images/phill_5.png";
+import nig_1 from "../assets/images/nig_1.png";
+import nig_2 from "../assets/images/nig_2.png";
+import nig_3 from "../assets/images/nig_3.png";
+import nig_4 from "../assets/images/nig_4.png";
 import net_base from "../assets/images/net_base.png";
 import mobile_net from "../assets/images/mobile_base.png";
 import phillipines from "../assets/images/phillipines.png";
@@ -156,127 +159,161 @@ const Aeromap = () => {
         </div>
 
         <div className="mapArr3">
-          <div className="map">
+          <div className="custom-map">
             <div className="map-head">
               <div className="head-txt">
-                Project{" "}
-                <span className="phillipines">
-                  Phillipines <img src={phillipines} className="desktop_flag" />
+                <div className="project">
+                  Project <img src={phillipines} className="desktop_flag" />
                   <img src={phillipines_mobile} className="mobile_flag" />
-                </span>
+                </div>
+                <div className="phillipines">Phillipines</div>
               </div>
-              <img src={map5} className="img desktop_map" />
-              <img src={map5_mobile} className=" img mobile_map" />
             </div>
-            <div className="content">
+            <div className="project-content">
               <div>
-                <i>1. </i>
-                <span>
+                <p>
                   Disaster Preparedness: Enhance disaster resilience through
                   early warning systems, infrastructure upgrades, and community
                   preparedness initiatives to mitigate the impact of natural
                   disasters. Sustainable
-                </span>
+                </p>
+                <img src={phill_1} />
               </div>
               <div>
-                <i>2. </i>
-                <span>
-                  Tourism: Promote sustainable tourism practices to preserve
-                  natural resources, protect cultural heritage, and generate
-                  economic opportunities while minimizing environmental
-                  degradation.
-                </span>
+                <p>
+                  Tourism, is about exploring new places while also uplifting
+                  local communities through meaningful engagement and support.
+                  Tourism can also be a powerful catalyst for aiding communities
+                  in need by fostering economic growth, preserving cultural
+                  heritage, and enhancing infrastructure development to those in
+                  need.
+                </p>
+                <img src={phill_2} />
               </div>
               <div>
-                <i>3. </i>{" "}
-                <span>
-                  Rural Development: Invest in agricultural modernisation, rural
-                  infrastructure, and livelihood programs to reduce poverty,
-                  create employment, and alleviate urban migration pressures.
-                </span>
+                <p>
+                  Rural development, in countries is crucial for fostering
+                  sustainable growth, empowering local communities, and
+                  alleviating poverty through targeted investments in
+                  infrastructure, education, and healthcare. not only does
+                  Investing in rural development in other countries it is
+                  essential as it promotes equitable economic opportunities,
+                  strengthens local infrastructure, and empowers communities to
+                  thrive, thereby contributing to global stability and
+                  prosperity.
+                </p>
+                <img src={phill_3} />
               </div>
               <div>
-                <i>4. </i>{" "}
-                <span>
-                  Education Reform: Implement comprehensive education reforms to
-                  improve quality, accessibility, and relevance of education,
-                  focusing on STEM (Science, Technology, Engineering, and
-                  Mathematics) subjects and vocational training.
-                </span>
+                <p>
+                  Education Reform is not only just a moral imperative it's a
+                  strategic investment in human potential that can break the
+                  cycle of poverty and also foster innovation, and empower
+                  individuals to drive sustainable development within their
+                  communities and beyond Bringing education to people in need is
+                  worth it because it empowers individuals to break the cycle of
+                  poverty, fosters economic growth, and cultivates informed and
+                  engaged citizens who can positively contribute to society.
+                </p>
+                <img src={phill_4} />
               </div>
               <div>
-                <i>5. </i>{" "}
-                <span>
-                  Anti-Corruption Measures: Strengthen anti-corruption
-                  mechanisms, enhance transparency, and uphold the rule of law
-                  to foster investor confidence, ensure equitable development,
-                  and eradicate graft and corruption.
-                </span>
+                <p>
+                  Implementing anti-corruption measures is crucial as they
+                  strengthen transparency, uphold the rule of law, and foster
+                  investor confidence, ultimately paving the way for equitable
+                  development and the eradication of graft and corruption and
+                  not only that Anti-corruption measures are essential because
+                  they will promote integrity, accountability, and fairness,
+                  fostering trust in institutions and creating a level playing
+                  field for all members of society in everyway shape and form.
+                </p>
+                <img src={phill_5} />
               </div>
             </div>
           </div>
-          <img src={arrow5} className="img5" />
         </div>
 
-        <div className="mapArr3 extra-map">
-          <div className="map">
+        <div className="mapArr3">
+          <div className="custom-map">
             <div className="map-head">
               <div className="head-txt">
-                Project{" "}
-                <span className="nigeria">
-                  Nigeria <img src={nigeria} className="desktop_flag" />
+                <div className="project_n">
+                  Project <img src={nigeria} className="desktop_flag" />
                   <img src={nigeria_mobile} className="mobile_flag" />
-                </span>
+                </div>
+                <div className="nigeria">Nigeria</div>
               </div>
-              <img src={map6} className="img desktop_map" />
-              <img src={map6_mobile} className=" img mobile_map" />
             </div>
-            <div className="content">
+            <div className="project-content">
               <div>
-                <i>1. </i>
-                <span>
-                  Infrastructure Development: Prioritize investment in
-                  transportation, energy, and digital infrastructure to support
-                  economic growth and improve quality of life.
-                </span>
+                <img src={nig_1} />
+                <p>
+                  Not only would Infrastructure development around the world
+                  help a lot to those in need it has become a cornerstone of
+                  economic progress, facilitating connectivity, trade, and
+                  sustainable growth for diverse communities. Investing in
+                  infrastructure development is essential to foster economic
+                  resilience, improve quality of life, and ensure long-term
+                  sustainability for present and future generations.
+                </p>
               </div>
               <div>
-                <i>2. </i>
-                <span>
-                  Economic Diversification: Foster a diverse economy by
-                  promoting sectors beyond oil and gas, such as technology,
-                  agriculture, and manufacturing.
-                </span>
+                <img src={nig_2} />
+                <p>
+                  Economic diversification around the world is increasingly
+                  recognized as a strategic imperative, enabling nations to
+                  mitigate risks, foster innovation, and build robust, inclusive
+                  economies resilient to global fluctuations. Economic
+                  diversification is not only a good thing to partake in it
+                  helps a lot of those in 3rd world countries in need. Economic
+                  diversification around the world is crucial as it reduces
+                  dependency on a single industry, fosters innovation, and
+                  enhances resilience against economic shocks, ultimately
+                  leading to sustainable growth and prosperity for nations and
+                  their citizens.
+                </p>
               </div>
               <div>
-                <i>3. </i>{" "}
-                <span>
-                  Sustainable Urbanization: Implement sustainable urban planning
-                  to manage population growth, alleviate congestion, and
-                  preserve green spaces.
-                </span>
+                <img src={nig_3} />
+                <p>
+                  Education reform in Nigeria is imperative to address systemic
+                  challenges, enhance access to quality education for all, and
+                  empower the next generation with the skills and knowledge
+                  necessary to thrive in a rapidly evolving global landscape.
+                  Bringing education reform to Nigeria is vital to unlock the
+                  nation's human potential, foster economic development, and
+                  ensure a brighter future for its citizens by equipping them
+                  with the skills and knowledge.
+                </p>
               </div>
               <div>
-                <i>4. </i>{" "}
-                <span>
-                  Education and Skills Development: Enhance education and
-                  vocational training programs to equip citizens with the skills
-                  needed for modern industries.
-                </span>
+                <img src={nig_4} />
+                <p>
+                  Governance and accountability are essential pillars of a
+                  healthy democracy, fostering transparency, trust in
+                  institutions, and effective decision-making processes,
+                  ultimately leading to equitable development and the well-being
+                  of society as a whole. Governance and accountability promote
+                  transparency in decision-making processes, ensuring that
+                  government actions are open to scrutiny by citizens and
+                  stakeholders. Transparent governance builds trust and
+                  confidence in institutions. This oversight helps prevent
+                  corruption and misuse of power, promoting efficient and
+                  ethical governance.
+                </p>
               </div>
-              <div>
-                <i>5. </i>{" "}
-                <span>
+              {/* <div>
+                <p>
                   Governance and Accountability: Strengthen governance
                   structures and promote transparency to build trust and attract
                   investment for long-term development.
-                </span>
-              </div>
+                </p>
+              </div> */}
             </div>
           </div>
-          <img src={arrow6} className="img6" />
         </div>
-        <div className="mapArr3 extra-map2">
+        {/* <div className="mapArr3 extra-map2">
           <div className="map">
             <div className="map-head">
               <div className="head-txt">
@@ -337,7 +374,7 @@ const Aeromap = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </Wrapper>
   );
