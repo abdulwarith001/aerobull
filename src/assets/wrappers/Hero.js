@@ -1,14 +1,67 @@
 import styled from "styled-components";
-import BgImage from "../images/hero2.png";
+import BgImage from "../images/hero_back.png";
+import BgImage2 from "../images/hero.png";
 
 const Wrapper = styled.section`
-  height: 80vh;
-  padding: 2em 4em;
+  /* height: 100vh; */
   background: url(${BgImage});
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   object-fit: cover;
+  /* z-index: 9999; */
+
+  .firstSection {
+    padding: 2em 4em;
+    height: 70vh;
+    background: url(${BgImage2});
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: cover;
+  }
+
+  .milkyguy {
+    margin: -15em 0 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+
+    .mobile {
+      display: none;
+    }
+
+    .desktop {
+      display: block;
+    }
+    h1 {
+      color: #3FADFB;
+      -webkit-text-stroke: 1px #15344A;
+      text-shadow: -5px 5px #15344A; /* For WebKit browsers like Chrome and Safari */
+      font-size: 180px;
+      line-height: 1;
+      font-weight: 400;
+      font-family: "MilkyNice", sans-serif;
+      text-transform: uppercase;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .milkyguy {
+      margin: -12em 0 0;
+
+      .mobile {
+        display: block;
+      }
+
+      .desktop {
+        display: none;
+      }
+      h1 {
+        display: none;
+      }
+    }
+  }
 
   .header {
     display: flex;
@@ -61,13 +114,12 @@ const Wrapper = styled.section`
         color: #f7b94f;
       }
     }
-
   }
   .secondcomma {
     text-align: right;
     margin-top: -25px;
-    font-size: 64px;   
-   }
+    font-size: 64px;
+  }
 
   @media (max-width: 992px) {
     height: 50vh;
@@ -95,7 +147,6 @@ const Wrapper = styled.section`
       font-size: 23.61px;
     }
   }
-
 `;
 
 export default Wrapper;

@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import Wrapper from '../assets/wrappers/Hero'
 import Modal from './Modal';
+import aero_back from '../assets/images/aero_bg.png';
+import mobile_hero from '../assets/images/mobile_hero.png';
 const Hero = () => {
   const [isOpen, setIsOpen] = useState(false)
   return (
     <Wrapper>
       {isOpen && <Modal isOpen={isOpen} setIsOpen={setIsOpen}/>}
-      <div className="header">
+     <div className='firstSection'>
+       <div className="header">
         <h2>$ARB</h2>
         <button onClick={()=> setIsOpen(true)}>Presale</button>
       </div>
@@ -22,6 +25,13 @@ const Hero = () => {
          </div>
           <div className='secondcomma'>”</div>
         </div>
+      </div>
+     </div>
+
+        <div className="milkyguy">
+        <img src={aero_back} className="desktop" />
+        <img src={mobile_hero} className="mobile" />
+        <h1>Aerobull</h1>
       </div>
     </Wrapper>
   );

@@ -1,17 +1,23 @@
 import styled from 'styled-components'
+import hero_back from '../images/hero_back.png'
 
 const Wrapper = styled.section`
+    z-index: -9999;
   .milkyguy {
-    margin: -20em 3em 0;
+     margin: -2em 0 0;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-
-    .mobile{
+    /* background: url(${hero_back});
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: cover; */
+    .mobile {
       display: none;
     }
 
-    .desktop{
+    .desktop {
       display: block;
     }
     h1 {
@@ -25,20 +31,18 @@ const Wrapper = styled.section`
   }
 
   @media (max-width: 992px) {
-
-    .milkyguy{
+    .milkyguy {
       margin: -12em 0 0;
 
-      .mobile{
+      .mobile {
         display: block;
       }
 
-      .desktop{
+      .desktop {
         display: none;
       }
-      h1{
+      h1 {
         display: none;
-
       }
     }
   }
