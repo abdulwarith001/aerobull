@@ -13,7 +13,7 @@ const Wrapper = styled.section`
 
   .firstSection {
     padding: 2em 4em;
-    height: 70vh;
+    height: 80vh;
     background: url(${BgImage2});
     background-position: center;
     background-size: cover;
