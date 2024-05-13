@@ -37,8 +37,8 @@ const Aeromap = () => {
           <div className="map">
             <div className="map-head">
               <h4>Initial developments</h4>
-              <img src={map1} className="desktop_map" />
-              <img src={map1_mobile} className="mobile_map" />
+              {/* <img src={map1} className="desktop_map" />
+              <img src={map1_mobile} className="mobile_map" /> */}
             </div>
             <div className="content">
               <div>
@@ -66,8 +66,8 @@ const Aeromap = () => {
           <div className="map">
             <div className="map-head">
               <h4>Network</h4>
-              <img src={map2} className="img desktop_map" />
-              <img src={map2_mobile} className=" img mobile_map" />
+              {/* <img src={map2} className="img desktop_map" />
+              <img src={map2_mobile} className=" img mobile_map" /> */}
             </div>
             <div className="content">
               <div>
@@ -96,8 +96,8 @@ const Aeromap = () => {
           <div className="map">
             <div className="map-head">
               <h4>Social media</h4>
-              <img src={map3} className="img desktop_map" />
-              <img src={map3_mobile} className=" img mobile_map" />
+              {/* <img src={map3} className="img desktop_map" />
+              <img src={map3_mobile} className=" img mobile_map" /> */}
             </div>
             <div className="content">
               <div>
@@ -133,8 +133,8 @@ const Aeromap = () => {
           <div className="map">
             <div className="map-head">
               <h4>Liquidity pool</h4>
-              <img src={map4} className="img desktop_map" />
-              <img src={map4_mobile} className=" img mobile_map" />
+              {/* <img src={map4} className="img desktop_map" />
+              <img src={map4_mobile} className=" img mobile_map" /> */}
             </div>
             <div className="content">
               <div>

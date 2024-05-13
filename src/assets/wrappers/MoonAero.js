@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Wrapper = styled.section`
-  background: #d6e9ff;
+  background: #77c5fc;
   padding-top: 3em;
   display: flex;
   justify-content: center;

@@ -6,6 +6,7 @@ const Wrapper = styled.section`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background: #77c5fc;
 
   h1 {
     color: #f7b94f;
@@ -13,6 +14,7 @@ const Wrapper = styled.section`
     font-size: 96px;
     font-weight: 400;
     text-transform: uppercase;
+    -webkit-text-stroke: 1px black;
     line-height: 114.91px;
     font-family: "MilkyNice", sans-serif;
   }
@@ -30,11 +32,12 @@ const Wrapper = styled.section`
     font-weight: 400;
     font-family: "MilkyNice", sans-serif;
     text-shadow: 6px 6px black;
-    margin-top: 0.2em;
+    -webkit-text-stroke: 1px black;
+    margin-top: 0.5em;
   }
 
   .aero_container {
-    background: white;
+    background: #0699f9;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -71,12 +74,14 @@ const Wrapper = styled.section`
     }
 
     h4 {
-      color: #ff8074;
+      color: white;
       font-size: 50.38px;
       font-weight: 400;
       line-height: 60.3px;
       font-family: "MilkyNice", sans-serif;
       text-shadow: 4px 4px black;
+      -webkit-text-stroke: 1px black;
+      text-transform: uppercase;
     }
   }
 

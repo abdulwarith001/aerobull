@@ -10,7 +10,7 @@ import { useNavigate, Link } from "react-router-dom";
 const Footer = () => {
   return (
     <Wrapper>
-      <div className='contents'>
+      <div className="contents">
         <h1>$ARB</h1>
         <h3>Join our $ARB Community</h3>
         <div className="icons">
@@ -30,9 +30,12 @@ const Footer = () => {
           <img src={coin} className="desktop" />
           <img src={mobile_coin} className="mobile" />
         </div>
+      <div className="web_link">
+        <h4>www.aerobull.com</h4>
       </div>
-      <img src={footer_bg2} className='image' />
-      <img src={aerobull_mobile_footer} className='image2' />
+      </div>
+      <img src={footer_bg2} className="image" />
+      <img src={aerobull_mobile_footer} className="image2" />
     </Wrapper>
   );
 }

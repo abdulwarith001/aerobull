@@ -6,6 +6,7 @@ const Wrapper = styled.footer`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  background: #77c5fc;
 
   .image{
     display: block;
@@ -25,6 +26,7 @@ const Wrapper = styled.footer`
     color: #ffda88;
     text-shadow: -4px 4px black;
     font-family: "MilkyNice", sans-serif;
+    -webkit-text-stroke: 1px black;
   }
 
   .desktop {
@@ -96,7 +98,7 @@ const Wrapper = styled.footer`
   }
 
   .web_link {
-    height: 15em;
+    height: 5em;
     width: fit-content;
     h4 {
       color: white;
@@ -106,7 +108,7 @@ const Wrapper = styled.footer`
       line-height: 43.09px;
       text-shadow: -2px 2px black;
       font-family: "MilkyNice", sans-serif;
-      margin: 4em 0;
+      margin: 2em 0;
     }
   }
 

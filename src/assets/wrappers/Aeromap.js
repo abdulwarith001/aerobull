@@ -1,12 +1,12 @@
 import styled from  'styled-components'
 
 const Wrapper = styled.section`
-  padding: 3em 0 6em;
+  padding: 3em 0 4em;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: #ddf1ff;
+  background: #77c5fc;
 
   h1 {
     color: #0699f9;
@@ -16,10 +16,11 @@ const Wrapper = styled.section`
     text-shadow: 5px 5px black;
     text-transform: uppercase;
     font-family: "MilkyNice", sans-serif;
+    -webkit-text-stroke: 1px black;
   }
 
   .maps {
-    margin-top: 12em;
+    margin-top: 4em;
     width: 1145px;
 
     .mapArr {
@@ -166,10 +167,10 @@ const Wrapper = styled.section`
     display: block;
   }
 
-  .desktop_flag{
+  .desktop_flag {
     display: block;
   }
-  .mobile_flag{
+  .mobile_flag {
     display: none;
   }
   .head-txt {
@@ -224,7 +225,9 @@ const Wrapper = styled.section`
 
     .img,
     .img2,
-    .img3, .img5, .img6 {
+    .img3,
+    .img5,
+    .img6 {
       display: none;
     }
     .extra-map {
@@ -233,12 +236,12 @@ const Wrapper = styled.section`
     .extra-map2 {
       margin-left: 0;
     }
-      .desktop_flag{
-    display: none;
-  }
-  .mobile_flag{
-    display: block;
-  }
+    .desktop_flag {
+      display: none;
+    }
+    .mobile_flag {
+      display: block;
+    }
 
     h1 {
       line-height: 35.28px;

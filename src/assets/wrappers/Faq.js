@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Wrapper = styled.section`
   background: #77c5fc;
-  padding: 4em 5em 4em 8em;
+  padding: 0 5em 4em 8em;
 
   h1 {
     font-size: 96px;
