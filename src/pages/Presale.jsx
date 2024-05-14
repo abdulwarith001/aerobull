@@ -5,6 +5,7 @@ import arb_tickers from "../assets/images/arb_tickers.png";
 import presale from "../assets/images/presale.png";
 import info_icon from "../assets/images/info_icon.png";
 import ARBTokenContractABI from "../ARB.json";
+import ContractAddr from '../components/Presale_Contract_Addr'
 
 const Presale = () => {
   const [isWalletConnected, setIsWalletConnected] = useState(false);
@@ -134,6 +135,7 @@ const Presale = () => {
           </div>
         </div>
       </div>
+      <ContractAddr/>
 
       <div className="footer-img">
         <img src={presale} />

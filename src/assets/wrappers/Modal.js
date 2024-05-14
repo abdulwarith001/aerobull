@@ -77,7 +77,6 @@ const WinnerErrorWrapper = styled.section`
       }
 
       h4 {
-        margin-top: 1.5em;
         font-size: 64px;
         font-weight: 400;
         line-height: 76.61px;

@@ -52,7 +52,7 @@ export default function WinnerErrorModal({ isOpen, setIsOpen }) {
           </div>
           <div className="content">
             <h1>Presale</h1>
-            <h4>WE ARE COMING SOON</h4>
+            <h4>COMING SOON</h4>
 
             <div className="timer_container">
               <div className="timer">
