@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import BgImage from "../images/body_pattern.svg";
+import BgImage from "../images/presale_modal_bg.png";
 
 const WinnerErrorWrapper = styled.section`
   .show {
@@ -40,6 +40,11 @@ const WinnerErrorWrapper = styled.section`
     z-index: 9999;
   }
   .model-content {
+    background-image: url(${BgImage});
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: cover;
     background-color: white;
     border: 2px solid black;
     border-radius: 24px;
@@ -67,16 +72,20 @@ const WinnerErrorWrapper = styled.section`
         line-height: 76.61px;
         font-weight: 400;
         font-family: "MilkyNice", sans-serif;
+        -webkit-text-stroke: 1px black;
+        text-shadow: -3px 3px black;
       }
 
       h4 {
         margin-top: 1.5em;
-        font-size: 16px;
+        font-size: 64px;
         font-weight: 400;
-        line-height: 19.15px;
+        line-height: 76.61px;
         font-family: "MilkyNice", sans-serif;
         color: #0699f9;
-        letter-spacing: 5px;
+        -webkit-text-stroke: 1px black;
+        text-shadow: -3px 3px black;
+        /* letter-spacing: 5px; */
       }
 
       .timer_container {
