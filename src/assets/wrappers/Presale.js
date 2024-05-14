@@ -1,8 +1,17 @@
 import styled from "styled-components";
-import BgImage from "../images/body_pattern.svg";
+import BgImage from "../images/hero_back.png";
+import presale_bg from "../images/presale_bg.png";
+import presale_bg2 from "../images/presale_bg2.png";
+
+
 
 const Wrapper = styled.section`
   padding-top: 3em;
+  background: url(${BgImage});
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  object-fit: cover;
 
   .header-container {
     display: flex;
@@ -45,7 +54,7 @@ const Wrapper = styled.section`
       text-shadow: -4px 4px black;
     }
 
-    h3{
+    h3 {
       margin-top: 3em;
       display: flex;
       align-items: center;
@@ -57,8 +66,8 @@ const Wrapper = styled.section`
       line-height: 19.51px;
       font-weight: 400;
       gap: 10px;
-      span{
-        color: #D7A672;
+      span {
+        color: #d7a672;
         /* margin: 0 10px; */
       }
     }
@@ -75,7 +84,11 @@ const Wrapper = styled.section`
       .form2 {
         /* width: 537px; */
         padding: 88px 72px;
-        /* background-image: url(${BgImage}); */
+        background-image: url(${presale_bg});
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        object-fit: cover;
         background-color: white;
         border: 3px solid black;
         box-shadow: -4px 4px black;
@@ -99,17 +112,18 @@ const Wrapper = styled.section`
             color: #747474;
             font-family: "MilkyNice", sans-serif;
             text-transform: uppercase;
-          }
-
-          span:nth-child(2) {
-            color: black;
+            color: white;
           }
         }
       }
       .form3 {
         padding: 88px 72px;
         margin-top: 1em;
-        /* background-image: url(${BgImage}); */
+        /* background-image: url(${presale_bg2});
+          background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        object-fit: cover; */
         background-color: white;
         border: 3px solid black;
         box-shadow: -4px 4px black;
@@ -158,7 +172,11 @@ const Wrapper = styled.section`
       .form {
         /* width: 537px; */
         padding: 88px 72px;
-        /* background-image: url(${BgImage}); */
+        background-image: url(${presale_bg2});
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        object-fit: cover;
         background-color: white;
         border: 3px solid black;
         box-shadow: -4px 4px black;
@@ -168,7 +186,8 @@ const Wrapper = styled.section`
         flex-direction: column;
 
         button {
-          background: #ffda88;
+          background: #0699f9;
+          color: white;
           padding: 16px 32px;
           border-radius: 16px;
           border: 3px solid black;
@@ -187,6 +206,7 @@ const Wrapper = styled.section`
           gap: 32px;
           border: 3px solid black;
           border-radius: 24px;
+          background-color: rgba(255, 255, 255, 0.66);
           label {
             text-transform: uppercase;
             font-size: 16px;
@@ -195,7 +215,7 @@ const Wrapper = styled.section`
             font-family: "MilkyNice", sans-serif;
             letter-spacing: 3px;
           }
-          .error-txt{
+          .error-txt {
             color: red;
             text-transform: uppercase;
             font-size: 16px;
@@ -225,8 +245,8 @@ const Wrapper = styled.section`
               width: 70%;
             }
 
-            p{
-              color: #A9A9A9;
+            p {
+              color: #a9a9a9;
               font-size: 12px;
               font-weight: 400;
               font-family: "MilkyNice", sans-serif;
@@ -315,7 +335,6 @@ const Wrapper = styled.section`
           .txt-container {
             font-size: 24px;
             text-shadow: 1px 1px black;
-
           }
 
           .item {

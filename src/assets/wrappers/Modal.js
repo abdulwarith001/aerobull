@@ -75,7 +75,7 @@ const WinnerErrorWrapper = styled.section`
         font-weight: 400;
         line-height: 19.15px;
         font-family: "MilkyNice", sans-serif;
-        color: black;
+        color: #0699f9;
         letter-spacing: 5px;
       }
 
@@ -93,7 +93,8 @@ const WinnerErrorWrapper = styled.section`
 
         .timer {
           padding: 16px 24px;
-          background: #f7b94f;
+          background: #0699f9;
+          color: white;
           display: flex;
           align-items: center;
           justify-content: center;
