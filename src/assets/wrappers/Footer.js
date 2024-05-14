@@ -164,7 +164,7 @@ const Wrapper = styled.footer`
     }
 
     .web_link {
-      height: 7em;
+      height: 1em;
       width: fit-content;
       h4 {
         font-size: 11.08px;

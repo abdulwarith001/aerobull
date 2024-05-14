@@ -35,9 +35,9 @@ const Wrapper = styled.section`
       display: block;
     }
     h1 {
-      color: #3FADFB;
-      -webkit-text-stroke: 1px #15344A;
-      text-shadow: -5px 5px #15344A; /* For WebKit browsers like Chrome and Safari */
+      color: #3fadfb;
+      -webkit-text-stroke: 1px #15344a;
+      text-shadow: -5px 5px #15344a; /* For WebKit browsers like Chrome and Safari */
       font-size: 180px;
       line-height: 1;
       font-weight: 400;
@@ -94,12 +94,12 @@ const Wrapper = styled.section`
     display: flex;
     justify-content: flex-end;
     margin: 1.5em auto 0;
-    width: 80%;
+    width: 100%;
     .herotxt {
       font-size: 64px;
       text-transform: uppercase;
       color: white;
-      text-align: justify;
+      /* text-align: justify; */
       font-family: "MilkyNice", sans-serif;
     }
 
@@ -122,8 +122,8 @@ const Wrapper = styled.section`
   }
 
   @media (max-width: 992px) {
-    height: 50vh;
-    padding: 3em 1em 1em;
+    height: 100vh;
+    padding: 0 0 1em;
     .header {
       h2 {
         font-size: 20.8px;
@@ -133,6 +133,41 @@ const Wrapper = styled.section`
         padding: 8px 40px 12px;
         font-size: 14.02px;
       }
+    }
+
+    .milkyguy {
+      margin: -7em 5em 0 0;
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
+
+      .mobile {
+        display: block;
+      }
+
+      .desktop {
+        display: none;
+      }
+      h1 {
+        color: #3fadfb;
+        -webkit-text-stroke: 1px #15344a;
+        text-shadow: -5px 5px #15344a; /* For WebKit browsers like Chrome and Safari */
+        font-size: 180px;
+        line-height: 1;
+        font-weight: 400;
+        font-family: "MilkyNice", sans-serif;
+        text-transform: uppercase;
+      }
+    }
+
+    .firstSection {
+      padding: 2em 2em;
+      height: 40vh;
+      background: url(${BgImage2});
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      object-fit: cover;
     }
     .firstcomma {
       font-size: 23.61px;

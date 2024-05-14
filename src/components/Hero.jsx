@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Wrapper from '../assets/wrappers/Hero'
 import Modal from './Modal';
 import aero_back from '../assets/images/aero_bg.png';
-import mobile_hero from '../assets/images/mobile_hero.png';
+import mobile_hero from "../assets/images/mobile_hero_bg.png";
 const Hero = () => {
   const [isOpen, setIsOpen] = useState(false)
   return (
