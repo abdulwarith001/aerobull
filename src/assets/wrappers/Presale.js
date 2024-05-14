@@ -91,7 +91,7 @@ const Wrapper = styled.section`
         object-fit: cover;
         background-color: white;
         border: 3px solid black;
-        box-shadow: -4px 4px black;
+        /* box-shadow: -4px 4px black; */
         border-radius: 24px;
         display: flex;
         flex-direction: column;
@@ -119,11 +119,11 @@ const Wrapper = styled.section`
       .form3 {
         padding: 88px 72px;
         margin-top: 1em;
-        /* background-image: url(${presale_bg2});
+        background-image: url(${presale_bg});
           background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
-        object-fit: cover; */
+        object-fit: cover;
         background-color: white;
         border: 3px solid black;
         box-shadow: -4px 4px black;
@@ -162,11 +162,10 @@ const Wrapper = styled.section`
             color: #747474;
             font-family: "MilkyNice", sans-serif;
             text-transform: uppercase;
+            color: white;
           }
 
-          span:nth-child(2) {
-            color: black;
-          }
+         
         }
       }
       .form {
