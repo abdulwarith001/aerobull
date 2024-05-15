@@ -39,6 +39,15 @@ const Wrapper = styled.section`
     justify-content: flex-end;
   }
 
+  .top-and-down{
+    display: flex;
+    gap: 0.2em;
+    align-items: center;
+    img{
+      cursor:pointer;
+    }
+  }
+
   .buy_form {
     margin-top: 2em;
     display: flex;
