@@ -1,19 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Wrapper from "../assets/wrappers/Presale";
 import eth_tickers from "../assets/images/eth_tickers.png";
 import arb_tickers from "../assets/images/arb_tickers.png";
 import presale from "../assets/images/presale.png";
 import info_icon from "../assets/images/info_icon.png";
-import ARBTokenContractABI from "../ARB.json";
-import ContractAddr from '../components/Presale_Contract_Addr'
+import Web3 from "web3";
+import SaleContractABI from "../ARB.json"; // Ensure this is the correct path to your ABI JSON file
+
+const contractAddress = "0x979E73dfa7B9bF414e962747971809c00a0683b2"; // Ensure this is the correct address of your deployed contract
 
 const Presale = () => {
   const [isWalletConnected, setIsWalletConnected] = useState(false);
-  const [ethValue, setEthValue] = useState(null);
-  const [arbValue, setArbValue] = useState(null);
+  const [ethValue, setEthValue] = useState("");
+  const [arbValue, setArbValue] = useState("");
   const [error, setError] = useState(null);
   const [walletAddress, setWalletAddress] = useState(null);
-  const baseValue = 2100;
+  const [accounts, setAccounts] = useState([]);
+  const [web3, setWeb3] = useState(null);
+  const [contract, setContract] = useState(null);
+  const baseValue = 200;
 
   const connectWallet = async () => {
     try {
@@ -34,18 +39,67 @@ const Presale = () => {
       setError("Maximum value exceeded. Max is $100");
       return;
     }
-    if (value < 10) {
-      setError("Minimum value is $10.");
+    if (value < 1) {
+      setError("Minimum value is $1.");
       return;
     }
     const convertedValue = value * baseValue;
     setArbValue(convertedValue);
     setError(null);
   };
+
   const convertArbToEth = (value) => {
     setArbValue(value);
     const convertedValue = value / baseValue;
     setEthValue(convertedValue);
+  };
+
+  useEffect(() => {
+    const initWeb3 = async () => {
+      if (window.ethereum) {
+        const web3Instance = new Web3(window.ethereum);
+        setWeb3(web3Instance);
+        try {
+          await window.ethereum.enable();
+          const accs = await web3Instance.eth.getAccounts();
+          setAccounts(accs);
+
+          // Debug logging for ABI and contractAddress
+          console.log("ABI:", SaleContractABI);
+          console.log("Contract Address:", contractAddress);
+
+          if (!SaleContractABI || !Array.isArray(SaleContractABI)) {
+            throw new Error("Invalid ABI format");
+          }
+
+          const instance = new web3Instance.eth.Contract(
+            SaleContractABI,
+            contractAddress
+          );
+          setContract(instance);
+        } catch (error) {
+          console.error("Error connecting to blockchain", error);
+        }
+      }
+    };
+    initWeb3();
+  }, []);
+
+  const buyTokens = async (e) => {
+    e.preventDefault();
+    if (!contract) {
+      console.error("Smart contract not loaded");
+      return;
+    }
+    const weiAmount = web3.utils.toWei(ethValue.toString(), "ether"); // Convert ethValue to wei
+    try {
+      await contract.methods
+        .buyTokens(accounts[0])
+        .send({ value: weiAmount, from: accounts[0] });
+      console.log("Tokens bought successfully");
+    } catch (error) {
+      console.error("Error buying tokens", error);
+    }
   };
 
   return (
@@ -54,19 +108,19 @@ const Presale = () => {
         {isWalletConnected ? (
           <button>{walletAddress.slice(0, 12) + "..."}</button>
         ) : (
-          <button onClick={() => connectWallet()}>Connect Wallet</button>
+          <button onClick={connectWallet}>Connect Wallet</button>
         )}
       </div>
 
       <div className="buy_form">
         <h1>BUY $ARB</h1>
         <h3>
-          <img src={info_icon} />
+          <img src={info_icon} alt="info icon" />
           YOU CAN ONLY BUY IN <span>$10</span> INCREMENTS
         </h3>
         <div className="form-container">
           <div>
-            <form className="form">
+            <form className="form" onSubmit={buyTokens}>
               <div className="form-item">
                 {error && <p className="error-txt">{error}</p>}
                 <label>From</label>
@@ -82,7 +136,7 @@ const Presale = () => {
                     <p>Ex.$10,$20..(ETH Equivalent)</p>
                   </div>
                   <div className="input-txt">
-                    <img src={eth_tickers} />
+                    <img src={eth_tickers} alt="eth tickers" />
                     ETH
                   </div>
                 </div>
@@ -98,12 +152,12 @@ const Presale = () => {
                     onChange={(e) => convertArbToEth(e.target.value)}
                   />
                   <div className="input-txt">
-                    <img src={arb_tickers} />
+                    <img src={arb_tickers} alt="arb tickers" />
                     ARB
                   </div>
                 </div>
               </div>
-              <button type='submit'>BUY</button>
+              <button type="submit">BUY</button>
             </form>
           </div>
 
@@ -135,10 +189,9 @@ const Presale = () => {
           </div>
         </div>
       </div>
-      <ContractAddr/>
 
       <div className="footer-img">
-        <img src={presale} />
+        <img src={presale} alt="presale" />
       </div>
     </Wrapper>
   );

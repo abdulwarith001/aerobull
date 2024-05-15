@@ -40,6 +40,7 @@ export default function WinnerErrorModal({ isOpen, setIsOpen }) {
     return value < 10 ? `0${value}` : value;
   };
 
+ 
   return (
     <Wrapper>
       <div
