@@ -220,6 +220,7 @@ const Presale = () => {
                       type="number"
                       placeholder="ENTER USD"
                       required
+                      readOnly
                       value={usdValue}
                       onChange={handleUsdInputChange}
                     />
