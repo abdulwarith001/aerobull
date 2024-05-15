@@ -283,11 +283,11 @@ const Presale = () => {
             </div>
             <div className="item">
               <span>min contribution</span>
-              <span>0.1 usd</span>
+              <span>5 usd</span>
             </div>
             <div className="item">
               <span>max contribution</span>
-              <span>0.5 eth</span>
+              <span>500 usd</span>
             </div>
           </div>
         </div>
