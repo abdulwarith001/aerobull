@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios"; // Import Axios for making API requests
+import axios from "axios";
 import Wrapper from "../assets/wrappers/Presale";
 import eth_tickers from "../assets/images/eth_tickers.png";
 import arb_tickers from "../assets/images/arb_tickers.png";
@@ -8,9 +8,9 @@ import info_icon from "../assets/images/info_icon.png";
 import up_arr from "../assets/images/up_arr.png";
 import down_arr from "../assets/images/down_arr.png";
 import Web3 from "web3";
-import SaleContractABI from "../ARB.json"; // Ensure this is the correct path to your ABI JSON file
+import SaleContractABI from "../ARB.json";
 
-const contractAddress = "0x979E73dfa7B9bF414e962747971809c00a0683b2"; // Ensure this is the correct address of your deployed contract
+const contractAddress = "0x979E73dfa7B9bF414e962747971809c00a0683b2";
 
 const Presale = () => {
   const [isWalletConnected, setIsWalletConnected] = useState(false);
@@ -24,7 +24,7 @@ const Presale = () => {
   const [contract, setContract] = useState(null);
   const [ethConversionRate, setEthConversionRate] = useState(null);
   const [multipleIndex, setMultipleIndex] = useState(-1);
-  const baseValue = 200; // Assuming baseValue is used to convert USD to ARB
+  const baseValue = 200;
 
   const connectWallet = async () => {
     try {
@@ -33,6 +33,7 @@ const Presale = () => {
       });
       setWalletAddress(accounts[0]);
       setIsWalletConnected(true);
+      setAccounts(accounts);
     } catch (error) {
       console.error("Error connecting wallet:", error);
       alert("Something went wrong while connecting, try again!");
@@ -56,8 +57,8 @@ const Presale = () => {
       setError("Error fetching conversion rate. Please try again later.");
       return null;
     }
-    const ethValue = value / ethConversionRate; // Conversion rate is in USD per ETH
-    return ethValue.toFixed(6); // Format to 6 decimal places for precision
+    const ethValue = value / ethConversionRate;
+    return ethValue.toFixed(6);
   };
 
   const handleUsdInputChange = (e) => {
@@ -128,9 +129,9 @@ const Presale = () => {
         const web3Instance = new Web3(window.ethereum);
         setWeb3(web3Instance);
         try {
-          // await window.ethereum.enable();
-          // const accs = await web3Instance.eth.getAccounts();
-          // setAccounts(accs);
+          const accs = await web3Instance.eth.getAccounts();
+          setAccounts(accs);
+          setWalletAddress(accs[0]);
 
           if (!SaleContractABI || !Array.isArray(SaleContractABI)) {
             throw new Error("Invalid ABI format");
@@ -156,28 +157,41 @@ const Presale = () => {
     fetchInitialConversionRate();
   }, []);
 
+  const checkBalance = async (ethAmount) => {
+    if (!web3 || !walletAddress) return false;
+    const balanceWei = await web3.eth.getBalance(walletAddress);
+    const balanceEth = web3.utils.fromWei(balanceWei, "ether");
+    return parseFloat(balanceEth) >= parseFloat(ethAmount);
+  };
+
   const buyTokensInUSD = async (e) => {
     e.preventDefault();
     if (!isWalletConnected) {
       alert("Wallet not connected...");
-      return
+      return;
     }
     if (!contract) {
       console.error("Smart contract not loaded");
       return;
     }
     const usdAmount = parseFloat(usdValue);
-    const ethAmount = web3.utils.toWei(ethValue.toString(), "ether"); // Convert ethValue to wei
+    const ethAmount = web3.utils.toWei(ethValue.toString(), "ether");
+
+    const hasEnoughBalance = await checkBalance(ethValue);
+    if (!hasEnoughBalance) {
+      alert("Insufficient balance in wallet.");
+      return;
+    }
+
     try {
       await contract.methods
         .buyTokensInUSD(usdAmount)
         .send({ value: ethAmount, from: walletAddress });
       console.log("Tokens bought successfully");
     } catch (error) {
-      alert(error.message)
+      alert(error.message);
     }
   };
-
   return (
     <Wrapper>
       <div className="header-container">
