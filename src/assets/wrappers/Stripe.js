@@ -37,12 +37,12 @@ const Wrapper = styled.section`
       display: flex;
       justify-content: space-around;
       align-items: center;
-      padding: 7.39px 0;
+      padding: 14px 0;
       border-bottom: 1.23px solid black;
       width: 100%;
       span {
         font-weight: 400;
-        font-size: 9.85px;
+        font-size: 20px;
         line-height: 11.79px;
         color: #ddf1ff;
         text-shadow: 3px 3px black;

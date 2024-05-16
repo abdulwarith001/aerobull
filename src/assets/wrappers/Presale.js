@@ -39,12 +39,12 @@ const Wrapper = styled.section`
     justify-content: flex-end;
   }
 
-  .top-and-down{
+  .top-and-down {
     display: flex;
     gap: 0.2em;
     align-items: center;
-    img{
-      cursor:pointer;
+    img {
+      cursor: pointer;
     }
   }
 
@@ -129,7 +129,7 @@ const Wrapper = styled.section`
         padding: 88px 72px;
         margin-top: 1em;
         background-image: url(${presale_bg});
-          background-position: center;
+        background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
         object-fit: cover;
@@ -173,8 +173,6 @@ const Wrapper = styled.section`
             text-transform: uppercase;
             color: white;
           }
-
-         
         }
       }
       .form {
@@ -286,11 +284,12 @@ const Wrapper = styled.section`
   @media (max-width: 992px) {
     padding: 1em;
     .header-container {
+      padding-right: 0.5em;
       button {
-        padding: 3.5px 17.52px 5.26px 17.52px;
+        padding: 7.5px 12.52px;
         border: 1.31px solid black;
         border-radius: 17.96px;
-        font-size: 12px;
+        font-size: 16px;
         line-height: 14.36px;
         box-shadow: -1px 1px black;
       }
@@ -298,7 +297,7 @@ const Wrapper = styled.section`
 
     .buy_form {
       h1 {
-        font-size: 24px;
+        font-size: 35px;
         text-shadow: -0.96px 0.96px black;
       }
 
@@ -310,7 +309,7 @@ const Wrapper = styled.section`
         /* height: 323.15px; */
 
         .form2 {
-          width: 347.29px;
+          width: 300.29px;
           padding: 24px;
           /* background-image: url(${BgImage}); */
           border: 2.01px solid black;
@@ -326,20 +325,21 @@ const Wrapper = styled.section`
             gap: 16px;
             border-bottom: 2px solid black;
             span {
-              font-size: 10.71px;
+              font-size: 15.71px;
               line-height: 12.82px;
               letter-spacing: 1.5px;
             }
           }
         }
         .form3 {
-          width: 347.29px;
+          width: 310.29px;
           padding: 24px;
           /* background-image: url(${BgImage}); */
           border: 2.01px solid black;
           box-shadow: -2px 2px black;
           border-radius: 16.07px;
           gap: 24px;
+          margin-top: -6em;
           .txt-container {
             font-size: 24px;
             text-shadow: 1px 1px black;
@@ -361,6 +361,8 @@ const Wrapper = styled.section`
         }
         .form {
           /* width: 537px; */
+          width: 310.29px;
+
           padding: 24px 16px;
           /* background-image: url(${BgImage}); */
           border: 2.01px solid black;
@@ -369,7 +371,6 @@ const Wrapper = styled.section`
           /* gap: 21.43em; */
 
           button {
-            background: #ffda88;
             padding: 10.71px 21.43px;
             border-radius: 16px;
             border: 2.01px solid black;
@@ -381,32 +382,36 @@ const Wrapper = styled.section`
 
           .form-item {
             padding: 16px;
-            gap: 21.43px;
+            gap: 15.43px;
             border: 2.01px solid black;
             border-radius: 16.07px;
             label {
-              font-size: 10.71px;
-              line-height: 12.82px;
+              font-size: 15.71px;
+              line-height: 18.82px;
               letter-spacing: 1.5px;
             }
 
             .input-wrapper {
               height: 34.43px;
+              width: fit-content;
               input {
-                font-size: 10.71px;
+                font-size: 15.71px;
                 letter-spacing: 1.5px;
-                line-height: 12.82px;
+                line-height: 18.82px;
                 height: 100%;
                 width: 70%;
               }
 
               .input-txt {
-                padding: 10.71px;
-                border: 2.01px solid black;
-                border-radius: 5.36px;
-                font-size: 10.71px;
-                line-height: 12.82px;
-                letter-spacing: 1.5px;
+                gap: 4px;
+                padding: 5px;
+                border: 3px solid black;
+                background: white;
+                border-radius: 8px;
+                font-size: 12px;
+                line-height: 19.15px;
+                letter-spacing: 3px;
+                font-family: "MilkyNice", sans-serif;
               }
             }
           }

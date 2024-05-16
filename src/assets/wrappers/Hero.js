@@ -92,14 +92,15 @@ const Wrapper = styled.section`
 
   .header-txt {
     display: flex;
-    justify-content: flex-end;
-    margin: 1.5em auto 0;
-    width: 100%;
+    // justify-content: flex-end;
+    margin: 2em auto 0;
+    width: 80%;
     .herotxt {
-      font-size: 64px;
+      font-size: 76px;
       text-transform: uppercase;
       color: white;
       /* text-align: justify; */
+      letter-spacing: 1px;
       font-family: "MilkyNice", sans-serif;
     }
 
@@ -122,7 +123,7 @@ const Wrapper = styled.section`
   }
 
   @media (max-width: 992px) {
-    height: 100vh;
+    height: fit-content;
     padding: 0 0 1em;
     .header {
       h2 {
@@ -136,7 +137,7 @@ const Wrapper = styled.section`
     }
 
     .milkyguy {
-      margin: -7em 5em 0 0;
+      margin: -12em 11em 0 0;
       display: flex;
       justify-content: space-around;
       align-items: flex-end;
@@ -169,14 +170,30 @@ const Wrapper = styled.section`
       background-repeat: no-repeat;
       object-fit: cover;
     }
-    .firstcomma {
-      font-size: 23.61px;
-      line-height: 28.26px;
-      margin-top: 2em;
-      /* text-transform: uppercase;
+
+    .header-txt {
+      display: flex;
+      // justify-content: flex-end;
+      margin: 0.5em auto 0;
+      width: 100%;
+      .herotxt {
+        font-size: 70px;
+        text-transform: uppercase;
+        color: white;
+        /* text-align: justify; */
+        letter-spacing: 1px;
+        font-family: "MilkyNice", sans-serif;
+      }
+
+      .firstcomma {
+        font-size: 23.61px;
+        line-height: 28.26px;
+        margin-top: 2em;
+        /* text-transform: uppercase;
       color: white;
       text-align: justify;
       font-family: "MilkyNice", sans-serif; */
+      }
     }
     .secondcomma {
       font-size: 23.61px;

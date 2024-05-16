@@ -204,10 +204,10 @@ const Presale = () => {
 
       <div className="buy_form">
         <h1>BUY $ARB</h1>
-        <h3>
+        {/* <h3>
           <img src={info_icon} alt="info icon" />
           YOU CAN ONLY BUY IN <span>$5</span> INCREMENTS
-        </h3>
+        </h3> */}
         <div className="form-container">
           <div>
             <form className="form" onSubmit={buyTokensInUSD}>

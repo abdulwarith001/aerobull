@@ -87,23 +87,23 @@ const Wrapper = styled.section`
 
   @media (max-width: 992px) {
     /* display: none; */
-    padding: 2em 0;
+    padding: 1em 0;
 
     h1 {
       color: #f7b94f;
       text-shadow: 3px 3px black;
-      font-size: 29.47px;
-      line-height: 35.28px;
+      font-size: 39.47px;
+      line-height: 45.28px;
     }
 
     h2 {
-      font-size: 19.25px;
+      font-size: 25.25px;
       text-shadow: 3px 3px black;
       margin-top: 0.2em;
     }
 
     .aero_container {
-      padding: 24.56px;
+      padding: 20.56px;
       gap: 4px;
       border: 0.92px solid black;
       box-shadow: -1px 1px black;
@@ -113,7 +113,7 @@ const Wrapper = styled.section`
 
       .content {
         width: 270.2px;
-        height: 120.98px;
+        height: fit-content;
 
         .item_wrapper {
           gap: 6.63px;
@@ -122,15 +122,15 @@ const Wrapper = styled.section`
           .item {
             gap: 4.42px;
             span {
-              font-size: 8.84px;
-              line-height: 10.58px;
+              font-size: 12.84px;
+              line-height: 17.58px;
             }
           }
         }
       }
 
       h4 {
-        font-size: 15.47px;
+        font-size: 25.47px;
         line-height: 18.52px;
         text-shadow: 2px 2px black;
       }

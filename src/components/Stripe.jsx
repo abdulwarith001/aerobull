@@ -22,10 +22,6 @@ const Stripe = () => {
         <span>$ARB</span>
         <span>$ARB</span>
         <span>$ARB</span>
-        <span>$ARB</span>
-        <span>$ARB</span>
-        <span>$ARB</span>
-        <span>$ARB</span>
       </div>
     </Wrapper>
   );

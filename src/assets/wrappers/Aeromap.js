@@ -258,6 +258,7 @@ const Wrapper = styled.section`
 
   @media (max-width: 992px) {
     /* display: none; */
+    padding: 0.5em 0 4em;
 
     .img,
     .img2,
@@ -281,11 +282,11 @@ const Wrapper = styled.section`
 
     h1 {
       line-height: 35.28px;
-      font-size: 29.47px;
+      font-size: 45px;
       text-shadow: 2px 2px black;
     }
     .head-txt {
-      font-size: 18.31px;
+      font-size: 40px;
       line-height: 21.92px;
       text-shadow: 0.92px 0.92px black;
       /* img {
@@ -301,24 +302,29 @@ const Wrapper = styled.section`
     }
 
     .maps {
-      margin-top: 4em;
-      width: 309px;
+      margin-top: 2em;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
 
       .mapArr {
         align-items: flex-start;
         position: relative;
+        width: 90%;
       }
       .mapArr3 {
-        margin-top: 4em;
+        margin-top: 1em;
       }
       .mapArr2 {
-        margin-top: 4em;
+        margin-top: 1em;
       }
       .map-head {
         display: flex;
         position: relative;
         h4 {
-          font-size: 18.31px;
+          font-size: 28px;
           line-height: 21.92px;
           text-shadow: 0.92px 0.92px black;
         }
@@ -373,14 +379,14 @@ const Wrapper = styled.section`
         }
       }
       i {
-        font-size: 9.16px;
-        line-height: 10.96px;
+        font-size: 12px;
+        line-height: 14.96px;
         text-shadow: 1px 1px black;
       }
 
       span {
-        font-size: 7.32px;
-        line-height: 9.23px;
+        font-size: 11px;
+        line-height: 14.23px;
       }
     }
 
@@ -395,19 +401,19 @@ const Wrapper = styled.section`
       margin-top: 1.5em;
       /* height: 47.65px; */
       display: flex;
-      gap: 5px;
+      gap: 25px;
       flex-direction: column;
 
       div {
         display: flex;
         gap: 5px;
-         p {
-          font-size: 7.32px;
-          line-height: 9.23px;
+        p {
+          font-size: 11px;
+          line-height: 16.23px;
         }
       }
 
-        /* display: flex;
+      /* display: flex;
         align-items: center;
         margin-top: 0.2em;
         gap: 1px;

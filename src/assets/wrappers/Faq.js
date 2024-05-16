@@ -73,7 +73,7 @@ const Wrapper = styled.section`
 
   @media (max-width: 992px) {
     /* display: none; */
-    padding: 2em 0  4em 0.2em;
+    padding: 2em 0  4em 0;
 
     .desktop{
       display: none;
@@ -83,21 +83,22 @@ const Wrapper = styled.section`
     }
 
     h1 {
-      font-size: 29.57px;
+      margin-left: 0.5em;
+      font-size: 40.57px;
       line-height: 35.39px;
       text-shadow: -4px 4px black;
     }
 
     .faq_wrapper {
       width: 330.72px;
-      gap: 8.62px;
+      gap: 10.62px;
       margin-top: 1em;
 
       .faq {
         background: white;
         height: fit-content;
         width: 100%;
-        padding: 4.93px;
+        padding: 10px;
         border: 3px solid black;
         border-radius: 17.25px;
         box-shadow: -3px 3px black;
@@ -108,8 +109,8 @@ const Wrapper = styled.section`
 
         .answer {
           margin-left: 2em;
-          font-size: 7.39px;
-          line-height: 9.31px;
+          font-size: 10.39px;
+          line-height: 13.31px;
         }
 
         .question {
@@ -117,9 +118,9 @@ const Wrapper = styled.section`
           justify-content: space-between;
           align-items: center;
           p {
-            font-size: 12.32px;
-            line-height: 14.75px;
-            margin-left: 2em;
+            font-size: 17.32px;
+            line-height: 23.75px;
+            margin-left: 1em;
             text-shadow: -0.56px 0.56px black;
             -webkit-text-stroke: 1px black; /* For WebKit browsers like Chrome and Safari */
            

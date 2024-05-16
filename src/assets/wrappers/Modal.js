@@ -150,14 +150,14 @@ const WinnerErrorWrapper = styled.section`
         text-align: center;
         h1 {
           text-shadow: -2px 2px black;
-          font-size: 25.27px;
-          line-height: 30.24px;
+          font-size: 40.27px;
+          line-height: 45.24px;
         }
 
         h4 {
-          margin-top: 0.8em;
-          font-size: 6.32px;
-          line-height: 7.56px;
+          margin-top: 0.2em;
+          font-size: 22px;
+          line-height: 15px;
           letter-spacing: 2px;
         }
 
@@ -184,8 +184,8 @@ const WinnerErrorWrapper = styled.section`
               line-height: 30.24px;
             }
             p {
-              font-size: 5.53px;
-              line-height: 6.96px;
+              font-size:7.3px;
+              line-height: 10.96px;
             }
           }
         }

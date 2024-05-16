@@ -40,7 +40,7 @@ const Wrapper = styled.section`
     }
 
     h1 {
-      font-size: 19.65px;
+      font-size: 25px;
       line-height: 23.52px;
       text-shadow: -2px 2px black;
       -webkit-text-stroke: 1px black;

@@ -115,17 +115,17 @@ const Wrapper = styled.footer`
   @media (max-width: 992px) {
     /* display: none; */
     padding-left: 2em;
-    padding-top: 2em;
+    padding-top: 1em;
     h1 {
-      font-size: 39.4px;
-      line-height: 47.16px;
+      font-size: 45.4px;
+      line-height: 55.16px;
       text-shadow: -2px 2px black;
     }
 
     h3 {
-      font-size: 14.78px;
-      line-height: 17.69px;
-      margin-top: 1em;
+      font-size: 17.78px;
+      line-height: 23.69px;
+      margin-top: 0.5em;
       text-shadow: -2px 2px black;
       -webkit-text-stroke: 1px black; /* For WebKit browsers like Chrome and Safari */
     }
@@ -147,13 +147,13 @@ const Wrapper = styled.footer`
       border-radius: 17.25px;
       border: 1.5px solid black;
       gap: 7.39px;
-      width: 105.79px;
-      height: 32.01px;
+      width: 115.79px;
+      height: fit-content;
       margin-top: 3em;
 
       p {
-        line-height: 15.51px;
-        font-size: 12.31px;
+        line-height: 11.51px;
+        font-size: 15.31px;
       }
     }
     .mobile {
@@ -167,8 +167,8 @@ const Wrapper = styled.footer`
       height: 1em;
       width: fit-content;
       h4 {
-        font-size: 11.08px;
-        line-height: 13.26px;
+        font-size: 15.08px;
+        line-height: 17.26px;
         text-shadow: -0.5px 0.5px black;
         margin: 4em 0;
       }

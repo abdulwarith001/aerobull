@@ -81,7 +81,7 @@ const Wrapper = styled.section`
     padding: 1.5em 0 3em;
     gap: 0.5em;
     h1 {
-      font-size: 17.86px;
+      font-size: 30px;
       text-shadow: 2px 2px black;
       line-height: 21.37px;
     }
@@ -94,13 +94,13 @@ const Wrapper = styled.section`
       gap: 7.39px;
       margin-top: 1em;
       box-shadow: -2px 2px black;
-      width: 278.25px;
+      width: 80%;
       padding: 4.93px;
 
       input {
-        font-size: 9.85px;
+        font-size: 15px;
         line-height: 12.41px;
-        width: 193px;
+        width: 220px;
         height: 12px;
       }
 
@@ -122,7 +122,7 @@ const Wrapper = styled.section`
         padding: 16px 32px;
         border-radius: 17.25px;
         gap: 3.02px;
-        font-size: 9.85px;
+        font-size: 15px;
         line-height: 12.41px;
       }
     }

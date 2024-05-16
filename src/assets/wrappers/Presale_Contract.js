@@ -77,30 +77,29 @@ const Wrapper = styled.section`
 
   @media (max-width: 992px) {
     /* display: none; */
-    padding: 1.5em 0 3em;
+    padding: 4em 0 3em 0;
     gap: 0.5em;
     h1 {
-      font-size: 17.86px;
+      font-size: 27.86px;
       text-shadow: 2px 2px black;
-      line-height: 21.37px;
+      line-height: 33.37px;
     }
 
     .inputWrapper {
       background: white;
       border: 0.92px solid black;
-      height: 31.7px;
+      height: fit-content;
       border-radius: 17.25px;
       gap: 7.39px;
-      margin-top: 1em;
+      margin-top: 0.5em;
       box-shadow: -2px 2px black;
-      width: 278.25px;
+      width: 90%;
       padding: 4.93px;
 
       input {
-        font-size: 9.85px;
-        line-height: 12.41px;
-        width: 193px;
-        height: 12px;
+        font-size: 18px;
+        line-height: 22.41px;
+        /* width: 193px; */
       }
 
       .mobile {
@@ -121,7 +120,7 @@ const Wrapper = styled.section`
         padding: 16px 32px;
         border-radius: 17.25px;
         gap: 3.02px;
-        font-size: 9.85px;
+        font-size: 14.85px;
         line-height: 12.41px;
       }
     }
