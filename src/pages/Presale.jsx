@@ -4,11 +4,12 @@ import Wrapper from "../assets/wrappers/Presale";
 import eth_tickers from "../assets/images/eth_tickers.png";
 import arb_tickers from "../assets/images/arb_tickers.png";
 import presale from "../assets/images/presale.png";
-import info_icon from "../assets/images/info_icon.png";
 import up_arr from "../assets/images/up_arr.png";
 import down_arr from "../assets/images/down_arr.png";
 import Web3 from "web3";
 import SaleContractABI from "../ARB.json";
+import { useMetaMask } from "metamask-react";
+import Presale_Contract_Addr from '../components/Presale_Contract_Addr'
 
 const contractAddress = "0x979E73dfa7B9bF414e962747971809c00a0683b2";
 
@@ -25,20 +26,18 @@ const Presale = () => {
   const [ethConversionRate, setEthConversionRate] = useState(null);
   const [multipleIndex, setMultipleIndex] = useState(-1);
   const baseValue = 200;
+  const { status, connect, account, chainId, ethereum,  } = useMetaMask();
 
-  const connectWallet = async () => {
-    try {
-      const accounts = await window.ethereum.request({
-        method: "eth_requestAccounts",
-      });
-      setWalletAddress(accounts[0]);
+
+   useEffect(() => {
+    if (status === "connected") {
       setIsWalletConnected(true);
-      setAccounts(accounts);
-    } catch (error) {
-      console.error("Error connecting wallet:", error);
-      alert("Something went wrong while connecting, try again!");
+      setWalletAddress(account);
+    } else {
+      setIsWalletConnected(false);
+      setWalletAddress(null);
     }
-  };
+  }, [status, account]);
 
   const fetchEthConversionRate = async () => {
     try {
@@ -192,11 +191,37 @@ const Presale = () => {
       alert(error.message);
     }
   };
+
+  
+  const connectWallet = async () => {
+    if (ethereum && ethereum.isMetaMask) {
+      try {
+        connect()
+      } catch (error) {
+        console.error("Error connecting wallet:", error);
+        alert("No wallet found!");
+      }
+    } else {
+      let wallet = prompt("Please enter your wallet address");
+      if(wallet === null || wallet === ''){
+        alert('Please enter wallet address to continue!')
+      }else{
+        setIsWalletConnected(true);
+      setWalletAddress(wallet);
+      }
+    }
+  };
+
+  const disconnectWallet = async()=>{
+    disconnect()
+    setIsWalletConnected(false)
+      setWalletAddress(null);
+  }
   return (
     <Wrapper>
       <div className="header-container">
         {isWalletConnected ? (
-          <button>{walletAddress.slice(0, 12) + "..."}</button>
+          <button onClick={disconnectWallet}>{walletAddress.slice(0, 12) + "..."}</button>
         ) : (
           <button onClick={connectWallet}>Connect Wallet</button>
         )}
@@ -294,6 +319,7 @@ const Presale = () => {
         </div>
       </div>
 
+<Presale_Contract_Addr/>
       <div className="footer-img">
         <img src={presale} alt="presale" />
       </div>
