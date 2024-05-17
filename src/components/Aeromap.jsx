@@ -415,8 +415,8 @@ const Aeromap = () => {
             </div>
           </div>
         </div>
-      </div>
       {/* </div> */}
+      </div>
     </Wrapper>
   );
 };

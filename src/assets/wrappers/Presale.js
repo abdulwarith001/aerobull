@@ -297,6 +297,15 @@ const Wrapper = styled.section`
         box-shadow: -1px 1px black;
       }
     }
+    .footer-img {
+      display: flex;
+      justify-content: center;
+      img{
+        width: 40%; 
+      }
+    }
+
+    
 
     .buy_form {
       h1 {
