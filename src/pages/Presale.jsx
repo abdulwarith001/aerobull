@@ -8,36 +8,66 @@ import up_arr from "../assets/images/up_arr.png";
 import down_arr from "../assets/images/down_arr.png";
 import Web3 from "web3";
 import SaleContractABI from "../ARB.json";
-import { useMetaMask } from "metamask-react";
-import Presale_Contract_Addr from '../components/Presale_Contract_Addr'
+import { useWeb3Modal } from "@web3modal/ethers/react";
+import {
+  useWeb3ModalProvider,
+  useWeb3ModalAccount,
+} from "@web3modal/ethers/react";
+import Presale_Contract_Addr from "../components/Presale_Contract_Addr";
 
 const contractAddress = "0x979E73dfa7B9bF414e962747971809c00a0683b2";
+const tokenContractAddress = "0x40a9f78879595e961Fda688c69537c3529777426";
+const baseValue = 200;
+const multiples = [5, 10, 20, 40, 60, 80, 100, 200, 300, 400, 500];
 
 const Presale = () => {
-  const [isWalletConnected, setIsWalletConnected] = useState(false);
   const [usdValue, setUsdValue] = useState("");
   const [ethValue, setEthValue] = useState("");
   const [arbValue, setArbValue] = useState("");
   const [error, setError] = useState(null);
-  const [walletAddress, setWalletAddress] = useState(null);
-  const [accounts, setAccounts] = useState([]);
-  const [web3, setWeb3] = useState(null);
-  const [contract, setContract] = useState(null);
   const [ethConversionRate, setEthConversionRate] = useState(null);
   const [multipleIndex, setMultipleIndex] = useState(-1);
-  const baseValue = 200;
-  const { status, connect, account, chainId, ethereum,  } = useMetaMask();
+  const [web3, setWeb3] = useState(null);
+  const [contract, setContract] = useState(null);
+  const [balance, setBalance] = useState(0);
 
+  const { open } = useWeb3Modal();
+  const { address, isConnected } = useWeb3ModalAccount();
+  const { walletProvider } = useWeb3ModalProvider();
 
-   useEffect(() => {
-    if (status === "connected") {
-      setIsWalletConnected(true);
-      setWalletAddress(account);
-    } else {
-      setIsWalletConnected(false);
-      setWalletAddress(null);
-    }
-  }, [status, account]);
+  useEffect(() => {
+    const initWeb3 = async () => {
+      if (window.ethereum) {
+        const web3Instance = new Web3(window.ethereum);
+        setWeb3(web3Instance);
+        try {
+          const accs = await web3Instance.eth.getAccounts();
+          const balance = await web3Instance.eth.getBalance(accs[0]);
+          setBalance(web3Instance.utils.fromWei(balance, "ether"));
+
+          if (!SaleContractABI || !Array.isArray(SaleContractABI)) {
+            throw new Error("Invalid ABI format");
+          }
+
+          const instance = new web3Instance.eth.Contract(
+            SaleContractABI,
+            contractAddress
+          );
+          setContract(instance);
+        } catch (error) {
+          console.error("Error connecting to blockchain", error);
+        }
+      }
+    };
+
+    const fetchInitialConversionRate = async () => {
+      const rate = await fetchEthConversionRate();
+      setEthConversionRate(rate);
+    };
+
+    initWeb3();
+    fetchInitialConversionRate();
+  }, []);
 
   const fetchEthConversionRate = async () => {
     try {
@@ -88,11 +118,8 @@ const Presale = () => {
     setArbValue(arb);
   };
 
-  const multiples = [5, 10, 20, 40, 60, 80, 100, 200, 300, 400, 500];
-
   const incrementMultiples = () => {
     if (multipleIndex >= multiples.length - 1) return;
-
     setMultipleIndex((prevIndex) => {
       const newIndex = prevIndex + 1;
       const usd = multiples[newIndex];
@@ -108,7 +135,6 @@ const Presale = () => {
 
   const decrementMultiples = () => {
     if (multipleIndex === 0) return;
-
     setMultipleIndex((prevIndex) => {
       const newIndex = prevIndex - 1;
       const usd = multiples[newIndex];
@@ -122,50 +148,9 @@ const Presale = () => {
     });
   };
 
-  useEffect(() => {
-    const initWeb3 = async () => {
-      if (window.ethereum) {
-        const web3Instance = new Web3(window.ethereum);
-        setWeb3(web3Instance);
-        try {
-          const accs = await web3Instance.eth.getAccounts();
-          setAccounts(accs);
-          setWalletAddress(accs[0]);
-
-          if (!SaleContractABI || !Array.isArray(SaleContractABI)) {
-            throw new Error("Invalid ABI format");
-          }
-
-          const instance = new web3Instance.eth.Contract(
-            SaleContractABI,
-            contractAddress
-          );
-          setContract(instance);
-        } catch (error) {
-          console.error("Error connecting to blockchain", error);
-        }
-      }
-    };
-
-    const fetchInitialConversionRate = async () => {
-      const rate = await fetchEthConversionRate();
-      setEthConversionRate(rate);
-    };
-
-    initWeb3();
-    fetchInitialConversionRate();
-  }, []);
-
-  const checkBalance = async (ethAmount) => {
-    if (!web3 || !walletAddress) return false;
-    const balanceWei = await web3.eth.getBalance(walletAddress);
-    const balanceEth = web3.utils.fromWei(balanceWei, "ether");
-    return parseFloat(balanceEth) >= parseFloat(ethAmount);
-  };
-
   const buyTokensInUSD = async (e) => {
     e.preventDefault();
-    if (!isWalletConnected) {
+    if (!isConnected) {
       alert("Wallet not connected...");
       return;
     }
@@ -173,66 +158,56 @@ const Presale = () => {
       console.error("Smart contract not loaded");
       return;
     }
+
     const usdAmount = parseFloat(usdValue);
+    if (isNaN(usdAmount) || usdAmount <= 0) {
+      alert("Please enter a valid USD amount.");
+      return;
+    }
+
     const ethAmount = web3.utils.toWei(ethValue.toString(), "ether");
 
-    const hasEnoughBalance = await checkBalance(ethValue);
-    if (!hasEnoughBalance) {
-      alert("Insufficient balance in wallet.");
+    const userBalance = await web3.eth.getBalance(address);
+    const userBalanceInEth = web3.utils.fromWei(userBalance, "ether");
+
+    if (parseFloat(userBalanceInEth) < parseFloat(ethValue)) {
+      alert("Insufficient balance");
       return;
     }
 
     try {
       await contract.methods
         .buyTokensInUSD(usdAmount)
-        .send({ value: ethAmount, from: walletAddress });
-      console.log("Tokens bought successfully");
+        .send({ value: ethAmount, from: address });
+      alert("Tokens bought successfully");
+
+      //  await contract.methods
+      //    .transferTokensToWallet(tokenContractAddress, address, arbValue)
+      //    .send({ from: address });
+      // console.log("Tokens transffered successfully");
     } catch (error) {
       alert(error.message);
     }
   };
-
-  
-  const connectWallet = async () => {
-    if (ethereum && ethereum.isMetaMask) {
-      try {
-        connect()
-      } catch (error) {
-        console.error("Error connecting wallet:", error);
-        alert("No wallet found!");
-      }
-    } else {
-      let wallet = prompt("Please enter your wallet address");
-      if(wallet === null || wallet === ''){
-        alert('Please enter wallet address to continue!')
-      }else{
-        setIsWalletConnected(true);
-      setWalletAddress(wallet);
-      }
-    }
+  const openMetaMask = () => {
+    const dappUrl = "https://aerobull.netlify.app";
+    const metaMaskUrl = `https://metamask.app.link/dapp/${dappUrl}`;
+    window.location.href = metaMaskUrl;
   };
 
-  const disconnectWallet = async()=>{
-    disconnect()
-    setIsWalletConnected(false)
-      setWalletAddress(null);
-  }
+  
   return (
     <Wrapper>
       <div className="header-container">
-        {isWalletConnected ? (
-          <button onClick={disconnectWallet}>{walletAddress.slice(0, 12) + "..."}</button>
+        {isConnected ? (
+          <button onClick={() => open()}>{address.slice(0, 12) + "..."}</button>
         ) : (
-          <button onClick={connectWallet}>Connect Wallet</button>
+          <button onClick={() => open()}>Connect Wallet</button>
         )}
       </div>
-
+      {/* <button onClick={openMetaMask}>Open in MetaMask</button> */}
       <div className="buy_form">
         <h1>BUY $ARB</h1>
-        {/* <h3>
-          <img src={info_icon} alt="info icon" />
-          YOU CAN ONLY BUY IN <span>$5</span> INCREMENTS
-        </h3> */}
         <div className="form-container">
           <div>
             <form className="form" onSubmit={buyTokensInUSD}>
@@ -317,11 +292,6 @@ const Presale = () => {
             </div>
           </div>
         </div>
-      </div>
-
-<Presale_Contract_Addr/>
-      <div className="footer-img">
-        <img src={presale} alt="presale" />
       </div>
     </Wrapper>
   );
