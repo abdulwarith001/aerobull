@@ -150,6 +150,13 @@ const Presale = () => {
 
   const buyTokensInUSD = async (e) => {
     e.preventDefault();
+       if (typeof window.ethereum === "undefined") {
+         // Redirect to MetaMask mobile app
+         const dappUrl = "https://aerobull.netlify.app"; // Replace with your actual dApp URL
+         const metaMaskUrl = `https://metamask.app.link/dapp/${dappUrl}`;
+         window.location.href = metaMaskUrl;
+         return;
+       }
     if (!isConnected) {
       alert("Wallet not connected...");
       return;
@@ -158,6 +165,7 @@ const Presale = () => {
       console.error("Smart contract not loaded");
       return;
     }
+ 
 
     const usdAmount = parseFloat(usdValue);
     if (isNaN(usdAmount) || usdAmount <= 0) {
@@ -174,6 +182,8 @@ const Presale = () => {
       alert("Insufficient balance");
       return;
     }
+
+     
 
     try {
       await contract.methods
