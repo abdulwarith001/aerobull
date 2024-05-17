@@ -31,7 +31,7 @@ const Hero = () => {
         <div className="milkyguy">
         <img src={aero_back} className="desktop" />
         <img src={mobile_hero} className="mobile" />
-        <h1>Aero</h1>
+        <h1>Aerobull</h1>
       </div>
     </Wrapper>
   );

@@ -7,7 +7,9 @@ import presale from "../assets/images/presale.png";
 import up_arr from "../assets/images/up_arr.png";
 import down_arr from "../assets/images/down_arr.png";
 import Web3 from "web3";
+import { ethers } from "ethers";
 import SaleContractABI from "../ARB.json";
+import ArbTokenABI from "../transferABI.json"; // Import your ARB token ABI here
 import { useWeb3Modal } from "@web3modal/ethers/react";
 import {
   useWeb3ModalProvider,
@@ -29,6 +31,7 @@ const Presale = () => {
   const [multipleIndex, setMultipleIndex] = useState(-1);
   const [web3, setWeb3] = useState(null);
   const [contract, setContract] = useState(null);
+  const [arbContract, setArbContract] = useState(null);
   const [balance, setBalance] = useState(0);
 
   const { open } = useWeb3Modal();
@@ -54,6 +57,12 @@ const Presale = () => {
             contractAddress
           );
           setContract(instance);
+
+          const arbInstance = new web3Instance.eth.Contract(
+            ArbTokenABI,
+            tokenContractAddress
+          );
+          setArbContract(arbInstance);
         } catch (error) {
           console.error("Error connecting to blockchain", error);
         }
@@ -150,22 +159,21 @@ const Presale = () => {
 
   const buyTokensInUSD = async (e) => {
     e.preventDefault();
-       if (typeof window.ethereum === "undefined") {
-         // Redirect to MetaMask mobile app
-         const dappUrl = "https://aerobull.netlify.app"; // Replace with your actual dApp URL
-         const metaMaskUrl = `https://metamask.app.link/dapp/${dappUrl}`;
-         window.location.href = metaMaskUrl;
-         return;
-       }
+    if (typeof window.ethereum === "undefined") {
+      // Redirect to MetaMask mobile app
+      const dappUrl = "https://aerobull.netlify.app"; // Replace with your actual dApp URL
+      const metaMaskUrl = `https://metamask.app.link/dapp/${dappUrl}`;
+      window.location.href = metaMaskUrl;
+      return;
+    }
     if (!isConnected) {
       alert("Wallet not connected...");
       return;
     }
-    if (!contract) {
+    if (!contract || !arbContract) {
       console.error("Smart contract not loaded");
       return;
     }
- 
 
     const usdAmount = parseFloat(usdValue);
     if (isNaN(usdAmount) || usdAmount <= 0) {
@@ -183,29 +191,23 @@ const Presale = () => {
       return;
     }
 
-     
-
     try {
       await contract.methods
         .buyTokensInUSD(usdAmount)
         .send({ value: ethAmount, from: address });
       alert("Tokens bought successfully");
 
-      //  await contract.methods
-      //    .transferTokensToWallet(tokenContractAddress, address, arbValue)
-      //    .send({ from: address });
-      // console.log("Tokens transffered successfully");
+      // Transfer ARB tokens to user
+      // const arbSigner = new ethers.Wallet(
+      //   "8b73f60a9321d1bd2dea109fe4cfd200e80b9535506e2657948bea8a5fb3ccbf",
+      //   ethers.getDefaultProvider()
+      // );
+      // alert("ARB tokens transferred successfully");
     } catch (error) {
       alert(error.message);
     }
   };
-  const openMetaMask = () => {
-    const dappUrl = "https://aerobull.netlify.app";
-    const metaMaskUrl = `https://metamask.app.link/dapp/${dappUrl}`;
-    window.location.href = metaMaskUrl;
-  };
 
-  
   return (
     <Wrapper>
       <div className="header-container">
@@ -276,32 +278,37 @@ const Presale = () => {
           </div>
 
           <div className="form2">
-            <div className="item">
-              <span>token name</span>
-              <span>Aerobull</span>
+            {/* <div className="item">
+              <span>$5</span>
+              <span>1,000</span>
             </div>
             <div className="item">
-              <span>token symbol</span>
-              <span>$arb</span>
+              <span>$10</span>
+              <span>2,000</span>
             </div>
             <div className="item">
-              <span>decimal</span>
-              <span>18</span>
+              <span>$20</span>
+              <span>4,000</span>
             </div>
             <div className="item">
-              <span>token for eth</span>
-              <span>250,000</span>
+              <span>$40</span>
+              <span>8,000</span>
             </div>
             <div className="item">
-              <span>min contribution</span>
-              <span>5 usd</span>
+              <span>$60</span>
+              <span>12,000</span>
             </div>
             <div className="item">
               <span>max contribution</span>
               <span>500 usd</span>
-            </div>
+            </div> */}
           </div>
         </div>
+      </div>
+
+      <Presale_Contract_Addr />
+      <div className="footer-img">
+        <img src={presale} alt="presale" />
       </div>
     </Wrapper>
   );

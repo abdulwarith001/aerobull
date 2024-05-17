@@ -22,7 +22,7 @@ const Wrapper = styled.section`
   }
 
   .milkyguy {
-    margin: -15em 0 0;
+    margin: -10em 0 0;
     display: flex;
     justify-content: space-around;
     align-items: flex-end;
@@ -92,14 +92,14 @@ const Wrapper = styled.section`
 
   .header-txt {
     display: flex;
-    // justify-content: flex-end;
+    justify-content: flex-end;
     margin: 2em auto 0;
     width: 80%;
     .herotxt {
       font-size: 76px;
       text-transform: uppercase;
       color: white;
-      /* text-align: justify; */
+      text-align: justify;
       letter-spacing: 1px;
       font-family: "MilkyNice", sans-serif;
     }
@@ -137,7 +137,7 @@ const Wrapper = styled.section`
     }
 
     .milkyguy {
-      margin: -12em 11em 0 0;
+      margin: -10em 11em 0 0;
       display: flex;
       justify-content: space-around;
       align-items: flex-end;

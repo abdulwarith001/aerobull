@@ -30,6 +30,11 @@ import el_salvador from "../assets/images/el_salvador.png";
 import el_salvador_mobile from "../assets/images/el_salvador_mobile.png";
 import nigeria_mobile from "../assets/images/nigeria_mobile.png";
 import phillipines_mobile from "../assets/images/philippines_mobile.png";
+import els1 from "../assets/images/els1.png";
+import els2 from "../assets/images/els2.png";
+import els3 from "../assets/images/els3.png";
+import els4 from "../assets/images/els4.png";
+import els5 from "../assets/images/els5.png";
 
 const Aeromap = () => {
   return (
@@ -313,69 +318,105 @@ const Aeromap = () => {
             </div>
           </div>
         </div>
-        {/* <div className="mapArr3 extra-map2">
-          <div className="map">
+
+        <div className="mapArr3">
+          <div className="custom-map">
             <div className="map-head">
               <div className="head-txt">
-                Project{" "}
-                <span className="el_salvador">
-                  El Salvador <img src={el_salvador} className="desktop_flag" />
+                <div className="project_n">
+                  Project <img src={el_salvador} className="desktop_flag" />
                   <img src={el_salvador_mobile} className="mobile_flag" />
-                </span>
+                </div>
+                <div className="el_salvador">El Salvador</div>
               </div>
-              <img src={map8} className="img desktop_map" />
-              <img src={map7_mobile} className=" img mobile_map" />
             </div>
-            <div className="content">
+            <div className="project-content">
               <div>
-                <i>1. </i>
-                <span>
-                  Crime Prevention and Public Safety: Implement comprehensive
-                  crime prevention strategies, including community policing,
-                  youth engagement programs, and judicial reforms to reduce
-                  violence and enhance public safety.
-                </span>
+                <p>
+                  Roads, ports, and telecommunications are the main players in
+                  stimulating economic growth within El Salvador. Infrastructure
+                  development will be a principal investment in furthering the
+                  already growing economies efficiency and improving financial
+                  stability. Outside investors are more likely to focus on
+                  building within El Salvador when the ports, trading routes,
+                  and infrastructure are developed and sustained. Ultimately
+                  leading to more jobs and increased overall productivity. Along
+                  with these benefits schools receive additional funding, as
+                  well as hospitals and other utilities.
+                </p>
+                <img src={els1} />
               </div>
               <div>
-                <i>2. </i>
-                <span>
-                  Economic Diversification: Promote economic diversification by
-                  investing in sectors such as renewable energy, tourism, and
-                  technology to reduce dependency on remittances and create
-                  sustainable employment opportunities.
-                </span>
+                <p>
+                  Diversification of funds will be required in order to lead
+                  industries that are preexisting to create new practices, more
+                  efficient than before, that pave a new highway of innovation
+                  for the country. Industries will have new opportunity to
+                  prosper and grow in a healthy dynamic that everyone can
+                  benefit from. This will reinforce the already building
+                  stability behind the jobs created from the booming
+                  infrastructure. As outside investors tap into the new ways
+                  that El Salvador can trade goods, with more efficient stride
+                  and innovation, the funds will of course also spread
+                  throughout the country to schools, healthcare facilities, and
+                  more.
+                </p>
+                <img src={els2} />
               </div>
               <div>
-                <i>3. </i>{" "}
-                <span>
-                  Education and Skills Development: Improve access to quality
-                  education and vocational training programs to equip youth with
-                  the skills needed for the modern job market and foster
-                  innovation and entrepreneurship.
-                </span>
+                <p>
+                  Another key to El Salvador flourishing financially as well as
+                  culturally will be a focus on sustainable urbanization.
+                  Enhancing the quality of living of the country's residents
+                  returns positive growth within communities near and far.
+                  Livable dwelling and access to necessities such as clean
+                  water. Air, and energy are extremely important. With a booming
+                  economy we must safeguard the natural beauty and health of El
+                  Salvador no matter what. Safeguarding materials, resources,
+                  and necessities are required to provide endless generations
+                  with a home that anyone can have the opportunity to be or do
+                  anything they can set their mind to.
+                </p>
+                <img src={els3} />
               </div>
               <div>
-                <i>4. </i>{" "}
-                <span>
-                  Infrastructure Investment: Prioritize infrastructure
-                  development, including transportation, energy, and
-                  telecommunications, to enhance connectivity, attract
-                  investment, and spur economic growth.
-                </span>
+                <p>
+                  As new generations are introduced to new ways of learning,
+                  developing skills that were previously not available to
+                  certain areas will aid in the nourishment of the already
+                  developing infrastructure and economy. El Salvador will become
+                  a stronger and more resilient country on its own accord.
+                  Creators, influencers of all kinds, and innovators will have
+                  access to a higher threshold of potential than before. The
+                  skills and new ways of contributing to society in return are
+                  implemented back into industries, education, infrastructure
+                  development, and more. The entire scope of the country's
+                  leaders for growing within its own borders is reshaped for new
+                  inspiration. Social and economic aspects throughout El
+                  Salvador's beautiful landscape will be preserved but improved
+                  for every living thing.
+                </p>
+                <img src={els4} />
               </div>
               <div>
-                <i>5. </i>{" "}
-                <span>
-                  Social Inclusion and Poverty Reduction: Implement social
-                  programs aimed at reducing inequality, improving access to
-                  healthcare and social services, and addressing the root causes
-                  of poverty to ensure inclusive and sustainable development.
-                </span>
+                <p>
+                  Corruption throughout the government must be combated at all
+                  cost to ensure the healthy sustainability and growth of El
+                  Salvador. Thorough practice of accountability and governance
+                  is required to promote healthy democratic values and trust
+                  throughout institutions and citizens. Transparency amongst
+                  leaders as well as individuals only seeks to benefit all
+                  Salvadorans in the all inclusive endeavor. Resources will be
+                  secure, democratic relations grow, and inclusivity is
+                  generated benefitting all Salvadorans.
+                </p>
+                <img src={els5} />
               </div>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
+      {/* </div> */}
     </Wrapper>
   );
 };

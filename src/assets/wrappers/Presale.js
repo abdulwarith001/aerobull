@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import BgImage from "../images/hero_back.png";
-import presale_bg from "../images/presale_bg.png";
+import presale_bg from "../images/Frame 68.png";
 import presale_bg2 from "../images/presale_bg2.png";
 
 
@@ -91,17 +91,20 @@ const Wrapper = styled.section`
       height: 633px;
 
       .form2 {
-        /* width: 537px; */
-        padding: 88px 72px;
+        height: 648.88px;
+        width: 505px;
         background-image: url(${presale_bg});
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
         object-fit: cover;
-        background-color: white;
-        border: 3px solid black;
-        /* box-shadow: -4px 4px black; */
         border-radius: 24px;
+        border: 3px solid black;
+        box-shadow: -4px 4px black;
+        /* width: 537px; */
+        /* padding: 88px 72px;
+        background-color: white;
+        /*  *
         display: flex;
         flex-direction: column;
         gap: 48px;
@@ -123,7 +126,7 @@ const Wrapper = styled.section`
             text-transform: uppercase;
             color: white;
           }
-        }
+        } */
       }
       .form3 {
         padding: 88px 72px;

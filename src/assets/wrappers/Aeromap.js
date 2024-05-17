@@ -241,11 +241,6 @@ const Wrapper = styled.section`
     }
     .el_salvador {
       color: #0699f9;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0.8em;
-      flex-direction: row;
     }
   }
 
