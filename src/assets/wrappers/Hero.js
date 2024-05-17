@@ -38,7 +38,7 @@ const Wrapper = styled.section`
       color: #3fadfb;
       -webkit-text-stroke: 1px #15344a;
       text-shadow: -5px 5px #15344a; /* For WebKit browsers like Chrome and Safari */
-      font-size: 180px;
+      font-size: 150px;
       line-height: 1;
       font-weight: 400;
       font-family: "MilkyNice", sans-serif;
