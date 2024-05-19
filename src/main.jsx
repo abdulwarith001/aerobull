@@ -45,7 +45,7 @@ const sepolia = {
   rpcUrl: "https://sepolia.infura.io/v3/99ba00417662aecb6fb030b897854729", // Replace with your Infura Project ID
 };
 
-const chains = [mainnet, arbitrum, sepolia];
+const chains = [mainnet, arbitrum];
 
 const wagmiConfig = defaultWagmiConfig({
   projectId,
