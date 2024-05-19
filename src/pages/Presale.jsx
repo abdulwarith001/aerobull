@@ -184,10 +184,14 @@ const buyTokensInUSD = async (e) => {
   const beneficiary = address;
 
   try {
+    const gasEstimate = await contract.methods.buyTokens(beneficiary).estimateGas({
+  from: address,
+  value: web3.utils.toWei(ethValue.toString(), "ether"),
+});
   const transaction = await contract.methods.buyTokens(beneficiary).send({
       from: address,
       value: web3.utils.toWei(ethValue.toString(), "ether"),
-      gas: web3.utils.toHex(300000), // Increased gas limit
+       gas: web3.utils.toHex(gasEstimate),
   gasPrice: web3.utils.toHex(web3.utils.toWei('50', 'gwei'))
     });
 
