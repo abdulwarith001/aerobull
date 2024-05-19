@@ -17,11 +17,11 @@ import {
 } from "@web3modal/ethers/react";
 import Presale_Contract_Addr from "../components/Presale_Contract_Addr";
 
-// const contractAddress = "0x083a42bd285aed1733ec30649109d46a6bf170ee";
-const contractAddress = "0x979E73dfa7B9bF414e962747971809c00a0683b2";
+const contractAddress = "0x083a42bd285aed1733ec30649109d46a6bf170ee";
+// const contractAddress = "0x979E73dfa7B9bF414e962747971809c00a0683b2";
 const tokenContractAddress = "0x40a9f78879595e961Fda688c69537c3529777426";
 const baseValue = 200;
-const multiples = [5, 10, 20, 40, 60, 80, 100, 200, 300, 400, 500];
+const multiples = [1, 5, 10, 20, 40, 60, 80, 100, 200, 300, 400, 500];
 
 const Presale = () => {
   const [usdValue, setUsdValue] = useState("");
