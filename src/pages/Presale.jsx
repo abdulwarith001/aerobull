@@ -18,8 +18,6 @@ import {
 import Presale_Contract_Addr from "../components/Presale_Contract_Addr";
 
 const contractAddress = "0x083a42Bd285AeD1733eC30649109D46a6bF170Ee";
-// const contractAddress = "0x979E73dfa7B9bF414e962747971809c00a0683b2";
-const tokenContractAddress = "0x40a9f78879595e961Fda688c69537c3529777426";
 const baseValue = 200;
 const multiples = [1, 5, 10, 20, 40, 60, 80, 100, 200, 300, 400, 500];
 
@@ -189,7 +187,8 @@ const buyTokensInUSD = async (e) => {
   const transaction = await contract.methods.buyTokens(beneficiary).send({
       from: address,
       value: web3.utils.toWei(ethValue.toString(), "ether"),
-      gas: web3.utils.toHex(210000),
+      gas: web3.utils.toHex(300000), // Increased gas limit
+  gasPrice: web3.utils.toHex(web3.utils.toWei('50', 'gwei'))
     });
 
     // Log transaction details
