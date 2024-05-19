@@ -17,6 +17,7 @@ import {
 } from "@web3modal/ethers/react";
 import Presale_Contract_Addr from "../components/Presale_Contract_Addr";
 
+// const contractAddress = "0x083a42bd285aed1733ec30649109d46a6bf170ee";
 const contractAddress = "0x979E73dfa7B9bF414e962747971809c00a0683b2";
 const tokenContractAddress = "0x40a9f78879595e961Fda688c69537c3529777426";
 const baseValue = 200;
@@ -40,34 +41,34 @@ const Presale = () => {
 
   useEffect(() => {
     const initWeb3 = async () => {
-      if (window.ethereum) {
-        const web3Instance = new Web3(window.ethereum);
-        setWeb3(web3Instance);
-        try {
-          const accs = await web3Instance.eth.getAccounts();
-          const balance = await web3Instance.eth.getBalance(accs[0]);
-          setBalance(web3Instance.utils.fromWei(balance, "ether"));
+      const web3Instance = new Web3(window.ethereum);
+      setWeb3(web3Instance);
+      try {
+        const accs = await web3Instance.eth.getAccounts();
+        const balance = await web3Instance.eth.getBalance(accs[0]);
+        setBalance(web3Instance.utils.fromWei(balance, "ether"));
+        const abi = SaleContractABI.abi
 
-          if (!SaleContractABI || !Array.isArray(SaleContractABI)) {
-            throw new Error("Invalid ABI format");
-          }
-
-          const instance = new web3Instance.eth.Contract(
-            SaleContractABI,
-            contractAddress
-          );
-          setContract(instance);
-
-          const arbInstance = new web3Instance.eth.Contract(
-            ArbTokenABI,
-            tokenContractAddress
-          );
-          setArbContract(arbInstance);
-        } catch (error) {
-          console.error("Error connecting to blockchain", error);
+        if (!abi || !Array.isArray(abi)) {
+          throw new Error("Invalid ABI format");
         }
+
+        const instance = new web3Instance.eth.Contract(
+          abi,
+          contractAddress
+        );
+        setContract(instance);
+
+        // const arbInstance = new web3Instance.eth.Contract(
+        //   ArbTokenABI,
+        //   tokenContractAddress
+        // );
+        // setArbContract(arbInstance);
+      } catch (error) {
+        console.error("Error connecting to blockchain", error);
       }
     };
+
 
     const fetchInitialConversionRate = async () => {
       const rate = await fetchEthConversionRate();
@@ -157,56 +158,53 @@ const Presale = () => {
     });
   };
 
-  const buyTokensInUSD = async (e) => {
-    e.preventDefault();
-    if (typeof window.ethereum === "undefined") {
-      // Redirect to MetaMask mobile app
+const buyTokensInUSD = async (e) => {
+  e.preventDefault();
+  if (!isConnected) {
+    alert("Wallet not connected...");
+    return;
+  }
+   if (typeof window.ethereum === "undefined") {
       const dappUrl = "https://aerobull.netlify.app"; // Replace with your actual dApp URL
       const metaMaskUrl = `https://metamask.app.link/dapp/${dappUrl}`;
       window.location.href = metaMaskUrl;
       return;
     }
-    if (!isConnected) {
-      alert("Wallet not connected...");
-      return;
-    }
-    if (!contract || !arbContract) {
-      console.error("Smart contract not loaded");
-      return;
-    }
+  if (!contract) {
+    console.error("Smart contract not loaded");
+    return;
+  }
 
-    const usdAmount = parseFloat(usdValue);
-    if (isNaN(usdAmount) || usdAmount <= 0) {
-      alert("Please enter a valid USD amount.");
-      return;
-    }
+  const usdAmount = parseFloat(usdValue);
+  if (isNaN(usdAmount) || usdAmount <= 0) {
+    alert("Please enter a valid USD amount.");
+    return;
+  }
 
-    const ethAmount = web3.utils.toWei(ethValue.toString(), "ether");
+  // Here, you need to provide the beneficiary address. 
+  // For simplicity, let's assume the beneficiary is the connected wallet address.
+  const beneficiary = address;
 
-    const userBalance = await web3.eth.getBalance(address);
-    const userBalanceInEth = web3.utils.fromWei(userBalance, "ether");
+  try {
+  const transaction = await contract.methods.buyTokens(beneficiary).send({
+      from: address,
+      value: web3.utils.toWei(ethValue.toString(), "ether"),
+      gas: web3.utils.toHex(210000),
+    });
 
-    if (parseFloat(userBalanceInEth) < parseFloat(ethValue)) {
-      alert("Insufficient balance");
-      return;
-    }
+    // Log transaction details
+    // console.log("Transaction hash:", transaction.transactionHash);
+    // console.log("Transaction receipt:", transaction);
 
-    try {
-      await contract.methods
-        .buyTokensInUSD(usdAmount)
-        .send({ value: ethAmount, from: address });
-      alert("Tokens bought successfully");
+    alert("Tokens bought successfully!\nTransaction hash: " + transaction.transactionHash);
 
-      // Transfer ARB tokens to user
-      // const arbSigner = new ethers.Wallet(
-      //   "8b73f60a9321d1bd2dea109fe4cfd200e80b9535506e2657948bea8a5fb3ccbf",
-      //   ethers.getDefaultProvider()
-      // );
-      // alert("ARB tokens transferred successfully");
-    } catch (error) {
-      alert(error.message);
-    }
-  };
+  } catch (error) {
+    console.error("Error during token purchase:", error);
+    alert(error.message);
+  }
+};
+
+
 
   return (
     <Wrapper>
