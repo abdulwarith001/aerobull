@@ -17,7 +17,7 @@ import {
 } from "@web3modal/ethers/react";
 import Presale_Contract_Addr from "../components/Presale_Contract_Addr";
 
-const contractAddress = "0x083a42bd285aed1733ec30649109d46a6bf170ee";
+const contractAddress = "0x083a42Bd285AeD1733eC30649109D46a6bF170Ee";
 // const contractAddress = "0x979E73dfa7B9bF414e962747971809c00a0683b2";
 const tokenContractAddress = "0x40a9f78879595e961Fda688c69537c3529777426";
 const baseValue = 200;
