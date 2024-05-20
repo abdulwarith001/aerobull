@@ -7,14 +7,9 @@ import presale from "../assets/images/presale.png";
 import up_arr from "../assets/images/up_arr.png";
 import down_arr from "../assets/images/down_arr.png";
 import Web3 from "web3";
-import { ethers } from "ethers";
 import SaleContractABI from "../ARB.json";
-import ArbTokenABI from "../transferABI.json"; // Import your ARB token ABI here
 import { useWeb3Modal } from "@web3modal/ethers/react";
-import {
-  useWeb3ModalProvider,
-  useWeb3ModalAccount,
-} from "@web3modal/ethers/react";
+import { useWeb3ModalProvider, useWeb3ModalAccount } from "@web3modal/ethers/react";
 import Presale_Contract_Addr from "../components/Presale_Contract_Addr";
 
 const contractAddress = "0xa245033e8ae5168c177cd5959f721ed5b15d0f8d";
@@ -30,42 +25,37 @@ const Presale = () => {
   const [multipleIndex, setMultipleIndex] = useState(-1);
   const [web3, setWeb3] = useState(null);
   const [contract, setContract] = useState(null);
-  const [arbContract, setArbContract] = useState(null);
   const [balance, setBalance] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   const { open } = useWeb3Modal();
   const { address, isConnected } = useWeb3ModalAccount();
   const { walletProvider } = useWeb3ModalProvider();
 
-  // const deploy
-
   useEffect(() => {
     const initWeb3 = async () => {
-      const web3Instance = new Web3(window.ethereum);
-      setWeb3(web3Instance);
-      try {
-        const accs = await web3Instance.eth.getAccounts();
-        const balance = await web3Instance.eth.getBalance(accs[0]);
-        setBalance(web3Instance.utils.fromWei(balance, "ether"));
-        const abi = SaleContractABI.abi
-
-        if (!abi || !Array.isArray(abi)) {
-          throw new Error("Invalid ABI format");
+      if (window.ethereum) {
+        try {
+          const web3Instance = new Web3(window.ethereum);
+          setWeb3(web3Instance);
+          const accs = await web3Instance.eth.getAccounts();
+          if (accs.length > 0) {
+            const balance = await web3Instance.eth.getBalance(accs[0]);
+            setBalance(web3Instance.utils.fromWei(balance, "ether"));
+          }
+          const abi = SaleContractABI.abi;
+          if (!abi || !Array.isArray(abi)) {
+            throw new Error("Invalid ABI format");
+          }
+          const instance = new web3Instance.eth.Contract(abi, contractAddress);
+          setContract(instance);
+        } catch (error) {
+          console.error("Error connecting to blockchain", error);
         }
-
-        const instance = new web3Instance.eth.Contract(abi, contractAddress);
-        setContract(instance);
-
-        // const arbInstance = new web3Instance.eth.Contract(
-        //   ArbTokenABI,
-        //   tokenContractAddress
-        // );
-        // setArbContract(arbInstance);
-      } catch (error) {
-        console.error("Error connecting to blockchain", error);
+      } else {
+        console.error("Ethereum object not found, install Metamask.");
       }
     };
-
 
     const fetchInitialConversionRate = async () => {
       const rate = await fetchEthConversionRate();
@@ -155,76 +145,64 @@ const Presale = () => {
     });
   };
 
-  const [contractDeployed, setContractDeployed] = useState(false);
-
-  // const deployContract = async () => {
-  //   try {
-  //     if (!isConnected) {
-  //       throw new Error("Wallet not connected");
-  //     }
-  //     if (!contract) {
-  //       throw new Error("Contract not loaded");
-  //     }
-
-  //     await contract.methods.manualDeploy().send({ from: address });
-  //     alert("Contract deployed successfully!");
-  //   } catch (error) {
-  //     setError(error.message);
-  //   }
-  // };
-
   const buyTokensInUSD = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       if (!isConnected) {
         alert("Wallet not connected");
-        return
+        return;
       }
 
-         if (typeof window.ethereum === "undefined") {
-      const dappUrl = "https://aerobull.netlify.app"; // Replace with your actual dApp URL
-      const metaMaskUrl = `https://metamask.app.link/dapp/${dappUrl}`;
-      window.location.href = metaMaskUrl;
-      return;
-    }
+      if (typeof window.ethereum === "undefined") {
+        const dappUrl = "https://aerobull.netlify.app"; // Replace with your actual dApp URL
+        const metaMaskUrl = `https://metamask.app.link/dapp/${dappUrl}`;
+        window.location.href = metaMaskUrl;
+        return;
+      }
+
       if (!contract) {
         alert("Contract not loaded");
-        return
+        return;
       }
 
       const usdAmount = parseFloat(usdValue);
       if (isNaN(usdAmount) || usdAmount <= 0) {
         alert("Please enter a valid USD amount.");
-        return
+        return;
       }
-      // await deployContract()
 
       const ethAmount = Web3.utils.toWei(ethValue.toString(), "ether");
       const beneficiary = address;
       console.log("Beneficiary:", beneficiary);
       console.log("ETH Amount:", ethAmount);
 
-      // const gasEstimate = await contract.methods.buyTokens(beneficiary).estimateGas({
-      //   from: address,
-      //   value: ethAmount,
-      // });
-      // console.log("Gas Estimate:", gasEstimate);
+      // Fetch current gas price
+      const gasPrice = await web3.eth.getGasPrice();
+      console.log("Current Gas Price:", gasPrice);
+
+      // Estimate gas limit
+      const gasEstimate = await contract.methods.buyTokens(beneficiary).estimateGas({
+        from: address,
+        value: ethAmount,
+      });
+      console.log("Gas Estimate:", gasEstimate);
 
       const transaction = await contract.methods.buyTokens(beneficiary).send({
         from: address,
         value: ethAmount,
-        gas: 150000,
-        gasPrice: "30000000"
+        gas: gasEstimate,
+        gasPrice: gasPrice,
       });
 
       alert("Tokens bought successfully!\nTransaction hash: " + transaction.transactionHash);
     } catch (error) {
       console.error("Error during token purchase:", error);
-      alert(error)
+      alert(error.message || "Transaction failed");
+    } finally {
+      setLoading(false);
     }
   };
-
-
 
   return (
     <Wrapper>
