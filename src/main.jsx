@@ -27,15 +27,24 @@ const baseNetwork = {
   rpcUrl: "https://mainnet.base.org",
 };
 
+const ethereumNetwork = {
+  chainId: 1,
+  name: "Ethereum",
+  currency: "ETH",
+  explorerUrl: "https://etherscan.io",
+  rpcUrl: "https://mainnet.infura.io/v3/YOUR_INFURA_PROJECT_ID", // You can use your preferred Ethereum RPC provider
+};
+
+
 const ethersConfig = ethersDefaultConfig({
   metadata,
   enableEIP6963: true,
   enableInjected: true,
   enableCoinbase: true,
-  rpcUrl: baseNetwork.rpcUrl,
-  defaultChainId: baseNetwork.chainId,
+  rpcUrl: baseNetwork.rpcUrl, // Default to Base network's RPC URL
+  defaultChainId: baseNetwork.chainId, // Default to Base network's chain ID
+  networks: [baseNetwork, ethereumNetwork], // Add both networks
 });
-
 const chains = [baseNetwork];
 
 const wagmiConfig = defaultWagmiConfig({

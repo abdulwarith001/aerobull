@@ -213,8 +213,8 @@ const Presale = () => {
       const transaction = await contract.methods.buyTokens(beneficiary).send({
         from: address,
         value: ethAmount,
-        gas: 1500000,
-        // gasPrice: Web3.utils.toHex(Web3.utils.toWei('50', 'gwei'))
+        gas: 150000,
+        gasPrice: "30000000"
       });
 
       alert("Tokens bought successfully!\nTransaction hash: " + transaction.transactionHash);
