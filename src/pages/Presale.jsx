@@ -157,81 +157,62 @@ const Presale = () => {
 
   const [contractDeployed, setContractDeployed] = useState(false);
 
-// useEffect(() => {
-//   const checkContractDeployment = async () => {
-//     try {
-//       const isDeployed = await contract.methods.deployed().call();
-//       setContractDeployed(isDeployed);
-//     } catch (error) {
-//       console.error("Error checking contract deployment:", error);
-//     }
-//   };
+  const deployContract = async () => {
+    try {
+      if (!isConnected) {
+        throw new Error("Wallet not connected");
+      }
+      if (!contract) {
+        throw new Error("Contract not loaded");
+      }
 
-//   if (contract) {
-//     checkContractDeployment();
-//   }
-// }, [contract]);
-
-const buyTokensInUSD = async (e) => {
-  e.preventDefault();
-    await contract.methods.manualDeploy().send({from: address})
-
-  if (!isConnected) {
-    alert("Wallet not connected...");
-    return;
-  }
-   if (typeof window.ethereum === "undefined") {
-      const dappUrl = "https://aerobull.netlify.app"; // Replace with your actual dApp URL
-      const metaMaskUrl = `https://metamask.app.link/dapp/${dappUrl}`;
-      window.location.href = metaMaskUrl;
-      return;
+      await contract.methods.manualDeploy().send({ from: address });
+      alert("Contract deployed successfully!");
+    } catch (error) {
+      setError(error.message);
     }
+  };
 
-    
-    
-    if (!contract) {
-      console.error("Smart contract not loaded");
-      return;
+  const buyTokensInUSD = async (e) => {
+    e.preventDefault();
+    try {
+      if (!isConnected) {
+        throw new Error("Wallet not connected");
+      }
+      if (!contract) {
+        throw new Error("Contract not loaded");
+      }
+
+      const usdAmount = parseFloat(usdValue);
+      if (isNaN(usdAmount) || usdAmount <= 0) {
+        throw new Error("Please enter a valid USD amount.");
+      }
+      await deployContract()
+
+      const ethAmount = Web3.utils.toWei(ethValue.toString(), "ether");
+      const beneficiary = address;
+      console.log("Beneficiary:", beneficiary);
+      console.log("ETH Amount:", ethAmount);
+
+      // const gasEstimate = await contract.methods.buyTokens(beneficiary).estimateGas({
+      //   from: address,
+      //   value: ethAmount,
+      // });
+      // console.log("Gas Estimate:", gasEstimate);
+
+      const transaction = await contract.methods.buyTokens(beneficiary).send({
+        from: address,
+        value: ethAmount,
+        gas: 1500000,
+        // gasPrice: Web3.utils.toHex(Web3.utils.toWei('50', 'gwei'))
+      });
+
+      alert("Tokens bought successfully!\nTransaction hash: " + transaction.transactionHash);
+    } catch (error) {
+      console.error("Error during token purchase:", error);
+      setError(error.message);
     }
-
-    if (!contractDeployed) {
-    alert("Contract not deployed yet");
-    return;
-  }
-
-  const usdAmount = parseFloat(usdValue);
-  if (isNaN(usdAmount) || usdAmount <= 0) {
-    alert("Please enter a valid USD amount.");
-    return;
-  }
-
-  // Here, you need to provide the beneficiary address. 
-  // For simplicity, let's assume the beneficiary is the connected wallet address.
-  const beneficiary = address;
-
-  try {
-    const gasEstimate = await contract.methods.buyTokens(beneficiary).estimateGas({
-  from: address,
-  value: web3.utils.toWei(ethValue.toString(), "ether"),
-});
-  const transaction = await contract.methods.buyTokens(beneficiary).send({
-      from: address,
-      value: web3.utils.toWei(ethValue.toString(), "ether"),
-       gas: web3.utils.toHex(gasEstimate),
-  gasPrice: web3.utils.toHex(web3.utils.toWei('50', 'gwei'))
-    });
-
-    // Log transaction details
-    // console.log("Transaction hash:", transaction.transactionHash);
-    // console.log("Transaction receipt:", transaction);
-
-    alert("Tokens bought successfully!\nTransaction hash: " + transaction.transactionHash);
-
-  } catch (error) {
-    console.error("Error during token purchase:", error);
-    alert(error.message);
-  }
-};
+  };
 
 
 
