@@ -7,9 +7,14 @@ import presale from "../assets/images/presale.png";
 import up_arr from "../assets/images/up_arr.png";
 import down_arr from "../assets/images/down_arr.png";
 import Web3 from "web3";
+import { ethers } from "ethers";
 import SaleContractABI from "../ARB.json";
+import ArbTokenABI from "../transferABI.json";
 import { useWeb3Modal } from "@web3modal/ethers/react";
-import { useWeb3ModalProvider, useWeb3ModalAccount } from "@web3modal/ethers/react";
+import {
+  useWeb3ModalProvider,
+  useWeb3ModalAccount,
+} from "@web3modal/ethers/react";
 import Presale_Contract_Addr from "../components/Presale_Contract_Addr";
 
 const contractAddress = "0xa245033e8ae5168c177cd5959f721ed5b15d0f8d";
@@ -25,8 +30,8 @@ const Presale = () => {
   const [multipleIndex, setMultipleIndex] = useState(-1);
   const [web3, setWeb3] = useState(null);
   const [contract, setContract] = useState(null);
+  const [arbContract, setArbContract] = useState(null);
   const [balance, setBalance] = useState(0);
-  const [loading, setLoading] = useState(false);
 
   const { open } = useWeb3Modal();
   const { address, isConnected } = useWeb3ModalAccount();
@@ -35,25 +40,21 @@ const Presale = () => {
   useEffect(() => {
     const initWeb3 = async () => {
       if (window.ethereum) {
+        const web3Instance = new Web3(window.ethereum);
+        setWeb3(web3Instance);
+
         try {
-          const web3Instance = new Web3(window.ethereum);
-          setWeb3(web3Instance);
-          const accs = await web3Instance.eth.getAccounts();
-          if (accs.length > 0) {
-            const balance = await web3Instance.eth.getBalance(accs[0]);
-            setBalance(web3Instance.utils.fromWei(balance, "ether"));
-          }
-          const abi = SaleContractABI.abi;
-          if (!abi || !Array.isArray(abi)) {
-            throw new Error("Invalid ABI format");
-          }
-          const instance = new web3Instance.eth.Contract(abi, contractAddress);
+          const accounts = await web3Instance.eth.requestAccounts();
+          const balance = await web3Instance.eth.getBalance(accounts[0]);
+          setBalance(web3Instance.utils.fromWei(balance, "ether"));
+
+          const instance = new web3Instance.eth.Contract(SaleContractABI.abi, contractAddress);
           setContract(instance);
         } catch (error) {
           console.error("Error connecting to blockchain", error);
         }
       } else {
-        console.error("Ethereum object not found, install Metamask.");
+        console.error("Ethereum wallet is not installed");
       }
     };
 
@@ -147,17 +148,9 @@ const Presale = () => {
 
   const buyTokensInUSD = async (e) => {
     e.preventDefault();
-    setLoading(true);
     try {
       if (!isConnected) {
         alert("Wallet not connected");
-        return;
-      }
-
-      if (typeof window.ethereum === "undefined") {
-        const dappUrl = "https://aerobull.netlify.app"; // Replace with your actual dApp URL
-        const metaMaskUrl = `https://metamask.app.link/dapp/${dappUrl}`;
-        window.location.href = metaMaskUrl;
         return;
       }
 
@@ -174,19 +167,20 @@ const Presale = () => {
 
       const ethAmount = Web3.utils.toWei(ethValue.toString(), "ether");
       const beneficiary = address;
-      console.log("Beneficiary:", beneficiary);
-      console.log("ETH Amount:", ethAmount);
 
-      // Fetch current gas price
-      const gasPrice = await web3.eth.getGasPrice();
-      console.log("Current Gas Price:", gasPrice);
+      let gasPrice;
+      try {
+        gasPrice = await web3.eth.getGasPrice();
+      } catch (error) {
+        console.error("Error fetching gas price:", error);
+        alert("Error fetching gas price. Please try again later.");
+        return;
+      }
 
-      // Estimate gas limit
       const gasEstimate = await contract.methods.buyTokens(beneficiary).estimateGas({
         from: address,
         value: ethAmount,
       });
-      console.log("Gas Estimate:", gasEstimate);
 
       const transaction = await contract.methods.buyTokens(beneficiary).send({
         from: address,
@@ -198,9 +192,7 @@ const Presale = () => {
       alert("Tokens bought successfully!\nTransaction hash: " + transaction.transactionHash);
     } catch (error) {
       console.error("Error during token purchase:", error);
-      alert(error.message || "Transaction failed");
-    } finally {
-      setLoading(false);
+      alert(error.message);
     }
   };
 
