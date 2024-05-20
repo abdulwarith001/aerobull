@@ -177,7 +177,8 @@ const Presale = () => {
     e.preventDefault();
     try {
       if (!isConnected) {
-        throw new Error("Wallet not connected");
+        alert("Wallet not connected");
+        return
       }
 
          if (typeof window.ethereum === "undefined") {
@@ -187,12 +188,14 @@ const Presale = () => {
       return;
     }
       if (!contract) {
-        throw new Error("Contract not loaded");
+        alert("Contract not loaded");
+        return
       }
 
       const usdAmount = parseFloat(usdValue);
       if (isNaN(usdAmount) || usdAmount <= 0) {
-        throw new Error("Please enter a valid USD amount.");
+        alert("Please enter a valid USD amount.");
+        return
       }
       // await deployContract()
 
@@ -217,7 +220,7 @@ const Presale = () => {
       alert("Tokens bought successfully!\nTransaction hash: " + transaction.transactionHash);
     } catch (error) {
       console.error("Error during token purchase:", error);
-      setError(error.message);
+      alert(error)
     }
   };
 
