@@ -1,6 +1,6 @@
 {
   "name": "SaleContract",
-  "address": "0x083a42bd285aed1733ec30649109d46a6bf170ee",
+  "address": "0xa245033e8ae5168c177cd5959f721ed5b15d0f8d",
   "abi": [
     {
       "inputs": [
@@ -13,13 +13,6 @@
       "name": "buyTokens",
       "outputs": [],
       "stateMutability": "payable",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "deployContract",
-      "outputs": [],
-      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
@@ -69,6 +62,19 @@
       ],
       "name": "OwnableUnauthorizedAccount",
       "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [],
+      "name": "ContractDeployed",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "manualDeploy",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
       "anonymous": false,
@@ -253,6 +259,6 @@
       "type": "function"
     }
   ],
-  "filePath": "Playground/PresaleContract.sol",
-  "pinnedAt": 1716087909585
+  "filePath": "Playground/UpdatedSaleContract.sol",
+  "pinnedAt": 1716179698062
 }

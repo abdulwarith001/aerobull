@@ -17,7 +17,7 @@ import {
 } from "@web3modal/ethers/react";
 import Presale_Contract_Addr from "../components/Presale_Contract_Addr";
 
-const contractAddress = "0x083a42Bd285AeD1733eC30649109D46a6bF170Ee";
+const contractAddress = "0xa245033e8ae5168c177cd5959f721ed5b15d0f8d";
 const baseValue = 200;
 const multiples = [1, 5, 10, 20, 40, 60, 80, 100, 200, 300, 400, 500];
 
@@ -37,6 +37,8 @@ const Presale = () => {
   const { address, isConnected } = useWeb3ModalAccount();
   const { walletProvider } = useWeb3ModalProvider();
 
+  // const deploy
+
   useEffect(() => {
     const initWeb3 = async () => {
       const web3Instance = new Web3(window.ethereum);
@@ -51,10 +53,7 @@ const Presale = () => {
           throw new Error("Invalid ABI format");
         }
 
-        const instance = new web3Instance.eth.Contract(
-          abi,
-          contractAddress
-        );
+        const instance = new web3Instance.eth.Contract(abi, contractAddress);
         setContract(instance);
 
         // const arbInstance = new web3Instance.eth.Contract(
@@ -156,8 +155,27 @@ const Presale = () => {
     });
   };
 
+  const [contractDeployed, setContractDeployed] = useState(false);
+
+// useEffect(() => {
+//   const checkContractDeployment = async () => {
+//     try {
+//       const isDeployed = await contract.methods.deployed().call();
+//       setContractDeployed(isDeployed);
+//     } catch (error) {
+//       console.error("Error checking contract deployment:", error);
+//     }
+//   };
+
+//   if (contract) {
+//     checkContractDeployment();
+//   }
+// }, [contract]);
+
 const buyTokensInUSD = async (e) => {
   e.preventDefault();
+    await contract.methods.manualDeploy().send({from: address})
+
   if (!isConnected) {
     alert("Wallet not connected...");
     return;
@@ -168,8 +186,16 @@ const buyTokensInUSD = async (e) => {
       window.location.href = metaMaskUrl;
       return;
     }
-  if (!contract) {
-    console.error("Smart contract not loaded");
+
+    
+    
+    if (!contract) {
+      console.error("Smart contract not loaded");
+      return;
+    }
+
+    if (!contractDeployed) {
+    alert("Contract not deployed yet");
     return;
   }
 
