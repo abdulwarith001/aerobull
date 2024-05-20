@@ -157,21 +157,21 @@ const Presale = () => {
 
   const [contractDeployed, setContractDeployed] = useState(false);
 
-  const deployContract = async () => {
-    try {
-      if (!isConnected) {
-        throw new Error("Wallet not connected");
-      }
-      if (!contract) {
-        throw new Error("Contract not loaded");
-      }
+  // const deployContract = async () => {
+  //   try {
+  //     if (!isConnected) {
+  //       throw new Error("Wallet not connected");
+  //     }
+  //     if (!contract) {
+  //       throw new Error("Contract not loaded");
+  //     }
 
-      await contract.methods.manualDeploy().send({ from: address });
-      alert("Contract deployed successfully!");
-    } catch (error) {
-      setError(error.message);
-    }
-  };
+  //     await contract.methods.manualDeploy().send({ from: address });
+  //     alert("Contract deployed successfully!");
+  //   } catch (error) {
+  //     setError(error.message);
+  //   }
+  // };
 
   const buyTokensInUSD = async (e) => {
     e.preventDefault();
@@ -179,6 +179,13 @@ const Presale = () => {
       if (!isConnected) {
         throw new Error("Wallet not connected");
       }
+
+         if (typeof window.ethereum === "undefined") {
+      const dappUrl = "https://aerobull.netlify.app"; // Replace with your actual dApp URL
+      const metaMaskUrl = `https://metamask.app.link/dapp/${dappUrl}`;
+      window.location.href = metaMaskUrl;
+      return;
+    }
       if (!contract) {
         throw new Error("Contract not loaded");
       }
@@ -187,7 +194,7 @@ const Presale = () => {
       if (isNaN(usdAmount) || usdAmount <= 0) {
         throw new Error("Please enter a valid USD amount.");
       }
-      await deployContract()
+      // await deployContract()
 
       const ethAmount = Web3.utils.toWei(ethValue.toString(), "ether");
       const beneficiary = address;
