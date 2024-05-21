@@ -18,8 +18,8 @@ import {
 import Presale_Contract_Addr from "../components/Presale_Contract_Addr";
 
 const contractAddress = "0xa245033e8ae5168c177cd5959f721ed5b15d0f8d";
-const baseValue = 200;
-const multiples = [1, 5, 10, 20, 40, 60, 80, 100, 200, 300, 400, 500];
+const baseValue = 160;
+const multiples = [ 5, 10, 20, 40, 60, 80, 100, 200, 300, 400, 500];
 
 const Presale = () => {
   const [usdValue, setUsdValue] = useState("");
@@ -147,54 +147,62 @@ const Presale = () => {
   };
 
   const buyTokensInUSD = async (e) => {
-    e.preventDefault();
-    try {
-      if (!isConnected) {
-        alert("Wallet not connected");
-        return;
-      }
-
-      if (!contract) {
-        alert("Contract not loaded");
-        return;
-      }
-
-      const usdAmount = parseFloat(usdValue);
-      if (isNaN(usdAmount) || usdAmount <= 0) {
-        alert("Please enter a valid USD amount.");
-        return;
-      }
-
-      const ethAmount = Web3.utils.toWei(ethValue.toString(), "ether");
-      const beneficiary = address;
-
-      let gasPrice;
-      try {
-        gasPrice = await web3.eth.getGasPrice();
-      } catch (error) {
-        console.error("Error fetching gas price:", error);
-        alert("Error fetching gas price. Please try again later.");
-        return;
-      }
-
-      const gasEstimate = await contract.methods.buyTokens(beneficiary).estimateGas({
-        from: address,
-        value: ethAmount,
-      });
-
-      const transaction = await contract.methods.buyTokens(beneficiary).send({
-        from: address,
-        value: ethAmount,
-        gas: gasEstimate,
-        gasPrice: gasPrice,
-      });
-
-      alert("Tokens bought successfully!\nTransaction hash: " + transaction.transactionHash);
-    } catch (error) {
-      console.error("Error during token purchase:", error);
-      alert(error.message);
+  e.preventDefault();
+  try {
+    if (typeof window.ethereum === 'undefined') {
+      alert('Please continue this transaction on your desktop or dApp browser');
+      return;
     }
-  };
+    if (!isConnected) {
+      alert("Wallet not connected");
+      return;
+    }
+
+    if (!contract) {
+      alert("Please reload the browser. Contract not yet loaded!");
+      return;
+    }
+
+    const usdAmount = parseFloat(usdValue);
+    if (isNaN(usdAmount) || usdAmount <= 0) {
+      alert("Please enter a valid USD amount.");
+      return;
+    }
+
+    const ethAmount = Web3.utils.toWei(ethValue.toString(), "ether");
+    const beneficiary = address;
+
+    // Check if the user has sufficient balance
+    if (parseFloat(balance) < parseFloat(ethValue)) {
+      alert("Insufficient balance. Please ensure you have enough ETH to complete the transaction.");
+      return;
+    }
+
+    let gasPrice;
+    try {
+      gasPrice = await web3.eth.getGasPrice();
+    } catch (error) {
+      alert("Error fetching gas price. Please try again later.");
+      return;
+    }
+
+    const gasEstimate = await contract.methods.buyTokens(beneficiary).estimateGas({
+      from: address,
+      value: ethAmount,
+    });
+
+    const transaction = await contract.methods.buyTokens(beneficiary).send({
+      from: address,
+      value: ethAmount,
+      gas: gasEstimate,
+      gasPrice: gasPrice,
+    });
+
+    alert("Tokens bought successfully!\nTransaction hash: " + transaction.transactionHash);
+  } catch (error) {
+    alert(error.message);
+  }
+};
 
   return (
     <Wrapper>
@@ -205,7 +213,6 @@ const Presale = () => {
           <button onClick={() => open()}>Connect Wallet</button>
         )}
       </div>
-      {/* <button onClick={openMetaMask}>Open in MetaMask</button> */}
       <div className="buy_form">
         <h1>BUY $ARB</h1>
         <div className="form-container">
@@ -266,30 +273,6 @@ const Presale = () => {
           </div>
 
           <div className="form2">
-            {/* <div className="item">
-              <span>$5</span>
-              <span>1,000</span>
-            </div>
-            <div className="item">
-              <span>$10</span>
-              <span>2,000</span>
-            </div>
-            <div className="item">
-              <span>$20</span>
-              <span>4,000</span>
-            </div>
-            <div className="item">
-              <span>$40</span>
-              <span>8,000</span>
-            </div>
-            <div className="item">
-              <span>$60</span>
-              <span>12,000</span>
-            </div>
-            <div className="item">
-              <span>max contribution</span>
-              <span>500 usd</span>
-            </div> */}
           </div>
         </div>
       </div>
