@@ -32,10 +32,29 @@ const Presale = () => {
   const [contract, setContract] = useState(null);
   const [arbContract, setArbContract] = useState(null);
   const [balance, setBalance] = useState(0);
+  const [isConnected, setIsConnected] = useState(false)
+  const [address, setAddress] = useState(null)
 
-  const { open } = useWeb3Modal();
-  const { address, isConnected } = useWeb3ModalAccount();
+  // const { open } = useWeb3Modal();
+  // const { address, isConnected } = useWeb3ModalAccount();
   const { walletProvider } = useWeb3ModalProvider();
+
+  const connectWallet = async() => {
+    if(!window.ethereum){
+      alert('Metamask not detected in your browser...')
+      return;
+    } else {
+      const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+      setAddress(accounts[0])
+      setIsConnected(true)
+    }
+    
+  }
+
+   const disconnectWallet = ()=> {
+    setAddress(null);
+    setIsConnected(false);
+  }
 
   useEffect(() => {
     const initWeb3 = async () => {
@@ -208,9 +227,9 @@ const Presale = () => {
     <Wrapper>
       <div className="header-container">
         {isConnected ? (
-          <button onClick={() => open()}>{address.slice(0, 12) + "..."}</button>
+          <button onClick={()=> disconnectWallet()}>{address.slice(0, 12) + "..."}</button>
         ) : (
-          <button onClick={() => open()}>Connect Wallet</button>
+          <button onClick={() => connectWallet()}>Connect Wallet</button>
         )}
       </div>
       <div className="buy_form">
