@@ -48,7 +48,7 @@ const Aeronomics = () => {
               <div className="item">
                  <img src={aero_chart5} className="desktop" />
                 <img src={mobile_chart5} className="mobile" />
-                <span>Team growth & Expansion (15%)</span>
+                <span>Team growth & Expansion (10%)</span>
               </div>
             </div>
           </div>

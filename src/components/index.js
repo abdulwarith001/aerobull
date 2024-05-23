@@ -6,6 +6,8 @@ import Aeronomics from './Aeronomics'
 import Faq from './Faq'
 import Footer from './Footer'
 import MoonAero from "./MoonAero";
+import Whitepaper from "./Whitepaper";
+import Team from "./Team";
 
 export {
   Hero,
@@ -16,4 +18,6 @@ export {
   Faq,
   Footer,
   MoonAero,
+  Whitepaper,
+  Team
 };

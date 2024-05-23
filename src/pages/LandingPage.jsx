@@ -6,8 +6,10 @@ import {
   Aeromap,
   Aeronomics,
   Faq,
-  Footer, 
-  MoonAero
+  Footer,
+  MoonAero,
+  Whitepaper,
+  Team
 } from "../components";
 import aero_back from '../assets/images/aero_bg.png';
 import mobile_hero from '../assets/images/mobile_hero.png';
@@ -24,10 +26,12 @@ const LandingPage = () => {
       </div> */}
       <Stripe />
       <Contract_Addr />
+      <Whitepaper/>
       <Aeromap />
       <Aeronomics />
-      <MoonAero />
       <Faq />
+      <Team/>
+      <MoonAero />
       <Footer />
     </Wrapper>
   );

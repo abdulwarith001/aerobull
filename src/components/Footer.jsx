@@ -1,7 +1,8 @@
 import React from 'react'
 import Wrapper from '../assets/wrappers/Footer'
 import discord from '../assets/images/discord.png'
-import twitter from '../assets/images/twitter.png'
+import twitter from '../assets/images/twitter.png' 
+import telegram from '../assets/images/telegram.png' 
 import coin from '../assets/images/coin.png'
 import mobile_coin from '../assets/images/mobile_coin.png'
 import footer_bg2 from '../assets/images/footer_bg2.png'
@@ -22,6 +23,11 @@ const Footer = () => {
           <div className="icon">
             <Link to="https://x.com/basedaerobull?s=11">
               <img src={twitter} />
+            </Link>
+          </div>
+          <div className="icon">
+            <Link to="https://t.me/+BcioBfMHIMRkY2M5">
+              <img src={telegram} />
             </Link>
           </div>
         </div>
