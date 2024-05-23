@@ -7,15 +7,9 @@ import presale from "../assets/images/presale.png";
 import up_arr from "../assets/images/up_arr.png";
 import down_arr from "../assets/images/down_arr.png";
 import Web3 from "web3";
-import { ethers } from "ethers";
 import SaleContractABI from "../ARB.json";
-import ArbTokenABI from "../transferABI.json";
-import { useWeb3Modal } from "@web3modal/ethers/react";
-import {
-  useWeb3ModalProvider,
-  useWeb3ModalAccount,
-} from "@web3modal/ethers/react";
 import Presale_Contract_Addr from "../components/Presale_Contract_Addr";
+import HowTo from "../components/HowTo";
 
 const contractAddress = "0xa245033e8ae5168c177cd5959f721ed5b15d0f8d";
 const baseValue = 160;
@@ -30,14 +24,12 @@ const Presale = () => {
   const [multipleIndex, setMultipleIndex] = useState(-1);
   const [web3, setWeb3] = useState(null);
   const [contract, setContract] = useState(null);
-  const [arbContract, setArbContract] = useState(null);
   const [balance, setBalance] = useState(0);
   const [isConnected, setIsConnected] = useState(false)
   const [address, setAddress] = useState(null)
 
   // const { open } = useWeb3Modal();
   // const { address, isConnected } = useWeb3ModalAccount();
-  const { walletProvider } = useWeb3ModalProvider();
 
   const connectWallet = async() => {
     if(!window.ethereum){
@@ -297,6 +289,7 @@ const Presale = () => {
       </div>
 
       <Presale_Contract_Addr />
+      <HowTo />
       <div className="footer-img">
         <img src={presale} alt="presale" />
       </div>
