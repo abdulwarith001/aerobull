@@ -44,7 +44,7 @@ const Whitepaper = () => {
 
         <p>Aerobull was born from a previous humanitarian endeavour our Founder led in 2021.During the Covid-19 era, he and a group of college students started a non-profit charity named Kabataan Project in translation “Youth Project”, with which he shared the same vision of giving a hand to those that were severely financially impacted by the pandemic in the Philippines.</p>
           
-          <p>During the span of several weeks, and keeping in mind that the team was unbacked by any organisation, they raised $2,500 from self-funding and community fundraising events. All the proceeds of that fundraising event directly went to a great cause impacting hundreds of families and children that were struggling to provide food on the table. Furthermore, they supported the local authorities by hosting several Feeding Program events. Not only that, considering the budget restraint, their team was able to build a tiny shelter for an elderly homeless man. </p>
+          <p>During the span of several weeks, and keeping in mind that the team was unbacked by any organization, they raised $2,500 from self-funding and community fundraising events. All the proceeds of that fundraising event directly went to a great cause impacting hundreds of families and children that were struggling to provide food on the table. Furthermore, they supported the local authorities by hosting several Feeding Program events. Not only that, considering the budget restraint, their team was able to build a tiny shelter for an elderly homeless man. </p>
         </article>
 
 
