@@ -4,7 +4,8 @@ import {
   LandingPage,
   Error,
   Presale,
-  AfterPresale
+  AfterPresale,
+  WhitePaper
 } from "./pages";
 
 const router = createBrowserRouter([
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: 'after-presale',
         element: <AfterPresale />,
+      },
+      {
+        path: 'whitepaper',
+        element: <WhitePaper />,
       }
     ],
   },

@@ -50,6 +50,37 @@ const Wrapper = styled.section`
     font-weight: 800;
     padding: 15.37px 38.37px;
   }
+
+   @media (max-width: 992px) {
+  padding: 3em 0;
+  h1 {
+    font-size: 27.53px;
+    line-height: 30.38px;
+    text-shadow: -2px 2px black;
+  }
+
+   h4 {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 25.88px;
+    text-align: center;
+    color: white;
+     margin: 1em 1em;
+  }
+
+    button {
+    border: 1px solid black;
+    height: fit-content;
+    width: 80%;
+    border-radius: 50px;
+    box-shadow: -4px 4px black;
+    font-size: 15.37px;
+    line-height: 20.37px;
+    font-family: "Sora", sans-serif;
+    font-weight: 800;
+    padding: 15.37px;
+  }
+   }
 `;
 
 export default Wrapper

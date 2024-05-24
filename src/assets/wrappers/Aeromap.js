@@ -253,7 +253,7 @@ const Wrapper = styled.section`
 
   @media (max-width: 992px) {
     /* display: none; */
-    padding: 0.5em 0 4em;
+    padding: 3em 0 4em;
 
     .img,
     .img2,

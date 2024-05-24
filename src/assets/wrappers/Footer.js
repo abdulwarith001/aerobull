@@ -175,7 +175,8 @@ const Wrapper = styled.footer`
     }
      .image2{
       display: block;
-    width: 50%;
+    width: 30%;
+    margin-left: -2em;
     height: 100%;
     object-fit: contain;
     /* margin-left: -3em; */
