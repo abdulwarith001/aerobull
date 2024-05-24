@@ -6,6 +6,7 @@ import team3 from '../assets/images/team3.png'
 import team4 from '../assets/images/team4.png'
 import team5 from '../assets/images/team5.png'
 import team6 from '../assets/images/team6.png'
+import team7 from '../assets/images/team7.png'
 
 const Team = () => {
   return (
@@ -26,17 +27,22 @@ const Team = () => {
             <div className='team'>
                 <img src={team2}/>
                 <h2>Seth <span>(Aerowingg)</span></h2>
-                <h2>Jr Admin</h2>
+                <h2>Admin</h2>
             </div>
             <div className='team'>
                 <img src={team3}/>
-                <h2>Seth <span>(AeroD)</span></h2>
-                <h2>Head of Marketing</h2>
+                <h2>David <span>(AeroD)</span></h2>
+                {/* <h2>Head of Marketing</h2> */}
             </div>
             <div className='team'>
                 <img src={team4}/>
                 <h2>Anthony <span>(Bongo)</span></h2>
-                <h2>Market Strategist</h2>
+                {/* <h2>Market Strategist</h2> */}
+            </div>
+            <div className='team'>
+                <img src={team7}/>
+                <h2>Sean <span>(SeanIce)</span></h2>
+                <h2>Developer</h2>
             </div>
             <div className='team'>
                 <img src={team5}/>

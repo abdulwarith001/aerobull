@@ -34,7 +34,7 @@ const Wrapper = styled.section`
       align-items: center;
       justify-content: center;
       h2 {
-        font-size: 30.09;
+        /* font-size: 30.09px; */
         font-weight: 400;
         font-family: "MilkyNice", sans-serif;
         line-height: 36.02px;
@@ -45,6 +45,13 @@ const Wrapper = styled.section`
       }
     }
   }
+
+   @media (max-width: 992px) {
+      h1 {
+  font-size: 27.53px;
+    line-height: 30.38px;
+  }
+   }
 `;
 
 export default Wrapper
