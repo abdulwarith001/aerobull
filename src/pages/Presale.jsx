@@ -29,26 +29,34 @@ const Presale = () => {
   const [isConnected, setIsConnected] = useState(false);
   const [address, setAddress] = useState(null);
   const [isCorrectNetwork, setIsCorrectNetwork] = useState(false);
+  const [isMetaMaskInstalled, setIsMetaMaskInstalled] = useState(false);
 
+  
   const connectWallet = async () => {
-    if (!window.ethereum) {
+    // if (!isMetaMaskInstalled) {
+    //   alert("MetaMask not detected in your browser...");
+    //   return;
+    // }
+    if (!isMetaMaskInstalled) {
       alert("Metamask not detected in your browser...");
       return;
     } else {
       const accounts = await window.ethereum.request({
         method: "eth_requestAccounts",
       });
-    const netId = await web3.eth.net.getId();
+      const netId = await web3.eth.net.getId();
 
-       if (netId === desiredNetworkId) {
-         setIsCorrectNetwork(true);
-         setAddress(accounts[0]);
-         setIsConnected(true);
-         fetchBalance(accounts[0]);
-       } else {
-         setIsCorrectNetwork(false);
-         alert("Please switch your account to the BASE network to connect your wallet");
-       }
+      if (netId === desiredNetworkId) {
+        setIsCorrectNetwork(true);
+        setAddress(accounts[0]);
+        setIsConnected(true);
+        fetchBalance(accounts[0]);
+      } else {
+        setIsCorrectNetwork(false);
+        alert(
+          "Please switch your account to the BASE network to connect your wallet"
+        );
+      }
     }
   };
 
@@ -66,27 +74,28 @@ const Presale = () => {
 
   useEffect(() => {
     const initWeb3 = async () => {
-      if (window.ethereum) {
-        const web3Instance = new Web3(window.ethereum);
-        setWeb3(web3Instance);
+    if (window.ethereum && window.ethereum.isMetaMask) {
+      const web3Instance = new Web3(window.ethereum);
+      setWeb3(web3Instance);
+      setIsMetaMaskInstalled(true);
 
-        try {
-          // const accounts = await web3Instance.eth.requestAccounts();
-          // const balance = await web3Instance.eth.getBalance(accounts[0]);
-          // setBalance(web3Instance.utils.fromWei(balance, "ether"));
+      try {
+        // const accounts = await web3Instance.eth.requestAccounts();
+        // const balance = await web3Instance.eth.getBalance(accounts[0]);
+        // setBalance(web3Instance.utils.fromWei(balance, "ether"));
 
-          const instance = new web3Instance.eth.Contract(
-            SaleContractABI.abi,
-            contractAddress
-          );
-          setContract(instance);
-          // checkNetwork();
-        } catch (error) {
-          console.error("Error connecting to blockchain", error);
-        }
-      } else {
-        console.error("Ethereum wallet is not installed");
+        const instance = new web3Instance.eth.Contract(
+          SaleContractABI.abi,
+          contractAddress
+        );
+        setContract(instance);
+        // checkNetwork();
+      } catch (error) {
+        console.error("Error connecting to blockchain", error);
       }
+    } else {
+      console.error("Ethereum wallet is not installed");
+    }
     };
 
     const fetchInitialConversionRate = async () => {
