@@ -53,21 +53,21 @@ const wagmiConfig = defaultWagmiConfig({
   metadata,
 });
 
-createWeb3Modal({
-  ethersConfig,
-  chains,
-  projectId,
-  enableAnalytics: true,
-});
+// createWeb3Modal({
+//   ethersConfig,
+//   chains,
+//   projectId,
+//   enableAnalytics: true,
+// });
 
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <WagmiConfig config={wagmiConfig}>
+    {/* <QueryClientProvider client={queryClient}> */}
+      {/* <WagmiConfig config={wagmiConfig}> */}
         <App />
-      </WagmiConfig>
-    </QueryClientProvider>
+      {/* </WagmiConfig> */}
+    {/* </QueryClientProvider> */}
   </React.StrictMode>
 );

@@ -13,7 +13,8 @@ import HowTo from "../components/HowTo";
 
 const contractAddress = "0xa245033e8ae5168c177cd5959f721ed5b15d0f8d";
 const baseValue = 160;
-const multiples = [ 5, 10, 20, 40, 60, 80, 100, 200, 300, 400, 500];
+const multiples = [0.1, 5, 10, 20, 40, 60, 80, 100, 200, 300, 400, 500];
+const desiredNetworkId = 8453n; // Mainnet ID. Change this to your desired network ID.
 
 const Presale = () => {
   const [usdValue, setUsdValue] = useState("");
@@ -25,28 +26,43 @@ const Presale = () => {
   const [web3, setWeb3] = useState(null);
   const [contract, setContract] = useState(null);
   const [balance, setBalance] = useState(0);
-  const [isConnected, setIsConnected] = useState(false)
-  const [address, setAddress] = useState(null)
+  const [isConnected, setIsConnected] = useState(false);
+  const [address, setAddress] = useState(null);
+  const [isCorrectNetwork, setIsCorrectNetwork] = useState(false);
 
-  // const { open } = useWeb3Modal();
-  // const { address, isConnected } = useWeb3ModalAccount();
-
-  const connectWallet = async() => {
-    if(!window.ethereum){
-      alert('Metamask not detected in your browser...')
+  const connectWallet = async () => {
+    if (!window.ethereum) {
+      alert("Metamask not detected in your browser...");
       return;
     } else {
-      const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
-      setAddress(accounts[0])
-      setIsConnected(true)
-    }
-    
-  }
+      const accounts = await window.ethereum.request({
+        method: "eth_requestAccounts",
+      });
+    const netId = await web3.eth.net.getId();
 
-   const disconnectWallet = ()=> {
+       if (netId === desiredNetworkId) {
+         setIsCorrectNetwork(true);
+         setAddress(accounts[0]);
+         setIsConnected(true);
+         fetchBalance(accounts[0]);
+       } else {
+         setIsCorrectNetwork(false);
+         alert("Please switch your account to the BASE network to connect your wallet");
+       }
+    }
+  };
+
+   const fetchBalance = async (address) => {
+     const balanceInWei = await web3.eth.getBalance(address);
+     const balanceInEth = web3.utils.fromWei(balanceInWei, "ether");
+     setBalance(balanceInEth);
+   };
+
+
+  const disconnectWallet = () => {
     setAddress(null);
     setIsConnected(false);
-  }
+  };
 
   useEffect(() => {
     const initWeb3 = async () => {
@@ -55,12 +71,16 @@ const Presale = () => {
         setWeb3(web3Instance);
 
         try {
-          const accounts = await web3Instance.eth.requestAccounts();
-          const balance = await web3Instance.eth.getBalance(accounts[0]);
-          setBalance(web3Instance.utils.fromWei(balance, "ether"));
+          // const accounts = await web3Instance.eth.requestAccounts();
+          // const balance = await web3Instance.eth.getBalance(accounts[0]);
+          // setBalance(web3Instance.utils.fromWei(balance, "ether"));
 
-          const instance = new web3Instance.eth.Contract(SaleContractABI.abi, contractAddress);
+          const instance = new web3Instance.eth.Contract(
+            SaleContractABI.abi,
+            contractAddress
+          );
           setContract(instance);
+          // checkNetwork();
         } catch (error) {
           console.error("Error connecting to blockchain", error);
         }
@@ -158,68 +178,86 @@ const Presale = () => {
   };
 
   const buyTokensInUSD = async (e) => {
-  e.preventDefault();
-  try {
-    if (typeof window.ethereum === 'undefined') {
-      alert('Please continue this transaction on your desktop or dApp browser');
-      return;
-    }
-    if (!isConnected) {
-      alert("Wallet not connected");
-      return;
-    }
-
-    if (!contract) {
-      alert("Please reload the browser. Contract not yet loaded!");
-      return;
-    }
-
-    const usdAmount = parseFloat(usdValue);
-    if (isNaN(usdAmount) || usdAmount <= 0) {
-      alert("Please enter a valid USD amount.");
-      return;
-    }
-
-    const ethAmount = Web3.utils.toWei(ethValue.toString(), "ether");
-    const beneficiary = address;
-
-    // Check if the user has sufficient balance
-    if (parseFloat(balance) < parseFloat(ethValue)) {
-      alert("Insufficient balance. Please ensure you have enough ETH to complete the transaction.");
-      return;
-    }
-
-    let gasPrice;
+    e.preventDefault();
     try {
-      gasPrice = await web3.eth.getGasPrice();
+      if (typeof window.ethereum === "undefined") {
+        alert(
+          "Please continue this transaction on your desktop or dApp browser"
+        );
+        return;
+      }
+      if (!isConnected) {
+        alert("Wallet not connected");
+        return;
+      }
+      if (isCorrectNetwork === false) {
+        alert(
+          "Please switch your account to the BASE network to connect your wallet"
+        );
+        return;
+      }
+
+      if (!contract) {
+        alert("Please reload the browser. Contract not yet loaded!");
+        return;
+      }
+
+      const usdAmount = parseFloat(usdValue);
+      if (isNaN(usdAmount) || usdAmount <= 0) {
+        alert("Please enter a valid USD amount.");
+        return;
+      }
+
+      const ethAmount = Web3.utils.toWei(ethValue.toString(), "ether");
+      const beneficiary = address;
+
+      // Check if the user has sufficient balance
+      if (parseFloat(balance) < parseFloat(ethValue)) {
+        alert(
+          "Insufficient balance. Please ensure you have enough ETH to complete the transaction."
+        );
+        return;
+      }
+
+      let gasPrice;
+      try {
+        gasPrice = await web3.eth.getGasPrice();
+      } catch (error) {
+        alert("Error fetching gas price. Please try again later.");
+        return;
+      }
+
+      const gasEstimate = await contract.methods
+        .buyTokens(beneficiary)
+        .estimateGas({
+          from: address,
+          value: ethAmount,
+        });
+
+      const transaction = await contract.methods.buyTokens(beneficiary).send({
+        from: address,
+        value: ethAmount,
+        gas: gasEstimate,
+        gasPrice: gasPrice,
+      });
+
+      alert(
+        "Tokens bought successfully!\nTransaction hash: " +
+          transaction.transactionHash
+      );
     } catch (error) {
-      alert("Error fetching gas price. Please try again later.");
-      return;
+      alert(error.message);
+      console.log(error)
     }
-
-    const gasEstimate = await contract.methods.buyTokens(beneficiary).estimateGas({
-      from: address,
-      value: ethAmount,
-    });
-
-    const transaction = await contract.methods.buyTokens(beneficiary).send({
-      from: address,
-      value: ethAmount,
-      gas: gasEstimate,
-      gasPrice: gasPrice,
-    });
-
-    alert("Tokens bought successfully!\nTransaction hash: " + transaction.transactionHash);
-  } catch (error) {
-    alert(error.message);
-  }
-};
+  };
 
   return (
     <Wrapper>
       <div className="header-container">
         {isConnected ? (
-          <button onClick={()=> disconnectWallet()}>{address.slice(0, 12) + "..."}</button>
+          <button onClick={() => disconnectWallet()}>
+            {address.slice(0, 12) + "..."}
+          </button>
         ) : (
           <button onClick={() => connectWallet()}>Connect Wallet</button>
         )}
@@ -283,8 +321,7 @@ const Presale = () => {
             </form>
           </div>
 
-          <div className="form2">
-          </div>
+          <div className="form2"></div>
         </div>
       </div>
 
