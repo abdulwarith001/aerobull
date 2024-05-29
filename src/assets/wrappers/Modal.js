@@ -73,7 +73,7 @@ const WinnerErrorWrapper = styled.section`
         line-height: 76.61px;
         font-weight: 400;
         font-family: "MilkyNice", sans-serif;
-        -webkit-text-stroke: 3px black;
+        -webkit-text-stroke: 1px black;
         text-shadow: -3px 3px black;
         text-transform: uppercase;
       }
@@ -173,10 +173,11 @@ const WinnerErrorWrapper = styled.section`
         }
 
         h4 {
-          margin-top: 0.2em;
-          font-size: 22px;
-          line-height: 15px;
-          letter-spacing: 2px;
+          margin-top: 1em;
+          font-size: 20px;
+          font-weight: 400;
+          line-height: 25.88px;
+          width: 90%
         }
 
         button {

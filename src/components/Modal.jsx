@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Wrapper from "../assets/wrappers/Modal";
 import cancle from "../assets/images/cancle.png";
+import { useNavigate } from "react-router-dom";
 
 export default function WinnerErrorModal({ isOpen, setIsOpen }) {
+  const navigate = useNavigate()
   const calculateTimeLeft = (targetDateTime) => {
     const difference = new Date(targetDateTime) - new Date();
     let timeLeft = {
@@ -58,7 +60,7 @@ export default function WinnerErrorModal({ isOpen, setIsOpen }) {
               clicking "Buy ARB" below
             </h4>
 
-            <button>Buy ARB!!!</button>
+            <button onClick={()=> navigate('/presale')}>Buy ARB!!!</button>
 
             {/* <div className="timer_container">
               <div className="timer">
