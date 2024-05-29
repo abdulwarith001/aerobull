@@ -3,15 +3,19 @@ import Wrapper from '../assets/wrappers/Hero'
 import Modal from './Modal';
 import aero_back from '../assets/images/aero_bg.png';
 import mobile_hero from "../assets/images/mobile_hero_bg.png";
+import {useNavigate, Link} from 'react-router-dom'
 const Hero = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const navigate= useNavigate()
+  // const [isOpen, setIsOpen] = useState(false)
   return (
     <Wrapper>
-      {isOpen && <Modal isOpen={isOpen} setIsOpen={setIsOpen}/>}
+      {/* {isOpen && <Modal isOpen={isOpen} setIsOpen={setIsOpen}/>} */}
      <div className='firstSection'>
        <div className="header">
         <h2>$ARB</h2>
-        <button onClick={()=> setIsOpen(true)}>Presale</button>
+          <Link to='/presale'>
+        <button>Presale</button>
+          </Link>
       </div>
       <div className="header-txt">
         <div className='herotxt'>

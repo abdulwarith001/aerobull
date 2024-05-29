@@ -199,17 +199,20 @@ const Presale = () => {
         alert("Wallet not connected");
         return;
       }
-      if (isCorrectNetwork === false) {
-        alert(
-          "Please switch your account to the BASE network to connect your wallet"
-        );
-        return;
-      }
-
       if (!contract) {
         alert("Please reload the browser. Contract not yet loaded!");
         return;
       }
+
+       const netId = await web3.eth.net.getId();
+
+       if (netId !== desiredNetworkId) {
+         alert(
+           "Please switch your account to the BASE network to continue this transaction"
+         );
+         return;
+       }
+
 
       const usdAmount = parseFloat(usdValue);
       if (isNaN(usdAmount) || usdAmount <= 0) {
