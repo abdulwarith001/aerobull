@@ -52,10 +52,15 @@ export default function WinnerErrorModal({ isOpen, setIsOpen }) {
             <img src={cancle} onClick={() => setIsOpen(false)} alt="Close" />
           </div>
           <div className="content">
-            <h1>Presale</h1>
-            <h4>COMING SOON</h4>
+            <h1>Presale is live!!!</h1>
+            <h4>
+              Our highly anticipated presale is now live. Join the presale by
+              clicking "Buy ARB" below
+            </h4>
 
-            <div className="timer_container">
+            <button>Buy ARB!!!</button>
+
+            {/* <div className="timer_container">
               <div className="timer">
                 <h2>{formatTime(timeLeft.days)}</h2>
                 <p>Days</p>
@@ -81,7 +86,7 @@ export default function WinnerErrorModal({ isOpen, setIsOpen }) {
                 <h2>{formatTime(timeLeft.seconds)}</h2>
                 <p>Seconds</p>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

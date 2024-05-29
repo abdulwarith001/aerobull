@@ -6,10 +6,11 @@ import mobile_hero from "../assets/images/mobile_hero_bg.png";
 import {useNavigate, Link} from 'react-router-dom'
 const Hero = () => {
   const navigate= useNavigate()
-  // const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(true)
   return (
     <Wrapper>
-      {/* {isOpen && <Modal isOpen={isOpen} setIsOpen={setIsOpen}/>} */}
+      {isOpen && <Modal isOpen={isOpen} setIsOpen={setIsOpen}/>}
+      {/* <Modal isOpen={isOpen} setIsOpen={setIsOpen}/> */}
      <div className='firstSection'>
        <div className="header">
         <h2>$ARB</h2>

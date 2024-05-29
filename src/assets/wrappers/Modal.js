@@ -40,15 +40,16 @@ const WinnerErrorWrapper = styled.section`
     z-index: 9999;
   }
   .model-content {
-    background-image: url(${BgImage});
+    /* background-image: url(${BgImage});
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    object-fit: cover;
+    object-fit: cover; */
     background-color: white;
     border: 2px solid black;
     border-radius: 24px;
     width: 812px;
+    box-shadow: -6px 6px black;
     /* position: relative; */
 
     .img_wrapper {
@@ -65,26 +66,43 @@ const WinnerErrorWrapper = styled.section`
       /* padding: 88px; */
       text-align: center;
       h1 {
-        color: #0699f9;
+        color: #fe6464;
         text-shadow: -6px 6px black;
         -webkit-text-stroke: 1px black; /* For WebKit browsers like Chrome and Safari */
         font-size: 64px;
         line-height: 76.61px;
         font-weight: 400;
         font-family: "MilkyNice", sans-serif;
-        -webkit-text-stroke: 1px black;
+        -webkit-text-stroke: 3px black;
         text-shadow: -3px 3px black;
+        text-transform: uppercase;
       }
 
       h4 {
-        font-size: 64px;
+        font-size: 22.49px;
         font-weight: 400;
-        line-height: 76.61px;
+        line-height: 28.33px;
         font-family: "MilkyNice", sans-serif;
-        color: #0699f9;
-        -webkit-text-stroke: 1px black;
-        text-shadow: -3px 3px black;
+        width: 80%;
+        margin: 2em auto 0;
         /* letter-spacing: 5px; */
+      }
+
+      button {
+        padding: 8px 40px 12px 40px;
+        background: #f7b94f;
+        font-size: 32px;
+        font-weight: 400;
+        color: black;
+        font-family: "MilkyNice", sans-serif;
+        border-radius: 41px;
+        transition: box-shadow 100ms ease-in;
+        box-shadow: -3px 3px black;
+        border: 1px solid black;
+        margin: 2em 0;
+      }
+      button:hover {
+        box-shadow: -4px -4px black;
       }
 
       .timer_container {
@@ -161,6 +179,11 @@ const WinnerErrorWrapper = styled.section`
           letter-spacing: 2px;
         }
 
+        button {
+          padding: 8px 40px 12px;
+          font-size: 14.02px;
+        }
+
         .timer_container {
           display: flex;
           justify-content: space-around;
@@ -184,7 +207,7 @@ const WinnerErrorWrapper = styled.section`
               line-height: 30.24px;
             }
             p {
-              font-size:7.3px;
+              font-size: 7.3px;
               line-height: 10.96px;
             }
           }
