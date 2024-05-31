@@ -7,7 +7,7 @@ const Wrapper = styled.section`
   align-items: center;
   flex-direction: column;
   gap: 1.5em;
-  padding: 3em 0 6em;
+  padding: 3em 0 4.5em;
 
   h1 {
     font-size: 58.01px;
@@ -23,7 +23,7 @@ const Wrapper = styled.section`
     background: white;
     border: 3px solid black;
     height: 72px;
-    width: 868px;
+    width: 80%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -41,7 +41,7 @@ const Wrapper = styled.section`
       font-size: 32px;
       line-height: 40.32px;
       font-weight: 600;
-      width: 625px;
+      width: 77%;
       height: 40px;
     }
 

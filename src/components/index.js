@@ -8,6 +8,7 @@ import Footer from './Footer'
 import MoonAero from "./MoonAero";
 import Whitepaper from "./Whitepaper";
 import Team from "./Team";
+import ContractProgress from "./ContractProgress";
 
 export {
   Hero,
@@ -19,5 +20,6 @@ export {
   Footer,
   MoonAero,
   Whitepaper,
-  Team
+  Team,
+  ContractProgress
 };
