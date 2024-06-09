@@ -9,14 +9,11 @@ const Hero = () => {
   const [isOpen, setIsOpen] = useState(true)
   return (
     <Wrapper>
-      {isOpen && <Modal isOpen={isOpen} setIsOpen={setIsOpen}/>}
       {/* <Modal isOpen={isOpen} setIsOpen={setIsOpen}/> */}
      <div className='firstSection'>
        <div className="header">
         <h2>$ARB</h2>
-          <Link to='/presale'>
         <button>Presale</button>
-          </Link>
       </div>
       <div className="header-txt">
         <div className='herotxt'>
