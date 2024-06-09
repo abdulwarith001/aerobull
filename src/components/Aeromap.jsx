@@ -145,19 +145,19 @@ const Aeromap = () => {
               <img src={map4_mobile} className=" img mobile_map" /> */}
             </div>
             <div className="content">
-              <div>
+              {/* <div>
                 <i>1. </i>
                 <span>Raise $2M for Liquidity Pool & Exchange Listing</span>
-              </div>
+              </div> */}
               <div>
-                <i>2. </i>
+                <i>1. </i>
                 <span>
                   Once LP is locked, utilise funds through FIAT & Tokens to fund
                   website, marketing & strategic partnering.
                 </span>
               </div>
               <div>
-                <i>3. </i> <span>Organically grow the community.</span>
+                <i>2. </i> <span>Organically grow the community.</span>
               </div>
             </div>
           </div>
