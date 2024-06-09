@@ -10,27 +10,29 @@ const Hero = () => {
   return (
     <Wrapper>
       {/* <Modal isOpen={isOpen} setIsOpen={setIsOpen}/> */}
-     <div className='firstSection'>
-       <div className="header">
-        <h2>$ARB</h2>
-        <button>Presale</button>
-      </div>
-      <div className="header-txt">
-        <div className='herotxt'>
-         <div className='firstcomma'>
-             <i>“ </i>
-          <div className='herodiv'>
-            HI THERE, I’M <span>AERO</span>,<br />
-            The generous &<br />
-            Ambitious bull.
+      <div className="firstSection">
+        <div className="header">
+          <h2>$ARB</h2>
+          <Link to='mailto:aerobull2024@gmail.com'>
+            <button>Contact us</button>
+          </Link>
+        </div>
+        <div className="header-txt">
+          <div className="herotxt">
+            <div className="firstcomma">
+              <i>“ </i>
+              <div className="herodiv">
+                HI THERE, I’M <span>AERO</span>,<br />
+                The generous &<br />
+                Ambitious bull.
+              </div>
+            </div>
+            <div className="secondcomma">”</div>
           </div>
-         </div>
-          <div className='secondcomma'>”</div>
         </div>
       </div>
-     </div>
 
-        <div className="milkyguy">
+      <div className="milkyguy">
         <img src={aero_back} className="desktop" />
         <img src={mobile_hero} className="mobile" />
         <h1>Aerobull</h1>
