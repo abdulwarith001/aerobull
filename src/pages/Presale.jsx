@@ -12,8 +12,8 @@ import Presale_Contract_Addr from "../components/Presale_Contract_Addr";
 import HowTo from "../components/HowTo";
 
 const contractAddress = "0xa245033e8ae5168c177cd5959f721ed5b15d0f8d";
-const baseValue = 160;
-const multiples = [ 5, 10, 20, 40, 60, 80, 100, 200, 300, 400, 500];
+const baseValue = 96000000;
+const multiples = [ 1];
 const desiredNetworkId = 8453n; // Mainnet ID. Change this to your desired network ID.
 
 const Presale = () => {
