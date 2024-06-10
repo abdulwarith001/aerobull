@@ -12,8 +12,8 @@ import Presale_Contract_Addr from "../components/Presale_Contract_Addr";
 import HowTo from "../components/HowTo";
 
 const contractAddress = "0xa245033e8ae5168c177cd5959f721ed5b15d0f8d";
-const baseValue = 96000000;
-const multiples = [ 1];
+const baseValue = 160;
+const multiples = [5, 10, 20, 40, 60, 80, 100, 200, 300, 400, 500, 30000];
 const desiredNetworkId = 8453n; // Mainnet ID. Change this to your desired network ID.
 
 const Presale = () => {
@@ -31,7 +31,6 @@ const Presale = () => {
   const [isCorrectNetwork, setIsCorrectNetwork] = useState(false);
   const [isMetaMaskInstalled, setIsMetaMaskInstalled] = useState(false);
 
-  
   const connectWallet = async () => {
     // if (!isMetaMaskInstalled) {
     //   alert("MetaMask not detected in your browser...");
@@ -60,12 +59,11 @@ const Presale = () => {
     }
   };
 
-   const fetchBalance = async (address) => {
-     const balanceInWei = await web3.eth.getBalance(address);
-     const balanceInEth = web3.utils.fromWei(balanceInWei, "ether");
-     setBalance(balanceInEth);
-   };
-
+  const fetchBalance = async (address) => {
+    const balanceInWei = await web3.eth.getBalance(address);
+    const balanceInEth = web3.utils.fromWei(balanceInWei, "ether");
+    setBalance(balanceInEth);
+  };
 
   const disconnectWallet = () => {
     setAddress(null);
@@ -74,28 +72,28 @@ const Presale = () => {
 
   useEffect(() => {
     const initWeb3 = async () => {
-    if (window.ethereum && window.ethereum.isMetaMask) {
-      const web3Instance = new Web3(window.ethereum);
-      setWeb3(web3Instance);
-      setIsMetaMaskInstalled(true);
+      if (window.ethereum && window.ethereum.isMetaMask) {
+        const web3Instance = new Web3(window.ethereum);
+        setWeb3(web3Instance);
+        setIsMetaMaskInstalled(true);
 
-      try {
-        // const accounts = await web3Instance.eth.requestAccounts();
-        // const balance = await web3Instance.eth.getBalance(accounts[0]);
-        // setBalance(web3Instance.utils.fromWei(balance, "ether"));
+        try {
+          // const accounts = await web3Instance.eth.requestAccounts();
+          // const balance = await web3Instance.eth.getBalance(accounts[0]);
+          // setBalance(web3Instance.utils.fromWei(balance, "ether"));
 
-        const instance = new web3Instance.eth.Contract(
-          SaleContractABI.abi,
-          contractAddress
-        );
-        setContract(instance);
-        // checkNetwork();
-      } catch (error) {
-        console.error("Error connecting to blockchain", error);
+          const instance = new web3Instance.eth.Contract(
+            SaleContractABI.abi,
+            contractAddress
+          );
+          setContract(instance);
+          // checkNetwork();
+        } catch (error) {
+          console.error("Error connecting to blockchain", error);
+        }
+      } else {
+        console.error("Ethereum wallet is not installed");
       }
-    } else {
-      console.error("Ethereum wallet is not installed");
-    }
     };
 
     const fetchInitialConversionRate = async () => {
@@ -204,15 +202,14 @@ const Presale = () => {
         return;
       }
 
-       const netId = await web3.eth.net.getId();
+      const netId = await web3.eth.net.getId();
 
-       if (netId !== desiredNetworkId) {
-         alert(
-           "Please switch your account to the BASE network to continue this transaction"
-         );
-         return;
-       }
-
+      if (netId !== desiredNetworkId) {
+        alert(
+          "Please switch your account to the BASE network to continue this transaction"
+        );
+        return;
+      }
 
       const usdAmount = parseFloat(usdValue);
       if (isNaN(usdAmount) || usdAmount <= 0) {
@@ -259,7 +256,7 @@ const Presale = () => {
       );
     } catch (error) {
       alert(error.message);
-      console.log(error)
+      console.log(error);
     }
   };
 
