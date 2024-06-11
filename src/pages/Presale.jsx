@@ -55,210 +55,167 @@ const Presale = () => {
     initWeb3();
   }, []);
 
-  const convertUsdToEth = (usd) => {
-    // Implement your conversion logic here
-    return usd * 0.0004; // Example conversion rate
-  };
+const convertUsdToEth = (usd) => {
+  // Implement your conversion logic here
+  // Example conversion rate: 1 USD = 0.0004 ETH
+  return usd * 0.0004; // Adjust as needed
+};
 
-  const incrementMultiples = () => {
-    setMultipleIndex((prevIndex) => {
-      if (prevIndex === multiples.length - 1) return prevIndex;
-      const newIndex = prevIndex + 1;
-      const usd = multiples[newIndex];
-      setUsdValue(usd);
-      const eth = convertUsdToEth(usd);
-      setEthValue(eth);
+const calculateArbValue = (usd) => {
+  switch (usd) {
+    case 1:
+      return 1e6;
+    case 5:
+      return 10e6;
+    case 10:
+      return 50e6;
+    case 15:
+      return 75e6;
+    default:
+      return usd * baseValue;
+  }
+};
 
-      let arb;
-      switch (usd) {
-        case 1:
-          arb = 1e6;
-          break;
-        case 5:
-          arb = 10e6;
-          break;
-        case 10:
-          arb = 50e6;
-          break;
-        case 15:
-          arb = 75e6;
-          break;
-        default:
-          arb = usd * baseValue;
-      }
+const incrementMultiples = () => {
+  setMultipleIndex((prevIndex) => {
+    if (prevIndex === multiples.length - 1) return prevIndex;
+    const newIndex = prevIndex + 1;
+    const usd = multiples[newIndex];
+    setUsdValue(usd);
+    const eth = convertUsdToEth(usd);
+    setEthValue(eth);
+    setArbValue(calculateArbValue(usd));
+    setError(null);
+    return newIndex;
+  });
+};
 
-      setArbValue(arb);
-      setError(null);
-      return newIndex;
-    });
-  };
+const decrementMultiples = () => {
+  if (multipleIndex === 0) return;
+  setMultipleIndex((prevIndex) => {
+    const newIndex = prevIndex - 1;
+    const usd = multiples[newIndex];
+    setUsdValue(usd);
+    const eth = convertUsdToEth(usd);
+    setEthValue(eth);
+    setArbValue(calculateArbValue(usd));
+    setError(null);
+    return newIndex;
+  });
+};
 
-  const decrementMultiples = () => {
-    if (multipleIndex === 0) return;
-    setMultipleIndex((prevIndex) => {
-      const newIndex = prevIndex - 1;
-      const usd = multiples[newIndex];
-      setUsdValue(usd);
-      const eth = convertUsdToEth(usd);
-      setEthValue(eth);
-
-      let arb;
-      switch (usd) {
-        case 1:
-          arb = 1e6;
-          break;
-        case 5:
-          arb = 10e6;
-          break;
-        case 10:
-          arb = 50e6;
-          break;
-        case 15:
-          arb = 75e6;
-          break;
-        default:
-          arb = usd * baseValue;
-      }
-
-      setArbValue(arb);
-      setError(null);
-      return newIndex;
-    });
-  };
-
-  const connectWallet = async () => {
-    if (window.ethereum) {
-      try {
-        const accounts = await window.ethereum.request({
-          method: "eth_requestAccounts",
-        });
-        setAddress(accounts[0]);
-        setIsConnected(true);
-        // Initialize contract here
-      } catch (error) {
-        console.error(error);
-      }
-    } else {
-      alert("Please install MetaMask!");
-    }
-  };
-
-  const disconnectWallet = () => {
-    setIsConnected(false);
-    setAddress("");
-  };
-
-  const buyTokensInUSD = async (e) => {
-    e.preventDefault();
+const connectWallet = async () => {
+  if (window.ethereum) {
     try {
-      if (typeof window.ethereum === "undefined") {
-        alert(
-          "Please continue this transaction on your desktop or dApp browser"
-        );
-        return;
-      }
-      if (!isConnected) {
-        alert("Wallet not connected");
-        return;
-      }
-      if (!contract) {
-        alert("Please reload the browser. Contract not yet loaded!");
-        return;
-      }
+      const accounts = await window.ethereum.request({
+        method: "eth_requestAccounts",
+      });
+      setAddress(accounts[0]);
+      setIsConnected(true);
+      // Initialize contract here
+    } catch (error) {
+      console.error(error);
+    }
+  } else {
+    alert("Please install MetaMask!");
+  }
+};
 
-      const netId = await web3.eth.net.getId();
+const disconnectWallet = () => {
+  setIsConnected(false);
+  setAddress("");
+};
 
-      if (netId !== desiredNetworkId) {
-        alert(
-          "Please switch your account to the BASE network to continue this transaction"
-        );
-        return;
-      }
+const buyTokensInUSD = async (e) => {
+  e.preventDefault();
+  try {
+    if (typeof window.ethereum === "undefined") {
+      alert("Please continue this transaction on your desktop or dApp browser");
+      return;
+    }
+    if (!isConnected) {
+      alert("Wallet not connected");
+      return;
+    }
+    if (!contract) {
+      alert("Please reload the browser. Contract not yet loaded!");
+      return;
+    }
 
-      const usdAmount = parseFloat(usdValue);
-      if (isNaN(usdAmount) || usdAmount <= 0) {
-        alert("Please enter a valid USD amount.");
-        return;
-      }
+    const netId = await web3.eth.net.getId();
 
-      const ethAmount = Web3.utils.toWei(ethValue.toString(), "ether");
-      if (ethAmount <= 0) {
-        alert("Calculated ETH amount must be greater than zero.");
-        return;
-      }
+    if (netId !== desiredNetworkId) {
+      alert(
+        "Please switch your account to the BASE network to continue this transaction"
+      );
+      return;
+    }
 
-      const beneficiary = address;
+    const usdAmount = parseFloat(usdValue);
+    if (isNaN(usdAmount) || usdAmount <= 0) {
+      alert("Please enter a valid USD amount.");
+      return;
+    }
 
-      // Check if the user has sufficient balance
-      if (parseFloat(balance) < parseFloat(ethValue)) {
-        alert(
-          "Insufficient balance. Please ensure you have enough ETH to complete the transaction."
-        );
-        return;
-      }
+    const ethAmount = Web3.utils.toWei(ethValue.toString(), "ether");
+    if (ethAmount <= 0) {
+      alert("Calculated ETH amount must be greater than zero.");
+      return;
+    }
 
-      let gasPrice;
-      try {
-        gasPrice = await web3.eth.getGasPrice();
-      } catch (error) {
-        alert("Error fetching gas price. Please try again later.");
-        return;
-      }
+    const beneficiary = address;
 
-      const gasEstimate = await contract.methods
-        .buyTokens(beneficiary)
-        .estimateGas({
-          from: address,
-          value: ethAmount,
-        });
+    // Check if the user has sufficient balance
+    if (parseFloat(balance) < parseFloat(ethValue)) {
+      alert(
+        "Insufficient balance. Please ensure you have enough ETH to complete the transaction."
+      );
+      return;
+    }
 
-      console.log(`ethAmount: ${ethAmount}`);
-      console.log(`gasEstimate: ${gasEstimate}`);
-      console.log(`gasPrice: ${gasPrice}`);
+    let gasPrice;
+    try {
+      gasPrice = await web3.eth.getGasPrice();
+    } catch (error) {
+      alert("Error fetching gas price. Please try again later.");
+      return;
+    }
 
-      const transaction = await contract.methods.buyTokens(beneficiary).send({
+    const gasEstimate = await contract.methods
+      .buyTokens(beneficiary)
+      .estimateGas({
         from: address,
         value: ethAmount,
-        gas: gasEstimate,
-        gasPrice: gasPrice,
       });
 
-      alert(
-        "Tokens bought successfully!\\nTransaction hash: " +
-          transaction.transactionHash
-      );
-    } catch (error) {
-      alert(error.message);
-      console.log(error);
-    }
-  };
+    console.log(`ethAmount: ${ethAmount}`);
+    console.log(`gasEstimate: ${gasEstimate}`);
+    console.log(`gasPrice: ${gasPrice}`);
 
-  const handleUsdInputChange = (e) => {
-    const value = parseFloat(e.target.value);
-    setUsdValue(value);
-    const eth = convertUsdToEth(value);
-    setEthValue(eth);
+    const transaction = await contract.methods.buyTokens(beneficiary).send({
+      from: address,
+      value: ethAmount,
+      gas: gasEstimate,
+      gasPrice: gasPrice,
+    });
 
-    let arb;
-    switch (value) {
-      case 1:
-        arb = 1e6;
-        break;
-      case 5:
-        arb = 10e6;
-        break;
-      case 10:
-        arb = 50e6;
-        break;
-      case 15:
-        arb = 75e6;
-        break;
-      default:
-        arb = value * baseValue;
-    }
+    alert(
+      "Tokens bought successfully!\\nTransaction hash: " +
+        transaction.transactionHash
+    );
+  } catch (error) {
+    alert(error.message);
+    console.log(error);
+  }
+};
 
-    setArbValue(arb);
-  };
+const handleUsdInputChange = (e) => {
+  const value = parseFloat(e.target.value);
+  setUsdValue(value);
+  const eth = convertUsdToEth(value);
+  setEthValue(eth);
+  setArbValue(calculateArbValue(value));
+};
 
   return (
     <Wrapper>
