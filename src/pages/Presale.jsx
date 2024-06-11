@@ -12,70 +12,26 @@ import Presale_Contract_Addr from "../components/Presale_Contract_Addr";
 import HowTo from "../components/HowTo";
 
 const contractAddress = "0xa245033e8ae5168c177cd5959f721ed5b15d0f8d";
-const baseValue = 160;
-const multiples = [5, 10, 20, 40, 60, 80, 100, 200, 300, 400, 500, 30000];
-const desiredNetworkId = 8453n; // Mainnet ID. Change this to your desired network ID.
-
 const Presale = () => {
-  const [usdValue, setUsdValue] = useState("");
-  const [ethValue, setEthValue] = useState("");
-  const [arbValue, setArbValue] = useState("");
-  const [error, setError] = useState(null);
-  const [ethConversionRate, setEthConversionRate] = useState(null);
-  const [multipleIndex, setMultipleIndex] = useState(-1);
-  const [web3, setWeb3] = useState(null);
-  const [contract, setContract] = useState(null);
-  const [balance, setBalance] = useState(0);
   const [isConnected, setIsConnected] = useState(false);
-  const [address, setAddress] = useState(null);
-  const [isCorrectNetwork, setIsCorrectNetwork] = useState(false);
-  const [isMetaMaskInstalled, setIsMetaMaskInstalled] = useState(false);
-
-  const connectWallet = async () => {
-    // if (!isMetaMaskInstalled) {
-    //   alert("MetaMask not detected in your browser...");
-    //   return;
-    // }
-    if (!isMetaMaskInstalled) {
-      alert("Metamask not detected in your browser...");
-      return;
-    } else {
-      const accounts = await window.ethereum.request({
-        method: "eth_requestAccounts",
-      });
-      const netId = await web3.eth.net.getId();
-
-      if (netId === desiredNetworkId) {
-        setIsCorrectNetwork(true);
-        setAddress(accounts[0]);
-        setIsConnected(true);
-        fetchBalance(accounts[0]);
-      } else {
-        setIsCorrectNetwork(false);
-        alert(
-          "Please switch your account to the BASE network to connect your wallet"
-        );
-      }
-    }
-  };
-
-  const fetchBalance = async (address) => {
-    const balanceInWei = await web3.eth.getBalance(address);
-    const balanceInEth = web3.utils.fromWei(balanceInWei, "ether");
-    setBalance(balanceInEth);
-  };
-
-  const disconnectWallet = () => {
-    setAddress(null);
-    setIsConnected(false);
-  };
+  const [address, setAddress] = useState("");
+  const [contract, setContract] = useState(null);
+  const [balance, setBalance] = useState("");
+  const [usdValue, setUsdValue] = useState(1);
+  const [ethValue, setEthValue] = useState(0);
+  const [arbValue, setArbValue] = useState(1e6);
+  const [multipleIndex, setMultipleIndex] = useState(0);
+  const [error, setError] = useState(null);
+  const multiples = [1, 5, 10, 15];
+  const baseValue = 1e6; // 1 USD = 1M ARB
+  const desiredNetworkId = 8453n; // Replace with your desired network ID
+  const [web3, setWeb3] = useState(null);
 
   useEffect(() => {
     const initWeb3 = async () => {
       if (window.ethereum && window.ethereum.isMetaMask) {
         const web3Instance = new Web3(window.ethereum);
         setWeb3(web3Instance);
-        setIsMetaMaskInstalled(true);
 
         try {
           // const accounts = await web3Instance.eth.requestAccounts();
@@ -96,73 +52,41 @@ const Presale = () => {
       }
     };
 
-    const fetchInitialConversionRate = async () => {
-      const rate = await fetchEthConversionRate();
-      setEthConversionRate(rate);
-    };
-
     initWeb3();
-    fetchInitialConversionRate();
   }, []);
 
-  const fetchEthConversionRate = async () => {
-    try {
-      const response = await axios.get(
-        "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd"
-      );
-      return response.data.ethereum.usd;
-    } catch (error) {
-      console.error("Error fetching ETH conversion rate:", error);
-      return null;
-    }
-  };
-
-  const convertUsdToEth = (value) => {
-    if (!ethConversionRate) {
-      setError("Error fetching conversion rate. Please try again later.");
-      return null;
-    }
-    const ethValue = value / ethConversionRate;
-    return ethValue.toFixed(6);
-  };
-
-  const handleUsdInputChange = (e) => {
-    const usd = parseFloat(e.target.value);
-    if (isNaN(usd)) {
-      setError("Please enter a valid number.");
-      setUsdValue("");
-      setEthValue("");
-      setArbValue("");
-      return;
-    }
-    if (usd > 100) {
-      setError("Maximum value exceeded. Max is $100");
-      return;
-    }
-    if (usd < 1) {
-      setError("Minimum value is $1.");
-      return;
-    }
-    setError(null);
-    setUsdValue(usd);
-    const eth = convertUsdToEth(usd);
-    if (eth === null) {
-      return;
-    }
-    setEthValue(eth);
-    const arb = usd * baseValue;
-    setArbValue(arb);
+  const convertUsdToEth = (usd) => {
+    // Implement your conversion logic here
+    return usd * 0.0004; // Example conversion rate
   };
 
   const incrementMultiples = () => {
-    if (multipleIndex >= multiples.length - 1) return;
     setMultipleIndex((prevIndex) => {
+      if (prevIndex === multiples.length - 1) return prevIndex;
       const newIndex = prevIndex + 1;
       const usd = multiples[newIndex];
       setUsdValue(usd);
       const eth = convertUsdToEth(usd);
       setEthValue(eth);
-      const arb = usd * baseValue;
+
+      let arb;
+      switch (usd) {
+        case 1:
+          arb = 1e6;
+          break;
+        case 5:
+          arb = 10e6;
+          break;
+        case 10:
+          arb = 50e6;
+          break;
+        case 15:
+          arb = 75e6;
+          break;
+        default:
+          arb = usd * baseValue;
+      }
+
       setArbValue(arb);
       setError(null);
       return newIndex;
@@ -177,11 +101,51 @@ const Presale = () => {
       setUsdValue(usd);
       const eth = convertUsdToEth(usd);
       setEthValue(eth);
-      const arb = usd * baseValue;
+
+      let arb;
+      switch (usd) {
+        case 1:
+          arb = 1e6;
+          break;
+        case 5:
+          arb = 10e6;
+          break;
+        case 10:
+          arb = 50e6;
+          break;
+        case 15:
+          arb = 75e6;
+          break;
+        default:
+          arb = usd * baseValue;
+      }
+
       setArbValue(arb);
       setError(null);
       return newIndex;
     });
+  };
+
+  const connectWallet = async () => {
+    if (window.ethereum) {
+      try {
+        const accounts = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
+        setAddress(accounts[0]);
+        setIsConnected(true);
+        // Initialize contract here
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      alert("Please install MetaMask!");
+    }
+  };
+
+  const disconnectWallet = () => {
+    setIsConnected(false);
+    setAddress("");
   };
 
   const buyTokensInUSD = async (e) => {
@@ -218,6 +182,11 @@ const Presale = () => {
       }
 
       const ethAmount = Web3.utils.toWei(ethValue.toString(), "ether");
+      if (ethAmount <= 0) {
+        alert("Calculated ETH amount must be greater than zero.");
+        return;
+      }
+
       const beneficiary = address;
 
       // Check if the user has sufficient balance
@@ -243,6 +212,10 @@ const Presale = () => {
           value: ethAmount,
         });
 
+      console.log(`ethAmount: ${ethAmount}`);
+      console.log(`gasEstimate: ${gasEstimate}`);
+      console.log(`gasPrice: ${gasPrice}`);
+
       const transaction = await contract.methods.buyTokens(beneficiary).send({
         from: address,
         value: ethAmount,
@@ -251,13 +224,40 @@ const Presale = () => {
       });
 
       alert(
-        "Tokens bought successfully!\nTransaction hash: " +
+        "Tokens bought successfully!\\nTransaction hash: " +
           transaction.transactionHash
       );
     } catch (error) {
       alert(error.message);
       console.log(error);
     }
+  };
+
+  const handleUsdInputChange = (e) => {
+    const value = parseFloat(e.target.value);
+    setUsdValue(value);
+    const eth = convertUsdToEth(value);
+    setEthValue(eth);
+
+    let arb;
+    switch (value) {
+      case 1:
+        arb = 1e6;
+        break;
+      case 5:
+        arb = 10e6;
+        break;
+      case 10:
+        arb = 50e6;
+        break;
+      case 15:
+        arb = 75e6;
+        break;
+      default:
+        arb = value * baseValue;
+    }
+
+    setArbValue(arb);
   };
 
   return (
