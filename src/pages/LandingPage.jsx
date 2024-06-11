@@ -20,10 +20,10 @@ const LandingPage = () => {
       <Hero />
       <Stripe />
       <Contract_Addr />
+      <Aeronomics />
       {/* <ContractProgress /> */}
       <Whitepaper />
       <Aeromap />
-      <Aeronomics />
       <Faq />
       <Team />
       <MoonAero />

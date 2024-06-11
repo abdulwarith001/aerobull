@@ -28,7 +28,7 @@ const Aeronomics = () => {
               <div className="item">
                 <img src={aero_chart1} className="desktop" />
                 <img src={mobile_chart1} className="mobile" />
-                <span>Presale & Airdrop Supply (50%)</span>
+                <span>Presale & Airdrop Supply (10%)</span>
               </div>
               <div className="item">
                 <img src={aero_chart2} className="desktop" />
@@ -49,6 +49,11 @@ const Aeronomics = () => {
                  <img src={aero_chart5} className="desktop" />
                 <img src={mobile_chart5} className="mobile" />
                 <span>Team growth & Expansion (10%)</span>
+              </div>
+              <div className="item">
+                 <img src={aero_chart1} className="desktop" />
+                <img src={mobile_chart1} className="mobile" />
+                <span>Supply Burned(40%)</span>
               </div>
             </div>
           </div>
