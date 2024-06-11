@@ -18,10 +18,10 @@ const router = createBrowserRouter([
         index: true,
         element: <LandingPage />,
       },
-      {
-        path: 'presale',
-        element: <Presale />,
-      },
+      // {
+      //   path: 'presale',
+      //   element: <Presale />,
+      // },
       {
         path: 'after-presale',
         element: <AfterPresale />,
