@@ -19,7 +19,7 @@ const LandingPage = () => {
     <Wrapper>
       <Hero />
       <Stripe />
-      <Contract_Addr />
+      {/* <Contract_Addr /> */}
       <Aeronomics />
       {/* <ContractProgress /> */}
       <Whitepaper />
