@@ -36,8 +36,10 @@ const Footer = () => {
           <img src={coin} className="desktop" />
           <img src={mobile_coin} className="mobile" />
         </div>
-        <div className="web_link">
-          <h4>aerobull whitepaper</h4>
+        <div >
+          <Link to="/whitepaper" className="web_link">
+            <h4>aerobull whitepaper</h4>
+          </Link>
         </div>
       </div>
       <img src={footer_bg2} className="image" />

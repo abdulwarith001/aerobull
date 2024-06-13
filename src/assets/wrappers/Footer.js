@@ -100,6 +100,7 @@ const Wrapper = styled.footer`
   .web_link {
     height: 5em;
     width: fit-content;
+    text-decoration: none;
     h4 {
       color: white;
       -webkit-text-stroke: 1px black; /* For WebKit browsers like Chrome and Safari */
