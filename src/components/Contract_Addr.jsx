@@ -25,7 +25,7 @@ const Contract_Addr = () => {
         <input
           id="contractAddress"
           type="text"
-          value="0x1Bbb0Cad4Ba02Ff047aa407e6b275f373fc1D134"
+          value="0x6926a15C503A6fe3F51a985D2EB1a0a5CC90A427"
           readOnly
         />
         <button onClick={copyToClipboard}>
