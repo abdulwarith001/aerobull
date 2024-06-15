@@ -31,6 +31,27 @@ const Wrapper = styled.section`
     transition: box-shadow 100ms ease-in;
     border: 1px solid black;
   }
+
+  @media (max-width: 992px) {
+    flex-direction: column;
+    h1 {
+      font-size: 27.53px;
+      line-height: 30.38px;
+    }
+
+    button {
+      width: 60.32px;
+      height: 21.85px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 16px 32px;
+      border-radius: 17.25px;
+      gap: 3.02px;
+      font-size: 15px;
+      line-height: 12.41px;
+    }
+  }
 `;
 
 export default Wrapper
