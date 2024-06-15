@@ -75,18 +75,26 @@ const Wrapper = styled.section`
       text-shadow: 5px 5px black;
     }
 
-    button {
-      padding: 8px 40px 12px 40px;
-      background: #f7b94f;
-      font-size: 32px;
-      font-weight: 400;
-      color: black;
-      font-family: "MilkyNice", sans-serif;
-      border-radius: 41px;
-      transition: box-shadow 100ms ease-in;
-    }
-    button:hover {
-      box-shadow: -4px -4px black;
+    .buttons {
+      display: flex;
+      gap: 1em;
+      align-items: center;
+      button {
+        padding: 8px 40px 12px 40px;
+        background: #f7b94f;
+        font-size: 32px;
+        font-weight: 400;
+        color: black;
+        font-family: "MilkyNice", sans-serif;
+        border-radius: 41px;
+        box-shadow: -4px 4px black;
+        transition: box-shadow 100ms ease-in;
+        border: none;
+      }
+
+      .disclaimer {
+        background: white;
+      }
     }
   }
 

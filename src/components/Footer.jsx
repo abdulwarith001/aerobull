@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from "react";
 import Wrapper from '../assets/wrappers/Footer'
 import discord from '../assets/images/discord.png'
 import twitter from '../assets/images/twitter.png' 
@@ -8,11 +8,16 @@ import mobile_coin from '../assets/images/mobile_coin.png'
 import footer_bg2 from '../assets/images/footer_bg2.png'
 import aerobull_mobile_footer from '../assets/images/aerobull_mobile_footer.png'
 import { useNavigate, Link } from "react-router-dom";
+import Modal from "./DisclaimerModal";
+
 const Footer = () => {
+    const [isOpen, setIsOpen] = useState(false);
   return (
     <Wrapper>
+      {isOpen && <Modal isOpen={isOpen} setIsOpen={setIsOpen} />}
+
       <div className="contents">
-        <h1>$ARB</h1>
+        <h1>$ARBL</h1>
         <h3>Join our $ARB Community</h3>
         <div className="icons">
           <div className="icon">
@@ -32,11 +37,11 @@ const Footer = () => {
           </div>
         </div>
         <div className="buy_btn">
-          <p>Buy Aero</p>
-          <img src={coin} className="desktop" />
-          <img src={mobile_coin} className="mobile" />
+          <button className="disclaimer" onClick={() => setIsOpen(true)}>
+            Disclaimer
+          </button>
         </div>
-        <div >
+        <div>
           <Link to="/whitepaper" className="web_link">
             <h4>aerobull whitepaper</h4>
           </Link>
