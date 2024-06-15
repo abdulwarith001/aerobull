@@ -5,7 +5,7 @@ const Wrapper = styled.section`
   justify-content: space-between;
   align-items: center;
   gap: 1.5em;
-  padding: 3em 10em;
+  padding: 5em 10em;
   background-color: #d2ecff;
 
   h1 {
@@ -34,6 +34,7 @@ const Wrapper = styled.section`
 
   @media (max-width: 992px) {
     flex-direction: column;
+    padding: 5em 1em;
     h1 {
       font-size: 27.53px;
       line-height: 30.38px;
