@@ -72,7 +72,6 @@ const Wrapper = styled.footer`
   }
 
   .buy_btn {
-   
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -90,11 +89,7 @@ const Wrapper = styled.footer`
       transition: box-shadow 100ms ease-in;
       border: none;
     }
-
-   
   }
-
-  
 
   .web_link {
     height: 5em;
@@ -143,17 +138,12 @@ const Wrapper = styled.footer`
     }
 
     .buy_btn {
-      padding: 0 4.93px;
-      border-radius: 17.25px;
-      border: 1.5px solid black;
-      gap: 7.39px;
-      width: 115.79px;
       height: fit-content;
       margin-top: 3em;
 
-      p {
-        line-height: 11.51px;
-        font-size: 15.31px;
+      button {
+        padding: 8px 40px 12px;
+        font-size: 14.02px;
       }
     }
     .mobile {

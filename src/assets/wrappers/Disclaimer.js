@@ -132,6 +132,24 @@ const WinnerErrorWrapper = styled.section`
           font-size: 40.27px;
           line-height: 45.24px;
         }
+        .frontImg {
+          width: 90%;
+          font-size: 31.97px;
+          border-radius: 15px;
+          margin: 0em auto 1em;
+        }
+        h4 {
+          font-size: 14px;
+          line-height: 16.67px;
+        }
+        .items {
+          margin-left: 1em;
+          margin-top: 1em;
+          li {
+            font-size: 14px;
+            line-height: 16.67px;
+          }
+        }
       }
     }
   }
