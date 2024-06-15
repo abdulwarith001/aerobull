@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import Wrapper from '../assets/wrappers/Whitepaper.page.js'
 import Modal from '../components/Modal';
 import Footer from '../components/Footer';
+import ScrollToTop from '../components/ScrollTop';
 import whitepaper02 from '../assets/images/whitepaper02.png'
 import whitepaper03 from '../assets/images/whitepaper03.png'
 import short_goal from '../assets/images/short_goal.png'
@@ -12,6 +13,7 @@ const Whitepaper = () => {
 
   return (
     <Wrapper>
+      <ScrollToTop/>
       {/* {isOpen && <Modal isOpen={isOpen} setIsOpen={setIsOpen}/>} */}
       <div className="header">
         <h2>$ARBL</h2>
