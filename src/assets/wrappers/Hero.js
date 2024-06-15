@@ -93,7 +93,9 @@ const Wrapper = styled.section`
       }
 
       .disclaimer {
-        background: white;
+        background: #0699f9;
+        border: 3px solid black;
+        color: white;
       }
     }
   }

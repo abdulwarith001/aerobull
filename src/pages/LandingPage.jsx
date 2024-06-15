@@ -3,6 +3,7 @@ import {
   Hero,
   Stripe,
   Contract_Addr,
+  BuyArbl,
   Aeromap,
   Aeronomics,
   Faq,
@@ -20,6 +21,7 @@ const LandingPage = () => {
       <Hero />
       <Stripe />
       <Contract_Addr />
+      <BuyArbl />
       <Aeronomics />
       {/* <ContractProgress /> */}
       <Whitepaper />

@@ -14,7 +14,9 @@ const Hero = () => {
         <div className="header">
           <h2>$ARBL</h2>
           <div className="buttons">
-            <button className="disclaimer" onClick={()=> setIsOpen(true)}>Disclaimer</button>
+            <Link to="https://dexscreener.com/base/0x84838f0e9d05ee4c22694911fd1f24113d5fb264">
+            <button className="disclaimer">Buy $ARBL</button>
+            </Link>
             <Link to="mailto:aerobull2024@gmail.com">
               <button>Contact us</button>
             </Link>

@@ -8,6 +8,19 @@ const Wrapper = styled.footer`
   align-items: flex-end;
   background: #77c5fc;
 
+  .buy_arbl {
+      padding: 8px 40px 12px 40px;
+      background: #0699f9;
+      font-size: 32px;
+      font-weight: 400;
+      color: white;
+      font-family: "MilkyNice", sans-serif;
+      border-radius: 41px;
+      box-shadow: -4px 4px black;
+      transition: box-shadow 100ms ease-in;
+      border: 1px solid black;
+  }
+
   .image {
     display: block;
     width: 40%;

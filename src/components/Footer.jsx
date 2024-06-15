@@ -17,7 +17,9 @@ const Footer = () => {
       {isOpen && <Modal isOpen={isOpen} setIsOpen={setIsOpen} />}
 
       <div className="contents">
-        <h1>$ARBL</h1>
+        <Link to="https://dexscreener.com/base/0x84838f0e9d05ee4c22694911fd1f24113d5fb264">
+          <button className="buy_arbl">Buy ARBL</button>
+        </Link>
         <h3>Join our $ARB Community</h3>
         <div className="icons">
           <div className="icon">

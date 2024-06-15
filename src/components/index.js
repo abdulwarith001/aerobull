@@ -9,6 +9,7 @@ import MoonAero from "./MoonAero";
 import Whitepaper from "./Whitepaper";
 import Team from "./Team";
 import ContractProgress from "./ContractProgress";
+import BuyArbl from "./BuyArbl";
 
 export {
   Hero,
@@ -21,5 +22,6 @@ export {
   MoonAero,
   Whitepaper,
   Team,
-  ContractProgress
+  ContractProgress,
+  BuyArbl,
 };
