@@ -47,8 +47,8 @@ const Footer = () => {
           </Link>
         </div>
       </div>
-      <img src={footer_bg2} className="image" />
-      <img src={aerobull_mobile_footer} className="image2" />
+      <img src={footer_bg2} className="image desktop" />
+      <img src={aerobull_mobile_footer} className="image2 mobile" />
     </Wrapper>
   );
 }

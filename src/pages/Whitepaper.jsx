@@ -14,7 +14,7 @@ const Whitepaper = () => {
     <Wrapper>
       {/* {isOpen && <Modal isOpen={isOpen} setIsOpen={setIsOpen}/>} */}
       <div className="header">
-        <h2>$ARB</h2>
+        <h2>$ARBL</h2>
         <Link to="mailto:aerobull2024@gmail.com">
           <button>Contact us</button>
         </Link>
