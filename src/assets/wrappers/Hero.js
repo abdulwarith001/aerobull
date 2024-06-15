@@ -138,9 +138,14 @@ const Wrapper = styled.section`
         font-size: 20.8px;
       }
 
-      button {
-        padding: 8px 40px 12px;
-        font-size: 14.02px;
+      .buttons {
+        gap: 0.5em;
+
+        flex-direction: column;
+        button {
+          padding: 8px 40px 12px;
+          font-size: 14px;
+        }
       }
     }
 
@@ -170,7 +175,7 @@ const Wrapper = styled.section`
     }
 
     .firstSection {
-      padding: 2em 2em;
+      padding: 2em 0.5em;
       height: 40vh;
       background: url(${BgImage2});
       background-position: center;
